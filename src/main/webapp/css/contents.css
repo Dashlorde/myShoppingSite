@@ -1,0 +1,122 @@
+@CHARSET "UTF-8";
+
+ul.menu{
+	background-color: #f1f1f1;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	position: fixed;
+	width:100%;
+	opacity: 0.8;
+	
+}
+
+li.menu  {
+	float:right;
+	display:inline;
+}
+
+
+
+li.welcome {
+	float:left;
+	padding: 10px 15px;
+	text-align:center;
+	font-family:Lucida Grande;
+	text-transform: uppercase;
+	color: #990033;
+	
+}
+
+
+li.menu a{
+	display: block;
+	color:black;
+	text-align:center;
+	font-family:Lucida Grande;
+	padding: 10px 15px;
+	text-decoration: none;
+	
+	
+}
+
+li.menu a:hover{
+	background-color: black;
+	color:white;
+}
+
+table{
+	border-collapse: collapse;
+    width: 100%;
+   	position: absolute;
+   	top:55px;
+   	z-index: -1;
+   
+}
+
+th, td{
+	height:60px;
+	padding: 10px;
+	text-align:center;
+	border-bottom: 1px solid #cceeff;
+	
+}
+
+td.pic{
+	text-align:center;
+	width:35%;
+}
+
+th{
+	background-color: #a3ced1;
+	font-family:Lucida Grande;
+}
+
+tr:hover{
+	background-color: #cceeff;
+}
+
+td a{
+	color: black;
+	text-align:center;
+	text-decoration: none;
+	display: block;
+}
+
+h2.cartHead{
+	position:absolute;
+	top:55px;
+	font-family:Lucida Grande;
+}
+
+div.checkout{
+	position:fixed;
+	bottom:20px;
+	
+}
+
+a.checkout{
+	font-family:Lucida Grande;
+	text-decoration:none;
+	display:block;
+	font-size:16px;
+	padding: 10px 20px;
+	border: 1px solid #4CAF50;
+	border-radius: 8px;
+	
+	
+}
+
+div.total{
+	position:fixed;
+	bottom:80px;
+}
+
+#total{
+	font-size: 20px;
+	font-family:Lucida Grande;
+	
+}
+
+
+

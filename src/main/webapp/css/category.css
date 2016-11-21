@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+ul{
+	list-style-type:none;
+	padding: 10px;
+	margin: 0;
+	width: 100%;
+	text-align:center;
+	background-color: #f1f1f1;
+	height:100%;
+	position:fixed;
+	
+	
+}
+
+li a{
+	display:block;
+	color: #000;
+	padding: 8px 16px;
+	text-decoration:none;
+	font-family:Lucida Grande;
+}
+
+li a:hover {
+    background-color: #555;
+    color: white;
+}
