@@ -21,14 +21,15 @@
 		</c:otherwise>
 	</c:choose>
 
-<div class="info">
+<div class="panel">
 	
 	<ul class="info">
-		<li class="info"><img src="${requestScope.product.imageName}" width="40%"/></li>
-		<li class="info">${requestScope.product.productName}</li>
-		<li class="info">$${requestScope.product.productPrice}</li>
-		<li class="info">${requestScope.product.description}</li>
-		<li class="info"><a href="addtocart.htm?id=${product.productID}&action=addtocart">Add to Cart</a>
+		<li ><img src="${requestScope.product.imageName}" width="40%"/></li>
+		<li class="brief">${requestScope.product.productName}</li>
+		<li class="brief" id="username"> sell by ${requestScope.product.username}</li>
+		<li>$${requestScope.product.productPrice}</li>		
+		<li>${requestScope.product.description}</li>
+		<li><a href="addtocart.htm?id=${product.productID}&action=addtocart" >Add to Cart</a>
 	</ul> 
 </div>
 

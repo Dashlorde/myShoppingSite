@@ -3,7 +3,7 @@ body{
 	background-color: #a3ced1;
 }
 
-div.info{
+.panel{
 	position:absolute;
 	top:55px;
 	width: 100%;
@@ -11,13 +11,12 @@ div.info{
 	
 }
 
-ul.info{
-	
+.info{
 	text-decoration:none;
 	width: 100%
 }
 
-li.info{
+.info li{
 	text-align:center;
 	font-family:Lucida Grande;
 	text-decoration:none;
@@ -26,7 +25,11 @@ li.info{
 	font-size:20px;
 }
 
-li.info a{
+.info li.brief{
+	diplay: inline
+}
+
+.info a{
 	color: black;
 	display:block;
 	border-radius: 8px;
@@ -39,28 +42,15 @@ li.info a{
 
 }
 
-li.info a:hover{
+.info a:hover{
 	background-color: black;
 	color:white;
 }
 
-#submit{
-	diplay:block;
-	width: 30%;
-	font-size: 15px;
-	font-family:Lucida Grande;
-	padding:10px;
-	background-color :black;
-	color: white;
-	border-radius:8px;
-	list-style-type:none;
-	
-}
 
-#textarea{
-	width: 50%;
-	height: 50px;
 
+#username{
+	font-size: 12px;
 }
 
 

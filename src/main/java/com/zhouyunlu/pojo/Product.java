@@ -35,12 +35,8 @@ public class Product {
 	@Column(name="imageName")
 	String imageName;
 	
-	
-
-	//@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	//@JoinColumn(name="username")
 	@Column(name="username")
-	private String username;
+	 String username;
 		
 	
 	
@@ -59,7 +55,7 @@ public class Product {
 	
 	
 	public String getUsername() {
-		return getUsername();
+		return username;
 	}
 
 	public void setUsername(String username) {
