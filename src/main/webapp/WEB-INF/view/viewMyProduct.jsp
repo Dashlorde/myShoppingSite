@@ -8,6 +8,8 @@
 <title>welcome to my shopping website</title>
 
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/contents.css" />
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/menu.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
 </head>
 <body>
 

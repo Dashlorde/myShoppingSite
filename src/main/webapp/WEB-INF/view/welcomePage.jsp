@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>welcome to my shopping website</title>
-
+	<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/menu.css" />
   <link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/listProduct.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
 </head>
@@ -28,7 +28,8 @@
             <div class="floatBox">
             <ul class="product">
                 <li class="pic"><a href="showProductInfo.htm?id=${product.productID }&action=showProductInfo"><img src="${product.imageName}" width="100%" /></a></li>
-                <li class="left"><a href="showProductInfo.htm?id=${product.productID }&action=showProductInfo">${product.productName}</a></li> 
+                <li class="left"><a href="showProductInfo.htm?id=${product.productID }&action=showProductInfo">${product.productName}</a></li>
+                <li class="left"> $${product.productPrice }</li> 
               	<li class="right"><a href="addtocart.htm?id=${product.productID}&action=addtocart"><i class="material-icons" >add_shopping_cart</i></a></li>
             </ul>
             </div>

@@ -2,47 +2,6 @@
 body{
 	background-color: #a3ced1;
 }
-ul.menu{
-	background-color: #f1f1f1;
-	list-style-type:none;
-	margin:0;
-	padding:0;
-	position: fixed;
-	width:100%;
-	opacity: 0.8;
-	
-}
-
-li.menu  {
-	float:right;
-}
-
-li.welcome {
-	float:left;
-	padding: 10px 15px;
-	text-align:center;
-	font-family:Lucida Grande;
-	text-transform: uppercase;
-	color: #990033;
-	
-}
-
-
-li.menu a{
-	display: block;
-	color:black;
-	text-align:center;
-	font-family:Lucida Grande;
-	padding: 10px 15px;
-	text-decoration: none;
-	
-	
-}
-
-li.menu a:hover{
-	background-color: black;
-	color:white;
-}
 
 div.info{
 	position:absolute;

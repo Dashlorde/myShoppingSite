@@ -10,47 +10,6 @@ h2{
 
 
 
-ul{
-	background-color: #f1f1f1;
-	list-style-type:none;
-	margin:0;
-	padding:0;
-	position: fixed;
-	width:100%;
-	opacity: 0.8;
-	
-}
-
-li  {
-	float:right;
-}
-
-li.welcome {
-	float:left;
-	padding: 10px 15px;
-	text-align:center;
-	font-family:Lucida Grande;
-	text-transform: uppercase;
-	color: #990033;
-	
-}
-
-
-li a{
-	display: block;
-	color:black;
-	text-align:center;
-	font-family:Lucida Grande;
-	padding: 10px 15px;
-	text-decoration: none;
-	
-	
-}
-
-li a:hover{
-	background-color: black;
-	color:white;
-}
 
 #form{
 	width: 50%;

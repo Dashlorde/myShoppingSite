@@ -8,6 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>modify product</title>
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/modifyProduct.css" />
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/menu.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
 </head>
 <body>
 <c:choose>
