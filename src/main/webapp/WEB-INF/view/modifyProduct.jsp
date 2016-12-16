@@ -27,7 +27,8 @@
 		<li class="info"><img src="${sessionScope.product.imageName}" width="40%"/><input type="file" name="image" size="50" id="file"/>
 		
 		<li class="info"><font color="#871262">product name:</font> ${sessionScope.product.productName}</li>
-		
+		<li class="info" ><font color="#871262">product stock:</font> ${sessionScope.product.stock}
+		<form:input path="stock" name="stock" htmlEscape="true"/><font color="red"><form:errors path="stock"/></font></li>
 		<li class="info" id="textarea"><font color="#871262">product description:</font> ${sessionScope.product.description}</li>
 		<li class="info"><form:input path="description" name="description" size="30" id="textarea" htmlEscape="true"/><font color="red"><form:errors path="description"/></font></li>
 		<li class="info"><input type="submit" value="Modify Product" id="submit"></li>

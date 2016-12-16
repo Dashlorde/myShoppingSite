@@ -28,6 +28,11 @@
 		</tr>
 		
 		<tr>
+			<td>Product Stock:</td>
+			<td><form:input path="stock" size="30" htmlEscape="true"/><font color="red"><form:errors path="stock"/></font> </td>
+		</tr>
+		
+		<tr>
 			<td>Product Description:</td>
 			<td><form:input path="description" size="30" htmlEscape="true"/><font color="red"><form:errors path="description"/></font> </td>
 		</tr>

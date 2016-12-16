@@ -22,6 +22,7 @@ public class productValidator implements Validator{
 			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "productName", "error.invalid.productName", "product name Required");
 	        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "productPrice", "error.invalid.productPrice", "product price Required");
 	        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description", "error.invalid.description", "product description Required");
+	        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "stock", "error.invalid.stock", "product stock Required");
 	        //ValidationUtils.rejectIfEmpty(errors, "imageName", "error.invalid.image","image needed");
 		
 		

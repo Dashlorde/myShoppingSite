@@ -37,7 +37,9 @@ public class Product {
 	
 	@Column(name="username")
 	 String username;
-		
+	
+	@Column(name="stock")
+	int stock;
 	
 	
 	public Product(){
@@ -106,6 +108,12 @@ public class Product {
 		this.description = description;
 	}
 
-	
+	public int getStock() {
+		return stock;
+	}
+
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
   
 }

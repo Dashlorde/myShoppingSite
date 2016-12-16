@@ -28,6 +28,7 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
+                <th>Stock</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -37,6 +38,7 @@
                     <td>${product.productName}</td>
                     <td>${product.description}</td>
                     <td>$${product.productPrice}</td>
+                    <td>${product.stock}</td>
                     <td><a href="modify.htm?id=${product.productID }&action=goModifyPage">modify</a></td>
                     <td><a href="deleteProduct.htm?id=${product.productID}&action=deleteProduct">delete</a></td>
                 </tr>   

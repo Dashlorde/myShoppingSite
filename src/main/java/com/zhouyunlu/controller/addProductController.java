@@ -68,6 +68,7 @@ public class addProductController {
 		float productPrice=product.getProductPrice();
 		String description=product.getDescription();
 		String category=product.getCategory();
+		int stock=product.getStock();
 		String imagePath=null;
 		
 		File file;
@@ -102,7 +103,7 @@ public class addProductController {
 				return "addProductForm";
 			}
 						
-			productDao.create(productName, productPrice, description, category, username, context+"/"+fileName);
+			productDao.create(productName, productPrice, description, category, username, stock, context+"/"+fileName);
 			
 			
 		} catch(Exception e){

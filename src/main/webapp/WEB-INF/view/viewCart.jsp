@@ -42,7 +42,7 @@
 	</tr>
 </c:forEach>
 </table>
-<div class="total"><p id="total">Total   ${requestScope.total}</p></div>	
+<div class="total"><p id="total">Total   ${sessionScope.total}</p></div>	
  </c:when>
 	
 	<c:otherwise>

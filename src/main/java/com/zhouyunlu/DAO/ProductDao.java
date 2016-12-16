@@ -13,7 +13,7 @@ import com.zhouyunlu.pojo.User;
 
 public class ProductDao extends DAO{
 	
-	public Product create(  String productName, float productPrice,String description, String category, String username, String imageName) throws shoppingSiteException{
+	public Product create(  String productName, float productPrice,String description, String category, String username, int stock, String imageName) throws shoppingSiteException{
 		try{
 			begin();
 			Product product=new Product();
@@ -25,6 +25,7 @@ public class ProductDao extends DAO{
 			product.setProductPrice(productPrice);
 			product.setUsername(username);
 			product.setImageName(imageName);
+			product.setStock(stock);
 			
 			System.out.println(product.getImageName());
 			getSession().save(product);
@@ -61,6 +62,21 @@ public class ProductDao extends DAO{
 		}catch(HibernateException e){
 			rollback();
 			throw new shoppingSiteException("could not update product description"+ e.getMessage());
+		}
+	}
+	
+	public void modifyStock(int stock, Product product) throws shoppingSiteException{
+		try{
+			
+			begin();
+			Query q=getSession().createQuery("update Product set stock= :stock where productID= :productID");
+			q.setInteger("stock", stock);
+			q.setLong("productID", product.getProductID());
+			q.executeUpdate();
+			commit();
+		}catch(HibernateException e){
+			rollback();
+			throw new shoppingSiteException("could not update product stock"+ e.getMessage());
 		}
 	}
 	
