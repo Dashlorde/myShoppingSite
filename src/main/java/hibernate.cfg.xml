@@ -17,6 +17,7 @@
 		<mapping class="com.zhouyunlu.pojo.Product" />
 		<mapping class="com.zhouyunlu.pojo.Address"/>
 		<mapping class="com.zhouyunlu.pojo.Order"/>
+		<mapping class="com.zhouyunlu.pojo.Item"/>
 
 	</session-factory>
 </hibernate-configuration>

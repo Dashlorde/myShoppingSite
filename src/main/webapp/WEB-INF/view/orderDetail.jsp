@@ -11,19 +11,13 @@
 	href="<%=request.getContextPath()%>/css/contents.css" />
 <link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/menu.css" />
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
 </head>
 <body>
 
-	<c:choose>
-		<c:when test="${not empty user.name }">
-			<jsp:include page="menu2.jsp" />
-		</c:when>
-		<c:otherwise>
-			<jsp:include page="menu1.jsp" />
-		</c:otherwise>
-	</c:choose>
+
+	<jsp:include page="menu2.jsp" />
+
 
 	<table>
 		<tr>
@@ -31,9 +25,6 @@
 			<th>Name</th>
 			<th>Description</th>
 			<th>Price</th>
-			<th>Stock</th>
-			<th></th>
-			<th></th>
 		</tr>
 		<c:forEach var="product" items="${requestScope.productList}">
 			<tr>
@@ -41,11 +32,6 @@
 				<td>${product.productName}</td>
 				<td>${product.description}</td>
 				<td>$${product.productPrice}</td>
-				<td>${product.stock}</td>
-				<td><a
-					href="modify.htm?id=${product.productID }&action=goModifyPage">modify</a></td>
-				<td><a
-					href="deleteProduct.htm?id=${product.productID}&action=deleteProduct">delete</a></td>
 			</tr>
 		</c:forEach>
 	</table>

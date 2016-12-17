@@ -85,6 +85,8 @@ public class PlaceOrderController {
 			User seller=userDao.get(username);
 			sellerId=seller.getId();
 			ArrayList<Product> list=(ArrayList<Product>) map.get(username);
+			
+			//add order id into a new list and insert into table
 			List<Long> idList=new ArrayList();
 			Iterator<Product> itId=list.iterator();
 			while(itId.hasNext()){
