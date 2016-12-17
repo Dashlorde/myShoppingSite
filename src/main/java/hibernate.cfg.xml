@@ -15,7 +15,8 @@
 	    <mapping class="com.zhouyunlu.pojo.User" />
 		<mapping class="com.zhouyunlu.pojo.Email" />
 		<mapping class="com.zhouyunlu.pojo.Product" />
-		
+		<mapping class="com.zhouyunlu.pojo.Address"/>
+		<mapping class="com.zhouyunlu.pojo.Order"/>
 
 	</session-factory>
 </hibernate-configuration>

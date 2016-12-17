@@ -7,6 +7,18 @@
 <title>check out</title>
 </head>
 <body>
- <h1>Do Check Out Here</h1>
+ <div>
+ 	<ul>
+ 		<li>Name: ${sessionScope.user.firstName} ${sessionScope.user.lastName}</li>
+ 		<li>Email: ${requestScope.email.emailId}</li>
+ 		<li>Phone: ${requestScope.address.phone}</li>
+ 		<li>Address: ${requestScope.address.address}</li>
+ 		<li><a href="editAddress.htm">edit address</a></li>
+ 	</ul>
+ </div>
+ 
+ <div>
+ 	<a href="placeOrder.htm">Place Order</a>
+ </div>
 </body>
 </html>
