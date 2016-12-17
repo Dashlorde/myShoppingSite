@@ -3,8 +3,10 @@ package com.zhouyunlu.DAO;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 
 import com.zhouyunlu.Exception.shoppingSiteException;
 import com.zhouyunlu.pojo.Order;
@@ -41,7 +43,7 @@ public class OrderDao extends DAO{
 		List<Order> orderList=null;
 		try{
 			begin();
-			Query q=getSession().createQuery("from Order where sellerId= :sellerId");
+			Query q=getSession().createQuery("from Order where sellerId= :sellerId order by date DESC");
 			q.setLong("sellerId", user.getId());
 			orderList=q.list();
 			commit();
@@ -56,14 +58,18 @@ public class OrderDao extends DAO{
 		List<Order> orderList=null;
 		try{
 			begin();
-			Query q=getSession().createQuery("from Order where sellerId= :sellerId and date>DATE_SUB(curdate(), INTERVAL 3 MONTH");
-			q.setLong("sellerId", user.getId());
+			
+			SQLQuery q= getSession().createSQLQuery("select * from orderTable where seller_id= :sellerId and date>date_sub(now(), interval 3 MONTH) order by date DESC"); 
+			q.setParameter("sellerId", user.getId());
+			//q.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+			q.addEntity(Order.class);
 			orderList=q.list();
+			
 			commit();
 			return orderList;
 		} catch(HibernateException e){
 			rollback();
-			throw new shoppingSiteException("could not list all the order in 3 months"+ e.getMessage());
+			throw new shoppingSiteException("could not list all the order in 3 months "+ e.getMessage());
 		}
 	}
 	
@@ -71,9 +77,12 @@ public class OrderDao extends DAO{
 		List<Order> orderList=null;
 		try{
 			begin();
-			Query q=getSession().createQuery("from Order where sellerId= :sellerId and date>DATE_SUB(curdate(), INTERVAL 1 YEAR");
-			q.setLong("sellerId", user.getId());
+			SQLQuery q= getSession().createSQLQuery("select * from orderTable where seller_id= :sellerId and date>date_sub(now(), interval 1 YEAR) order by date DESC"); 
+			q.setParameter("sellerId", user.getId());
+			//q.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+			q.addEntity(Order.class);
 			orderList=q.list();
+			
 			commit();
 			return orderList;
 		} catch(HibernateException e){
@@ -86,7 +95,7 @@ public class OrderDao extends DAO{
 		List<Order> orderList=null;
 		try{
 			begin();
-			Query q=getSession().createQuery("from Order where buyerId= :buyerId");
+			Query q=getSession().createQuery("from Order where buyerId= :buyerId order by date DESC");
 			q.setLong("buyerId", user.getId());
 			orderList=q.list();
 			commit();
@@ -101,9 +110,12 @@ public class OrderDao extends DAO{
 		List<Order> orderList=null;
 		try{
 			begin();
-			Query q=getSession().createQuery("from Order where buyerId= :buyerId and date>DATE_SUB(curdate(), INTERVAL 3 MONTH");
-			q.setLong("buyerId", user.getId());
+			SQLQuery q= getSession().createSQLQuery("select * from orderTable where buyer_id= :buyerId and date>date_sub(now(), interval 3 MONTH) order by date DESC"); 
+			q.setParameter("buyerId", user.getId());
+			//q.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+			q.addEntity(Order.class);
 			orderList=q.list();
+			
 			commit();
 			return orderList;
 		} catch(HibernateException e){
@@ -116,8 +128,10 @@ public class OrderDao extends DAO{
 		List<Order> orderList=null;
 		try{
 			begin();
-			Query q=getSession().createQuery("from Order where buyerId= :buyerId and date>DATE_SUB(curdate(), INTERVAL 1 YEAR");
-			q.setLong("buyerId", user.getId());
+			SQLQuery q= getSession().createSQLQuery("select * from orderTable where buyer_id= :buyerId and date>date_sub(now(), interval 1 YEAR) order by date DESC"); 
+			q.setParameter("buyerId", user.getId());
+			//q.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+			q.addEntity(Order.class);
 			orderList=q.list();
 			commit();
 			return orderList;

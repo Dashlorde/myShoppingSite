@@ -11,17 +11,18 @@
 <link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/menu.css" />
 <link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+	href="https://fonts.googleapis.com/icon?family=Material+Icons" />	
 </head>
 <body>
 	<jsp:include page="menu2.jsp" />
 	<div class="sort">
-		<form action="sellerSortOrder.htm" method="get">
+		<form action="buyerSortOrder.htm" method="get">
 		Sorted Order BY:
 			<select name="sort">
 				<option value="all">view all</option>
 				<option value="threeMonths">3 months</option>
 				<option value="oneYear">1 year</option>
+				
 			</select> <input type="submit" value="sort">
 		</form>
 	</div>

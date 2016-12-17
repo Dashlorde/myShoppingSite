@@ -1,11 +1,18 @@
 @CHARSET "UTF-8";
 
 
+.sort{
+	position: absolute;
+	top:80px;
+	font-family:Lucida Grande;
+	font-size: 13px;
+}
+
 table{
 	border-collapse: collapse;
     width: 100%;
    	position: absolute;
-   	top:55px;
+   	top:120px;
    	z-index: -1;
    
 }
@@ -25,6 +32,7 @@ td.pic{
 
 th{
 	background-color: #a3ced1;
+	
 }
 
 tr:hover{

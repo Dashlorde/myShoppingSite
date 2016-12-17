@@ -46,6 +46,30 @@ public class ManageOrderController {
 		return "viewOrder";
 	}
 	
+	@RequestMapping(value="/sellerSortOrder.htm", method=RequestMethod.GET)
+	protected String sellerSortOrder(HttpServletRequest request, Model model) throws shoppingSiteException{
+		String sort=request.getParameter("sort");
+		List<Order> orderList=new ArrayList();
+		
+		HttpSession session=request.getSession();
+		User user=(User) session.getAttribute("user");
+		
+		if(sort.equals("threeMonths")){
+			orderList=orderDao.SellerViewAllOrderInThreeMonths(user);
+		}
+		
+		else if(sort.equals("oneYear")){
+			orderList=orderDao.SellerViewAllOrderInOneYear(user);
+		}
+		
+		else if(sort.equals("all")){
+			orderList=orderDao.SellerViewAllOrder(user);
+		}
+		
+		model.addAttribute("orderList", orderList);
+		return "viewOrder";
+	}
+	
 	@RequestMapping(value="/orderHistory.htm", method=RequestMethod.GET)
 	protected String buyerViewOrder(HttpServletRequest request, Model model){
 		HttpSession session=request.getSession();
@@ -60,8 +84,35 @@ public class ManageOrderController {
 			e.printStackTrace();
 		}
 		
-		return "viewOrder";
+		return "orderHistory";
 	}
+	
+	
+	@RequestMapping(value="/buyerSortOrder.htm", method=RequestMethod.GET)
+	protected String buyerSortOrder(HttpServletRequest request, Model model) throws shoppingSiteException{
+		String sort=request.getParameter("sort");
+		List<Order> orderList=new ArrayList();
+		
+		HttpSession session=request.getSession();
+		User user=(User) session.getAttribute("user");
+		
+		if(sort.equals("threeMonths")){
+			orderList=orderDao.BuyerViewAllOrderInThreeMonths(user);
+		}
+		
+		else if(sort.equals("oneYear")){
+			orderList=orderDao.BuyerViewAllOrderInOneYear(user);
+		}
+		
+		else if(sort.equals("all")){
+			orderList=orderDao.BuyerViewAllOrder(user);
+		}
+		
+		model.addAttribute("orderList", orderList);
+		return "orderHistory";
+	}
+	
+	
 	
 	@RequestMapping(value="/orderDetail.htm", method=RequestMethod.GET)
 	protected String viewOrderDetail(HttpServletRequest request, Model model) throws shoppingSiteException{
