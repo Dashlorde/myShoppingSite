@@ -9,6 +9,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>userLogin</title>
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/userForm.css" />
+<link type="text/css" rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.css" />
+<script src="<%=request.getContextPath()%>/css/bootstrap/js/bootstrap.min.js" >
+</script>
 </head>
 <body>
 <h2>User Log In</h2>

@@ -9,6 +9,12 @@
  <link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/showProductInfo.css" />
  <link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/menu.css" />
  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+ <link type="text/css" rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.css" />
+<script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="<%=request.getContextPath()%>/css/bootstrap/js/bootstrap.min.js" >
+</script>
+
 </head>
 <body>
 
@@ -21,7 +27,7 @@
 		</c:otherwise>
 	</c:choose>
 
-<div class="panel">
+<div class="info">
 	
 	<ul class="info">
 		<li ><img src="${requestScope.product.imageName}" width="40%"/></li>

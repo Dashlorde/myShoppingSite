@@ -3,7 +3,7 @@ body{
 	background-color: #a3ced1;
 }
 
-.panel{
+div.info{
 	position:absolute;
 	top:55px;
 	width: 100%;
@@ -11,7 +11,7 @@ body{
 	
 }
 
-.info{
+ul.info{
 	text-decoration:none;
 	width: 100%
 }
