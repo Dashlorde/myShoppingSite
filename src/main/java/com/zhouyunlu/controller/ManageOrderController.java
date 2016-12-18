@@ -121,7 +121,8 @@ public class ManageOrderController {
 		List productIdList=orderDao.orderDetail(id);
 		List<Product> productList=new ArrayList();
 		Iterator it=productIdList.iterator();
-		
+		Order order=orderDao.getOrderById(id);
+		long buyerId=order.getBuyerId();
 		while(it.hasNext()){
 			Product product=new Product();
 			long productId=(long) it.next();
@@ -129,6 +130,7 @@ public class ManageOrderController {
 			productList.add(product);
 		}
 		model.addAttribute("productList", productList);
+		model.addAttribute("buyerId", buyerId);
 		
 		return "orderDetail";
 	}

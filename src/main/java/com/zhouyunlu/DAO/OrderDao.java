@@ -156,4 +156,18 @@ public class OrderDao extends DAO{
 		}
 			
 	}
+	
+	public Order getOrderById(long id) throws shoppingSiteException{
+		try{
+			begin();
+			Query q=getSession().createQuery("from Order where orderId= :orderId");
+			q.setLong("orderId", id);
+			Order order=(Order) q.uniqueResult();
+			commit();
+			return order;
+		} catch(HibernateException e){
+			rollback();
+			throw new shoppingSiteException("could not get order by order id "+ e.getMessage());
+		}
+	}
 }

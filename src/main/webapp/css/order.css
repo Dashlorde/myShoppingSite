@@ -2,8 +2,8 @@
 
 
 .sort{
-	position: relative;
-	
+	position: absolute;
+	top:60px;
 	font-family:Lucida Grande;
 	font-size: 13px;
 }
@@ -11,8 +11,8 @@
 table{
 	border-collapse: collapse;
     width: 100%;
-   	position: relative;
-   	
+   	position: absolute;
+   	top:100px;
    	z-index: -1;
    
 }

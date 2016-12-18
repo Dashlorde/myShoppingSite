@@ -1,13 +1,16 @@
 package com.zhouyunlu.pojo;
 
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 
 import javax.persistence.Id;
-
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -41,6 +44,8 @@ public class Product {
 	@Column(name="stock")
 	int stock;
 	
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="product",cascade=CascadeType.ALL)
+	private Set<Comment> comment;
 	
 	public Product(){
 		
@@ -115,5 +120,16 @@ public class Product {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
+
+	public Set<Comment> getComment() {
+		return comment;
+	}
+
+	public void setComment(Set<Comment> comment) {
+		this.comment = comment;
+	}
+
+
+	
   
 }

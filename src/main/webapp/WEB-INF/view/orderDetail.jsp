@@ -26,12 +26,13 @@
 	<jsp:include page="menu2.jsp" />
 
 
-	<table>
+	<table class="productTable">
 		<tr>
 			<th>Picture</th>
 			<th>Name</th>
 			<th>Description</th>
 			<th>Price</th>
+			<th></th>
 		</tr>
 		<c:forEach var="product" items="${requestScope.productList}">
 			<tr>
@@ -39,6 +40,11 @@
 				<td>${product.productName}</td>
 				<td>${product.description}</td>
 				<td>$${product.productPrice}</td>
+				<td><c:choose>
+					<c:when test="${sessionScope.user.id==requestScope.buyerId}">
+					<a href="buyerComment.htm?id=${product.productID}">comment</a>
+					</c:when>
+				</c:choose>
 			</tr>
 		</c:forEach>
 	</table>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.zhouyunlu.DAO.CommentDao;
 import com.zhouyunlu.DAO.ProductDao;
 import com.zhouyunlu.DAO.UserDAO;
 import com.zhouyunlu.pojo.Product;
@@ -20,6 +21,9 @@ import com.zhouyunlu.pojo.User;
 public class showProductController {
 	@Autowired
 	ProductDao productDao=new ProductDao();
+	
+	@Autowired
+	CommentDao commentDao=new CommentDao();
 	
 	UserDAO userDao=new UserDAO();
 	
@@ -93,13 +97,15 @@ public class showProductController {
 	protected ModelAndView showProductInfo(HttpServletRequest request) throws Exception{
 		ModelAndView mv=new ModelAndView();
 		String action=request.getParameter("action").toString();
-		
+		List commentList=null;
 		if(action.equals("showProductInfo")){
 			String i=request.getParameter("id").toString();
 			long id=Long.parseLong(i);
 			
 			Product product=productDao.getProductByID(id);
-			mv.addObject(product);
+			commentList=commentDao.getCommentByProduct(product);
+			mv.addObject("product", product);
+			mv.addObject("commentList", commentList);
 			mv.setViewName("showProductInfo");
 		}
 		

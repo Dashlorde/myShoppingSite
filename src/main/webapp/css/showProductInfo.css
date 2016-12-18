@@ -3,7 +3,7 @@ body{
 	background-color: #a3ced1;
 }
 
-div.info{
+.info{
 	position:absolute;
 	top:55px;
 	width: 100%;
@@ -53,4 +53,8 @@ ul.info{
 	font-size: 12px;
 }
 
+td{
+	text-align:center;
+	font-family:Lucida Grande;
+}
 

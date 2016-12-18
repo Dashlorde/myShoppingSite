@@ -1,21 +1,17 @@
 package com.zhouyunlu.pojo;
 
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 
 @Entity
@@ -43,14 +39,11 @@ public class User{
 	@OneToOne(fetch=FetchType.LAZY, mappedBy="user", cascade=CascadeType.ALL)
     private Email email;
 	
-	/*@OneToOne(fetch=FetchType.LAZY, mappedBy="user", cascade=CascadeType.ALL)
-	private Address address;
-	*/
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="id")
+	@OneToOne(fetch=FetchType.LAZY, mappedBy="user", cascade=CascadeType.ALL)
 	private Address address;
    
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="user", cascade=CascadeType.ALL)
+	private Set<Comment> commentSet;
 
 	public User(String name, String password) {
         this.name = name;
@@ -109,14 +102,22 @@ public class User{
 		this.lastName = lastName;
 	}
 
-	/*public Address getAdddress() {
-		return adddress;
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setAdddress(Address adddress) {
-		this.adddress = adddress;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
-	*/
+
+	public Set<Comment> getCommentSet() {
+		return commentSet;
+	}
+
+	public void setCommentSet(Set<Comment> commentSet) {
+		this.commentSet = commentSet;
+	}
+
 	
 	
 
