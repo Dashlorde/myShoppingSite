@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -26,7 +26,7 @@
 <div class="container">
 	<form action="editAddress.htm" method="post" class="changeAddress">
 	<div class="form-group">
-		phone: <input type="text" name="phone" class="form-control"><br /> 
+		phone: <input type="number" name="phone" class="form-control"><br /> 
 		</div>
 		<div class="form-group">
 		address: <input type="text" name="address" class="form-control"><br />

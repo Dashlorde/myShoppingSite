@@ -37,5 +37,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/zhouyunlu/Downloads/hibernate-validator-5.3.4.Final.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

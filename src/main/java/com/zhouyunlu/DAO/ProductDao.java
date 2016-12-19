@@ -197,4 +197,17 @@ public class ProductDao extends DAO{
 			throw new shoppingSiteException("could not get product by productName: "+productName+" "+e.getMessage());
 		}
 	}
+	
+	public void changeStock(int quantity) throws shoppingSiteException{
+		try{
+			begin();
+			Query q=getSession().createQuery("update Product set quantity= :quantity");
+			q.setInteger("quantity", quantity);
+			q.executeUpdate();
+			commit();
+		}catch(HibernateException e){
+			rollback();
+			throw new shoppingSiteException("could not update product stock "+ e.getMessage());
+		}
+	}
 }

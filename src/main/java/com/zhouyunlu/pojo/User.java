@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 
 
@@ -24,6 +26,8 @@ public class User{
 	@Column(name="id")
 	private long id;
 	
+	@NotNull
+    @Min(1)
 	@Column(name="name")
     private String name;
 	

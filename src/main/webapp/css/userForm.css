@@ -12,7 +12,7 @@ h2{
 
 
 #form{
-	width: 50%;
+	width: 80%;
 	margin: auto;
 	padding: 20px 30px;
 	border: 2px solid #00ace6;
@@ -54,7 +54,7 @@ a.actionChange{
 }
 
 input{
-	width: 100%;
+	width: 80%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
