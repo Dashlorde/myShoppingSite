@@ -11,8 +11,6 @@
             
       <bean id="userDao" class="com.zhouyunlu.DAO.UserDAO"></bean>
       <bean id="productDao" class="com.zhouyunlu.DAO.ProductDao"></bean>
-      <bean id="userValidator" class="com.zhouyunlu.controller.userValidator"></bean>
-      <bean id="productValidator" class="com.zhouyunlu.controller.productValidator"></bean> 
       <bean id="addressDao" class="com.zhouyunlu.DAO.AddressDao"></bean>
       <bean id="orderDao" class="com.zhouyunlu.DAO.OrderDao"></bean>
       <bean id="commmentDao" class="com.zhouyunlu.DAO.CommentDao"></bean>

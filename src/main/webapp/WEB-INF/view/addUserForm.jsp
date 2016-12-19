@@ -101,7 +101,7 @@
 <tr>
     <td>Email:</td>
     <td><form:input type="email" placeholder="me@example.com" path="email.emailId" size="30" /></td> 
-    <td><font color="red"><form:errors path="email.emailId" htmlEscape="true"/></font></td>
+    <td><font color="red"><form:errors path="email.emailId" htmlEscape="true"/>${emailError}</font></td>
 </tr>
 </table>
 

@@ -12,6 +12,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -23,24 +26,35 @@ public class Product {
 	@Column(name="productID")
 	public long productID;
 	
+	@NotNull(message="price should not be none")
+	@Min(value=1, message="price should at least be 1")
 	@Column(name="productPrice")
 	float productPrice;
 	
+	@NotNull(message="product name should not be none")
+	@Size(min=1, message="please insert at least 1 character")
 	@Column(name="productName")
 	String productName;
 	
+	@NotNull(message="description should not be none")
+	@Size(min=1, message="please insert at least 1 character")
 	@Column(name="description")
 	String description;
 	
+	@NotNull(message="category should not be none")
+	@Size(min=1, message="please insert at least 1 character")
 	@Column(name="category")
 	String category;
 	
 	@Column(name="imageName")
 	String imageName;
 	
+	
 	@Column(name="username")
 	 String username;
 	
+	@NotNull(message="stock should not be none")
+	@Min(value=1, message="stock should at least be 1")
 	@Column(name="stock")
 	int stock;
 	

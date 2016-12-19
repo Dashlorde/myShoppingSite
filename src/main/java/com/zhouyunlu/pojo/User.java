@@ -13,6 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 
@@ -26,17 +27,23 @@ public class User{
 	@Column(name="id")
 	private long id;
 	
-	@NotNull
-    @Min(1)
+	@NotNull(message="username should not be none")
+	@Size(min=1, message="please insert at least 1 character")
 	@Column(name="name")
     private String name;
 	
+	@NotNull(message="password should not be none")
+	@Size(min=1, message="please insert at least 1 character")
 	@Column(name="password")
     private String password;
 	
+	@NotNull(message="first name should not be none")
+	@Size(min=1, message="please insert at least 1 character")
 	@Column(name = "firstName")
 	private String firstName;
 	
+	@NotNull(message="last name should not be none")
+	@Size(min=1, message="please insert at least 1 character")
 	@Column(name ="lastName")
 	private String lastName;
 	

@@ -7,6 +7,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -32,17 +33,9 @@ import com.zhouyunlu.pojo.User;
 @MultipartConfig
 public class addProductController {
 	
-	@Autowired
-	@Qualifier("productValidator")
-	productValidator productValidator;
 	
 	@Autowired
 	ProductDao productDao=new ProductDao();
-	
-	@InitBinder
-	private void initBinder(WebDataBinder binder){
-		binder.setValidator(productValidator);
-	}
 	
 	
 	
@@ -54,12 +47,12 @@ public class addProductController {
 	
 	
 	@RequestMapping(value="/addProduct.htm", method=RequestMethod.POST)
-	protected String doSubmitProduct(@ModelAttribute("product")Product product, BindingResult result, HttpServletRequest request ) throws Exception{
+	protected String doSubmitProduct(@ModelAttribute("product")@Valid Product product, BindingResult result, HttpServletRequest request ) throws Exception{
 		HttpSession session=request.getSession();
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request; 
 		MultipartFile image=multipartRequest.getFile("image");
 		
-		productValidator.validate(product, result);
+		
 		if(result.hasErrors()){
 			return "addProductForm";
 		}
