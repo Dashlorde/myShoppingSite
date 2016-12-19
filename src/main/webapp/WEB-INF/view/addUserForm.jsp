@@ -6,9 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add User Form</title>
- <link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/userForm.css" />
+ 
  <link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.css" />
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/userForm.css" />
 <script src="<%=request.getContextPath()%>/css/bootstrap/js/bootstrap.min.js" >
 </script>
 </head>

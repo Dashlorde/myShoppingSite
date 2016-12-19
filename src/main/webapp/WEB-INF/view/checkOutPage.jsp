@@ -5,10 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>check out</title>
-<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/menu.css" />
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
 <link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/menu.css" />
 <script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="<%=request.getContextPath()%>/css/bootstrap/js/bootstrap.min.js" >
 </script>
@@ -16,6 +17,7 @@
 .address{
 	position: absolute;
 	top: 55px;
+	width:80%;
 }
 </style>
 </head>

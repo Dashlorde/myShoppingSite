@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.zhouyunlu.DAO.UserDAO;
 import com.zhouyunlu.Exception.shoppingSiteException;
+import com.zhouyunlu.pojo.CartProduct;
 import com.zhouyunlu.pojo.Product;
 import com.zhouyunlu.pojo.User;
 
@@ -42,16 +44,16 @@ public class loginController {
 			
 			if(session.getAttribute("total")!=null &&(session.getAttribute("cart")!=null)){
 				float total=0;
-				List<Product> cart=(List<Product>) session.getAttribute("cart");
-				Iterator<Product> it=cart.iterator();
+				Set<CartProduct> cart=(Set<CartProduct>) session.getAttribute("cart");
+				Iterator<CartProduct> it=cart.iterator();
 				while(it.hasNext()){
-					Product pro=it.next();
-					if(pro.getUsername().equals(user.getName())){
+					CartProduct pro=it.next();
+					if(pro.getProduct().getUsername().equals(user.getName())){
 						it.remove();
 					}
 				}
-				for(Product p:cart){
-					total+=p.getProductPrice();
+				for(CartProduct p:cart){
+					total+=p.getProduct().getProductPrice()*p.getQuantity();
 				}
 				session.setAttribute("total",total);
 				session.setAttribute("cart", cart);

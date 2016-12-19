@@ -6,15 +6,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
- 
- <link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/menu.css" />
  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
  <link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.css" />
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/menu.css" />
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/showProductInfo.css" />
 <script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="<%=request.getContextPath()%>/css/bootstrap/js/bootstrap.min.js" >
 </script>
-<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/showProductInfo.css" />
+<style>
+	.productInfo{
+	position:absolute;
+	top:55px;
+}
+
+#username{
+	font-size: 12px;
+}
+
+
+</style>
 
 </head>
 <body>
@@ -28,12 +39,14 @@
 		</c:otherwise>
 	</c:choose>
 </div>
+
+<div class="productInfo">
 <div class="container">
 	
 	<ul class="info">
 		<li ><img src="${requestScope.product.imageName}" width="40%"/></li>
-		<li class="brief">${requestScope.product.productName}</li>
-		<li class="brief" > sell by ${requestScope.product.username}</li>
+		<li>${requestScope.product.productName}</li>
+		<li id="username"> sell by ${requestScope.product.username}</li>
 		<li>$${requestScope.product.productPrice}</li>		
 		<li>${requestScope.product.description}</li>
 		<li>
@@ -43,8 +56,8 @@
 		</form>
 		</li>
 	</ul> 
-</div>
 
+</div>
 
 <div class="container">
 <h2> User Comments</h2>
@@ -60,6 +73,6 @@
 </table>
 
 </div>
-
+</div>
 </body>
 </html>

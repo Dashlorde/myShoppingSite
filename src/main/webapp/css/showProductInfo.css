@@ -3,12 +3,10 @@ body{
 	background-color: #a3ced1;
 }
 
+
 .info{
-	position:absolute;
-	top:55px;
 	width: 100%;
 	padding:auto;
-	
 }
 
 ul.info{
