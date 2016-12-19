@@ -33,10 +33,15 @@
 	<ul class="info">
 		<li ><img src="${requestScope.product.imageName}" width="40%"/></li>
 		<li class="brief">${requestScope.product.productName}</li>
-		<li class="brief" id="username"> sell by ${requestScope.product.username}</li>
+		<li class="brief" > sell by ${requestScope.product.username}</li>
 		<li>$${requestScope.product.productPrice}</li>		
 		<li>${requestScope.product.description}</li>
-		<li><a href="addtocart.htm?id=${product.productID}&action=addtocart" >Add to Cart</a>
+		<li>
+		<form action="addtocart.htm?id=${product.productID}" method="POST">
+		add quantity<input type="text" name="quantity">
+		<input type="submit" value="Add to Cart">
+		</form>
+		</li>
 	</ul> 
 </div>
 

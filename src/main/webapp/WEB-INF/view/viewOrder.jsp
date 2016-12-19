@@ -24,7 +24,7 @@
 	<div class="sort">
 		<form action="sellerSortOrder.htm" method="get">
 		Sorted Order BY:
-			<select name="sort">
+			<select name="sort" >
 				<option value="all">view all</option>
 				<option value="threeMonths">3 months</option>
 				<option value="oneYear">1 year</option>

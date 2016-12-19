@@ -4,6 +4,7 @@ package com.zhouyunlu.controller;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.zhouyunlu.pojo.Product;
+import com.zhouyunlu.pojo.CartProduct;
 import com.zhouyunlu.DAO.ProductDao;
 
 @Controller
@@ -37,20 +39,20 @@ public class deleteCartController {
 			long productId=Long.parseLong(productID);
 			
 			
-			ArrayList<Product> cart= (ArrayList<Product>) session.getAttribute("cart");
+			Set<CartProduct> cart= (Set<CartProduct>) session.getAttribute("cart");
 			Product product=productDao.getProductByID(productId);
 	
-			for(Product p:cart){
+			for(CartProduct cp:cart){
 				
-				System.out.println(p.getProductName());
+				System.out.println(cp.getProduct().getProductName());
 				
 			}
 			
 			System.out.println("------------------------deleting--------------------");
 			
-			Iterator<Product> it=cart.iterator();
+			Iterator<CartProduct> it=cart.iterator();
 			while(it.hasNext()){
-				if(it.next().getProductID()==product.getProductID()){
+				if(it.next().getProduct().getProductID()==product.getProductID()){
 					it.remove();
 					System.out.println("delete product in cart: "+productID+" "+product.getProductName());
 				}
@@ -62,21 +64,14 @@ public class deleteCartController {
 			if(cart!=null){
 				
 				float total=0;
-				for(Product p:cart){
-					total+=p.getProductPrice();
-					System.out.println(p.getProductName());
-					
+				for(CartProduct p:cart){
+					total+=p.getProduct().getProductPrice();
+
 				}
 				session.setAttribute("total", total);
 				mv.addObject("total", total);
 			}
-			
-			
-			
-			//mv.addObject("cart",cart);
-			
-			
-			
+
 			
 		}
 		mv.setViewName("viewCart");

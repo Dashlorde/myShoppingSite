@@ -22,6 +22,7 @@ import com.zhouyunlu.DAO.OrderDao;
 import com.zhouyunlu.DAO.UserDAO;
 import com.zhouyunlu.Exception.shoppingSiteException;
 import com.zhouyunlu.pojo.Address;
+import com.zhouyunlu.pojo.CartProduct;
 import com.zhouyunlu.pojo.Email;
 import com.zhouyunlu.pojo.Product;
 import com.zhouyunlu.pojo.User;
@@ -39,7 +40,7 @@ public class PlaceOrderController {
 	@RequestMapping(method=RequestMethod.GET)
 	public String placeOrder(HttpServletRequest request) throws ParseException, shoppingSiteException{
 		HttpSession session=request.getSession();
-		List<Product> cart=(List<Product>) session.getAttribute("cart");
+		Set<CartProduct> cartSet=(Set<CartProduct>) session.getAttribute("cart");
 		User user=(User) session.getAttribute("user");
 		String firstName=user.getFirstName();
 		String lastName=user.getLastName();
@@ -60,19 +61,19 @@ public class PlaceOrderController {
 		Date currentDate=dateFormat.parse(dateFormat.format(date));
 		
 	// Separate cart list by seller id. 
-		Iterator<Product> it=cart.iterator();
-		TreeMap<String, List<Product>> map=new TreeMap<String, List<Product>>();
+		Iterator<CartProduct> it=cartSet.iterator();
+		TreeMap<String, List<CartProduct>> map=new TreeMap<String, List<CartProduct>>();
 		while(it.hasNext()){
-			Product product=it.next();
-			String username=product.getUsername();
+			CartProduct cProduct=it.next();
+			String username=cProduct.getProduct().getUsername();
 			if(map.containsKey(username)){
-				ArrayList<Product> templist=(ArrayList<Product>) map.get(username);
-				templist.add(product);
+				ArrayList<CartProduct> templist=(ArrayList<CartProduct>) map.get(username);
+				templist.add(cProduct);
 			}
 			
 			else{
-				ArrayList<Product> templist=new ArrayList<Product>();
-				templist.add(product);
+				ArrayList<CartProduct> templist=new ArrayList<CartProduct>();
+				templist.add(cProduct);
 				map.put(username, templist);
 			}
 		}
@@ -84,20 +85,20 @@ public class PlaceOrderController {
 			String username=(String) iterator.next();
 			User seller=userDao.get(username);
 			sellerId=seller.getId();
-			ArrayList<Product> list=(ArrayList<Product>) map.get(username);
+			ArrayList<CartProduct> list=(ArrayList<CartProduct>) map.get(username);
 			
 			//add order id into a new list and insert into table
 			List<Long> idList=new ArrayList();
-			Iterator<Product> itId=list.iterator();
+			Iterator<CartProduct> itId=list.iterator();
 			while(itId.hasNext()){
-				Product product=itId.next();
-				long productId=product.getProductID();
+				CartProduct cProduct=itId.next();
+				long productId=cProduct.getProduct().getProductID();
 				idList.add(productId);
 			}
 					
 					
-			for(Product p: list){
-				price+=p.getProductPrice();
+			for(CartProduct cp: list){
+				price+=cp.getProduct().getProductPrice()*cp.getQuantity();
 			}
 			
 			orderDao.create(buyerId, sellerId, firstName, lastName, buyerAddress, emailAddress, phone, date, idList, price);

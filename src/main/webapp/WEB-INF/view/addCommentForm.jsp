@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>add comment</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
 <link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/menu.css" />
 <link type="text/css" rel="stylesheet"
@@ -21,8 +22,8 @@
 
 <div class="comment">
 <form action="buyerComment.htm" method="post">
- add a comment: <input type="text" name="comment"><br/><br/>
- <input type="submit" value="add">
+ add a comment: <textarea name="comment" class="form-control" id="exampleTextarea" rows="3"></textarea><br/><br/>
+ <input type="submit" value="add" class="btn btn-default">
 
 </form>
 </div>  

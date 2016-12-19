@@ -34,16 +34,23 @@
 <tr>
 	<th>Picture</th>
 	<th>product name</th>
+	<th>quantity</th>
 	<th>price</th>
 	<th></th>
 </tr>
 <%int i=0; %>
-<c:forEach var="product" items="${sessionScope.cart}">
+<c:forEach var="cproduct" items="${sessionScope.cart}">
 	<tr>
-		<td class="pic"><img src="${product.imageName}" width="30%"/></td>
-		<td>${product.productName}</td>
-		<td>${product.productPrice}</td>
-		<td><a href="deleteCart.htm?id=${product.productID}&action=deleteCart">delete</a></td>
+		<td class="pic"><img src="${cproduct.product.imageName}" width="30%"/></td>
+		<td>${cproduct.product.productName}</td>
+		<td>${cproduct.quantity}
+		<form action="changeQuantity.htm?id=${cproduct.product.productID}" method="post">
+			<input type="text" name="quantity">
+			<input type="submit" value="change" class="btn btn-default">
+		</form> 
+		</td>
+		<td>${cproduct.product.productPrice}</td>
+		<td><a href="deleteCart.htm?id=${cproduct.product.productID}&action=deleteCart">delete</a></td>
 		
 	</tr>
 </c:forEach>

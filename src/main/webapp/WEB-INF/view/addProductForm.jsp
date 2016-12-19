@@ -38,7 +38,7 @@
 		
 		<tr>
 			<td>Product Description:</td>
-			<td><form:input path="description" size="30" htmlEscape="true"/><font color="red"><form:errors path="description"/></font> </td>
+			<td><form:textarea path="description"  htmlEscape="true" id="exampleTextarea" rows="3"/><font color="red"><form:errors path="description"/></font> </td>
 		</tr>
 		
 		<tr>

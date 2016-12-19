@@ -5,18 +5,34 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>edit address</title>
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/menu.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
 <link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.min.css" />
 <script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="<%=request.getContextPath()%>/css/bootstrap/js/bootstrap.min.js" >
 </script>
-
+<style>
+.changeAddress{
+	position: absolute;
+	top: 60px;
+}
+</style>
 </head>
 <body>
-	<form action="editAddress.htm" method="post">
-		phone: <input type="text" name="phone"><br /> 
-		address: <input type="text" name="address"><br />
-		 <input type="submit" value="Edit Address">
+<div class="container-fluid"><jsp:include page="menu2.jsp"/></div>
+<div class="container">
+	<form action="editAddress.htm" method="post" class="changeAddress">
+	<div class="form-group">
+		phone: <input type="text" name="phone" class="form-control"><br /> 
+		</div>
+		<div class="form-group">
+		address: <input type="text" name="address" class="form-control"><br />
+		</div>
+		<div class="col-sm-offset-2 col-sm-10">
+		 <input type="submit" value="Edit Address" class="btn btn-default">
+		 </div>
 	</form>
+</div>
 </body>
 </html>

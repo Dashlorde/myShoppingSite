@@ -36,7 +36,7 @@
 		<li class="info" ><font color="#871262">product stock:</font> ${sessionScope.product.stock}
 		<form:input path="stock" name="stock" htmlEscape="true"/><font color="red"><form:errors path="stock"/></font></li>
 		<li class="info" id="textarea"><font color="#871262">product description:</font> ${sessionScope.product.description}</li>
-		<li class="info"><form:input path="description" name="description" size="30" id="textarea" htmlEscape="true"/><font color="red"><form:errors path="description"/></font></li>
+		<li class="info"><form:textarea path="description" name="description" size="30" id="exampleTextarea" rows="3" htmlEscape="true"/><font color="red"><form:errors path="description"/></font></li>
 		<li class="info"><input type="submit" value="Modify Product" id="submit"></li>
 		
 	</ul>
