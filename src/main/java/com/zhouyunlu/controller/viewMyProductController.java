@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.zhouyunlu.DAO.ProductDao;
 import com.zhouyunlu.DAO.UserDAO;
-import com.zhouyunlu.Exception.shoppingSiteException;
 import com.zhouyunlu.pojo.Product;
 import com.zhouyunlu.pojo.User;
 

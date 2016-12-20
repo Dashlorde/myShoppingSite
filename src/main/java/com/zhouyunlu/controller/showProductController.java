@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.zhouyunlu.DAO.CommentDao;
 import com.zhouyunlu.DAO.ProductDao;
 import com.zhouyunlu.DAO.UserDAO;
+import com.zhouyunlu.pojo.Comment;
 import com.zhouyunlu.pojo.Product;
 import com.zhouyunlu.pojo.User;
 
@@ -97,7 +98,7 @@ public class showProductController {
 	protected ModelAndView showProductInfo(HttpServletRequest request) throws Exception{
 		ModelAndView mv=new ModelAndView();
 		String action=request.getParameter("action").toString();
-		List commentList=null;
+		List<Comment> commentList=null;
 		if(action.equals("showProductInfo")){
 			String i=request.getParameter("id").toString();
 			long id=Long.parseLong(i);

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.zhouyunlu.DAO.UserDAO;
 
 @Controller
 @RequestMapping("/logout.htm")
@@ -22,7 +21,6 @@ public class logoutController {
 		ModelAndView mv=new ModelAndView();
 		if(action.equals("logout")){
 			session.invalidate();
-			//mv.setViewName("welcomePage");
 			mv=new ModelAndView("redirect:/showAllProducts.htm");
 		}
 		

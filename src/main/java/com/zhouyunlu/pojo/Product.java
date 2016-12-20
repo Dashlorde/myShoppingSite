@@ -8,13 +8,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Range;
 
 
 @Entity
@@ -24,39 +24,39 @@ public class Product {
 	@Id
 	@GeneratedValue()
 	@Column(name="productID")
-	public long productID;
+	private long productID;
 	
 	@NotNull(message="price should not be none")
-	@Min(value=1, message="price should at least be 1")
+	@Range(min=0, message="price should at least be 0")
 	@Column(name="productPrice")
-	float productPrice;
+	private float productPrice;
 	
 	@NotNull(message="product name should not be none")
 	@Size(min=1, message="please insert at least 1 character")
 	@Column(name="productName")
-	String productName;
+	private String productName;
 	
 	@NotNull(message="description should not be none")
 	@Size(min=1, message="please insert at least 1 character")
 	@Column(name="description")
-	String description;
+	private String description;
 	
 	@NotNull(message="category should not be none")
 	@Size(min=1, message="please insert at least 1 character")
 	@Column(name="category")
-	String category;
+	private String category;
 	
 	@Column(name="imageName")
-	String imageName;
+	private String imageName;
 	
 	
 	@Column(name="username")
-	 String username;
+	private String username;
 	
 	@NotNull(message="stock should not be none")
-	@Min(value=1, message="stock should at least be 1")
+	@Range(min=1, message="stock should at least be 1")
 	@Column(name="stock")
-	int stock;
+	private int stock;
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="product",cascade=CascadeType.ALL)
 	private Set<Comment> comment;
@@ -72,8 +72,6 @@ public class Product {
 	public void setImageName(String imageName) {
 		 this.imageName = imageName;
 	}
-
-	
 	
 	public String getUsername() {
 		return username;
@@ -82,10 +80,6 @@ public class Product {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
-	
-	
-	
 
 	public String getCategory() {
 		return category;

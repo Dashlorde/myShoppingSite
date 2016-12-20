@@ -34,7 +34,7 @@ public class checkOutController {
 		if(action.equals("checkout")){
 			if(session.getAttribute("username")!=null){
 				User u=(User) session.getAttribute("user");
-				//Address address=u.getAdddress();
+				
 				if(addressDao.getByUserId(u.getId())!=null){
 					address=addressDao.getByUserId(u.getId());
 				}

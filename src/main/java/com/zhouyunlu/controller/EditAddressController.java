@@ -1,10 +1,15 @@
 package com.zhouyunlu.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -20,16 +25,20 @@ public class EditAddressController {
 	AddressDao addressDao=new AddressDao();
 
 	@RequestMapping(value="/editAddress.htm", method=RequestMethod.POST)
-	protected String editAddress(HttpServletRequest request) throws shoppingSiteException{
+	protected String editAddress(HttpServletRequest request,HttpServletResponse response, @ModelAttribute("userAddress")@Valid Address addr, BindingResult result, Model model) 
+			throws shoppingSiteException{
 		HttpSession session=request.getSession();
 		
 		User user=(User) session.getAttribute("user");
 		
-		String address=request.getParameter("address").toString();
-		String phone=request.getParameter("phone").toString();
+		String address=addr.getAddress();
+		String phone=addr.getPhone();
+		
+		if(result.hasErrors()){
+			return "editAddress";
+		}
 		
 		if(addressDao.getByUserId(user.getId())!=null){
-			//Address uAddress=user.getAdddress();
 			Address uAddress=addressDao.getByUserId(user.getId());
 			addressDao.editAddress(address, phone, uAddress);
 		}
@@ -43,7 +52,7 @@ public class EditAddressController {
 	}
 	
 	@RequestMapping(value="/editAddress.htm", method=RequestMethod.GET)
-	protected String getEditAddressPage(HttpServletRequest request){
+	protected String getEditAddressPage(HttpServletRequest request,@ModelAttribute("userAddress")Address address, BindingResult result){
 		return "editAddress";
 	}
 }

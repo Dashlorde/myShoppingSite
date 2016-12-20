@@ -51,7 +51,6 @@
          var xmlHttp = null;
          try
          {
-             // Firefox, Opera 8.0+, Safari
              xmlHttp = new XMLHttpRequest();
          } catch (e)
          {

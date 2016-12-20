@@ -1,8 +1,8 @@
 package com.zhouyunlu.controller;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -88,16 +87,12 @@ public class changeProductController {
 	protected String modifyMyProduct(HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
-
-		// long productId=Long.parseLong(request.getParameter("id").toString());
 		Product product = (Product) session.getAttribute("product");
 		String description = request.getParameter("description").toString();
 		String stockString = request.getParameter("stock").toString();
 		int stock = 0;
 
 		try {
-
-			// Product product=productDao.getProductByID(productId);
 			String imagePath = null;
 			String fileName = null;
 			imagePath = request.getServletContext().getRealPath("");
@@ -107,11 +102,7 @@ public class changeProductController {
 			MultipartFile image = multipartRequest.getFile("image");
 
 			if (!description.isEmpty()) {
-				System.out.println("product name is: " + product.getProductName());
-				System.out.println("change description to: " + description);
-
 				productDao.modifyDescription(description, product);
-
 			}
 
 			if (!image.isEmpty()) {
@@ -128,14 +119,14 @@ public class changeProductController {
 				System.out.println(file.getAbsolutePath());
 				productDao.modifyImage(context + "/" + fileName, product);
 			}
-
-			if (!stockString.isEmpty()) {
+			
+			//check stock string has input number
+			if (!stockString.isEmpty() && isInteger(stockString)) {
 				stock = Integer.parseInt(stockString);
 				productDao.modifyStock(stock, product);
 			}
 
 			mv.addObject(product);
-			// mv.setViewName("redirect:/modify");
 
 		} catch (shoppingSiteException e) {
 			System.out.println(e.getMessage());
@@ -143,7 +134,13 @@ public class changeProductController {
 			System.out.println(e.getMessage());
 		}
 
-		// return "redirect:/viewMyProduct.htm?action=viewMyProduct";
 		return "redirect:/modify.htm?id=" + product.getProductID();
 	}
+	
+	// check if input stock string is integer
+	protected boolean isInteger(String str) {    
+	    Pattern pattern = Pattern.compile("^[-\\+]?[\\d]*$");    
+	    return pattern.matcher(str).matches();    
+	  }  
+
 }

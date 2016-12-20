@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.zhouyunlu.DAO.UserDAO;
-import com.zhouyunlu.pojo.Email;
 import com.zhouyunlu.pojo.User;
 
 @Controller

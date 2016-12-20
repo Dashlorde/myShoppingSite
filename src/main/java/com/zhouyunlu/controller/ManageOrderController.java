@@ -33,7 +33,7 @@ public class ManageOrderController {
 	protected String sellerViewOrder(HttpServletRequest request, Model model){
 		HttpSession session=request.getSession();
 		User user=(User) session.getAttribute("user");
-		List<Order> orderList=new ArrayList();
+		List<Order> orderList=new ArrayList<Order>();
 		
 		try {
 			orderList=orderDao.SellerViewAllOrder(user);
@@ -49,7 +49,7 @@ public class ManageOrderController {
 	@RequestMapping(value="/sellerSortOrder.htm", method=RequestMethod.GET)
 	protected String sellerSortOrder(HttpServletRequest request, Model model) throws shoppingSiteException{
 		String sort=request.getParameter("sort");
-		List<Order> orderList=new ArrayList();
+		List<Order> orderList=new ArrayList<Order>();
 		
 		HttpSession session=request.getSession();
 		User user=(User) session.getAttribute("user");
@@ -74,7 +74,7 @@ public class ManageOrderController {
 	protected String buyerViewOrder(HttpServletRequest request, Model model){
 		HttpSession session=request.getSession();
 		User user=(User) session.getAttribute("user");
-		List<Order> orderList=new ArrayList();
+		List<Order> orderList=new ArrayList<Order>();
 		
 		try {
 			orderList=orderDao.BuyerViewAllOrder(user);
@@ -91,7 +91,7 @@ public class ManageOrderController {
 	@RequestMapping(value="/buyerSortOrder.htm", method=RequestMethod.GET)
 	protected String buyerSortOrder(HttpServletRequest request, Model model) throws shoppingSiteException{
 		String sort=request.getParameter("sort");
-		List<Order> orderList=new ArrayList();
+		List<Order> orderList=new ArrayList<Order>();
 		
 		HttpSession session=request.getSession();
 		User user=(User) session.getAttribute("user");
@@ -118,9 +118,9 @@ public class ManageOrderController {
 	protected String viewOrderDetail(HttpServletRequest request, Model model) throws shoppingSiteException{
 		String idString=request.getParameter("id");
 		long id=Long.parseLong(idString);
-		List productIdList=orderDao.orderDetail(id);
-		List<Product> productList=new ArrayList();
-		Iterator it=productIdList.iterator();
+		List<Long> productIdList=orderDao.orderDetail(id);
+		List<Product> productList=new ArrayList<Product>();
+		Iterator<Long> it=productIdList.iterator();
 		Order order=orderDao.getOrderById(id);
 		long buyerId=order.getBuyerId();
 		while(it.hasNext()){

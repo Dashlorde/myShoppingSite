@@ -1,10 +1,8 @@
 package com.zhouyunlu.pojo;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -12,12 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderColumn;
-import javax.persistence.Table;
 import javax.persistence.JoinColumn;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.persistence.Table;
 
 @Entity
 @Table(name="orderTable")
@@ -26,13 +20,13 @@ public class Order {
 	@Id
 	@GeneratedValue()
 	@Column(name="order_id")
-	public long orderId;
+	private long orderId;
 	
 	@Column(name="buyer_id")
-	long buyerId;
+	private long buyerId;
 	
 	@Column(name="seller_id")
-	long sellerId;
+	private long sellerId;
 	
 	@Column(name="first_name")
 	private String firstName;

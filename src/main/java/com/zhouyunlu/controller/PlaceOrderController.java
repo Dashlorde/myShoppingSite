@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -79,8 +80,8 @@ public class PlaceOrderController {
 		}
 	
 	// place each list into one order record	
-		Set set=map.keySet();
-		Iterator iterator=set.iterator();
+		Set<String> set=map.keySet();
+		Iterator<String> iterator=set.iterator();
 		while(iterator.hasNext()){
 			String username=(String) iterator.next();
 			User seller=userDao.get(username);
@@ -88,14 +89,13 @@ public class PlaceOrderController {
 			ArrayList<CartProduct> list=(ArrayList<CartProduct>) map.get(username);
 			
 			//add order id into a new list and insert into table
-			List<Long> idList=new ArrayList();
+			List<Long> idList=new ArrayList<Long>();
 			Iterator<CartProduct> itId=list.iterator();
 			while(itId.hasNext()){
 				CartProduct cProduct=itId.next();
 				long productId=cProduct.getProduct().getProductID();
 				idList.add(productId);
-			}
-					
+			}					
 					
 			for(CartProduct cp: list){
 				price+=cp.getProduct().getProductPrice()*cp.getQuantity();
@@ -104,6 +104,9 @@ public class PlaceOrderController {
 			orderDao.create(buyerId, sellerId, firstName, lastName, buyerAddress, emailAddress, phone, date, idList, price);
 		}
 		
+		//update cart with a empty set
+		Set<CartProduct> newCartSet=new HashSet<CartProduct>();
+		session.setAttribute("cart", newCartSet);
 		return "checkoutSuccess";
 	}
 }

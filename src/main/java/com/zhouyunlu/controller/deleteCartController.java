@@ -1,8 +1,5 @@
 package com.zhouyunlu.controller;
 
-
-
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -16,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.zhouyunlu.pojo.Product;
-import com.zhouyunlu.pojo.CartProduct;
 import com.zhouyunlu.DAO.ProductDao;
+import com.zhouyunlu.pojo.CartProduct;
+import com.zhouyunlu.pojo.Product;
 
 @Controller
 @RequestMapping("/deleteCart.htm")

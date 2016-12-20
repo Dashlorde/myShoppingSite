@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,17 +25,17 @@
 <body>
 <div class="container-fluid"><jsp:include page="menu2.jsp"/></div>
 <div class="container">
-	<form action="editAddress.htm" method="post" class="changeAddress">
+	<form:form action="editAddress.htm" commandName="userAddress" method="post" class="changeAddress">
 	<div class="form-group">
-		phone: <input type="number" name="phone" class="form-control"><br /> 
+		phone: <form:input path="phone" name="phone" class="form-control"/><font color="red"><form:errors path="phone"/></font><br/> 
 		</div>
 		<div class="form-group">
-		address: <input type="text" name="address" class="form-control"><br />
+		address: <form:input path="address" name="address" class="form-control"/><font color="red"><form:errors path="address"/></font><br/>
 		</div>
 		<div class="col-sm-offset-2 col-sm-10">
 		 <input type="submit" value="Edit Address" class="btn btn-default">
 		 </div>
-	</form>
+	</form:form>
 </div>
 </body>
 </html>
