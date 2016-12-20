@@ -45,6 +45,7 @@
 		<form action="changeQuantity.htm?id=${cproduct.product.productID}" method="post">
 			<input type="number" name="quantity" min="1">
 			<input type="submit" value="change" class="btn btn-default">
+			<div style="color:red">${requestScope.quantityError} </div>
 		</form> 
 		</td>
 		<td>${cproduct.product.productPrice}</td>

@@ -1,5 +1,6 @@
 package com.zhouyunlu.controller;
 
+import java.io.PrintWriter;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,11 +22,11 @@ import com.zhouyunlu.pojo.Product;
 public class ManageCartController {
 
 	@RequestMapping(value = "/addtocart.htm", method = RequestMethod.POST)
-	public String addCart(HttpServletRequest request, Model model) throws Exception {
+	public String addCart(HttpServletRequest request,HttpServletResponse response, Model model) throws Exception {
 		HttpSession session = request.getSession();
 		ProductDao productDao = new ProductDao();
 		float total = 0;
-
+		String action=request.getParameter("action");
 		Set<CartProduct> cart;
 
 		if (session.getAttribute("cart") != null) {
@@ -39,16 +40,30 @@ public class ManageCartController {
 
 		int quantity = 0;
 
+		// add product into cart in product information page and get quantity from information page
 		if (request.getParameter("quantity") != null && !request.getParameter("quantity").equals("")) {
 			int num = 0;
 			String quantityString = request.getParameter("quantity");
-			quantity = Integer.parseInt(quantityString) + num;
+			
+			//when cart already had this product, when cart has same product, replace it with the new one
 			if (getCartProduct(productID, cart) != null) {
 				CartProduct cp = getCartProduct(productID, cart);
 				num = cp.getQuantity();
+				
+				//estimate storage and cart product quantity, if insufficient storage, aborting add cart action
+				if((Integer.parseInt(quantityString) + num) >=product.getStock()){
+					session.setAttribute("quantityError", "insufficient storage");
+					return "redirect:/showProductInfo.htm?action=showProductInfo&id="+productID;
+				}
 				cart.remove(cp);
 			}
+			quantity = Integer.parseInt(quantityString) + num;
 			
+			//when cart does not have this product, estimate storage and cart product quantity, if insufficient storage, aborting add cart action
+			if(quantity >=product.getStock()){
+				session.setAttribute("quantityError", "insufficient storage");
+				return "redirect:/showProductInfo.htm?action=showProductInfo&id="+productID;
+			}
 		} 
 		
 		else {
@@ -56,9 +71,22 @@ public class ManageCartController {
 			if (getCartProduct(productID, cart) != null) {
 				CartProduct cp = getCartProduct(productID, cart);
 				num = cp.getQuantity();
+				//when cart already had this product, estimate storage and cart product quantity, if insufficient storage, aborting add cart action
+				if((num+1) >=product.getStock()){
+					session.setAttribute("quantityError", "insufficient storage");
+					return "redirect:/showProductInfo.htm?action=showProductInfo&id="+productID;
+				}
+				
+				
 				cart.remove(cp);
+				
 			}
 			quantity = 1 + num;
+			//when cart does not have this product, estimate storage and cart product quantity, if insufficient storage, aborting add cart action
+			if(quantity >=product.getStock()){
+				session.setAttribute("quantityError", "insufficient storage");
+				return "redirect:/showProductInfo.htm?action=showProductInfo&id="+productID;
+			}
 		}
 
 		CartProduct cProduct = new CartProduct();
@@ -82,7 +110,7 @@ public class ManageCartController {
 	}
 
 	@RequestMapping(value = "/addOneToCart.htm", method = RequestMethod.GET)
-	protected String addOneProduct(HttpServletRequest request) throws shoppingSiteException {
+	protected String addOneProduct(HttpServletRequest request, HttpServletResponse response, Model model) throws shoppingSiteException {
 		HttpSession session = request.getSession();
 		ProductDao productDao = new ProductDao();
 		CartProduct cProduct;
@@ -99,13 +127,27 @@ public class ManageCartController {
 		Product product = productDao.getProductByID(id);
 		if (getCartProduct(id, cart) != null) {
 			cProduct = getCartProduct(id, cart);
-			cart.remove(cProduct);
 			int quantity = cProduct.getQuantity();
+			
+			
+			if((quantity+1)>=product.getStock()){
+				System.out.println(quantity+1);
+				System.out.println(product.getStock());
+				model.addAttribute("quantityError", "insufficient storage");
+				return "viewCart";
+			}
+			cart.remove(cProduct);
 			cProduct.setQuantity(quantity + 1);
+			
 		} else {
 			cProduct = new CartProduct();
 			cProduct.setProduct(product);
 			cProduct.setQuantity(1);
+			
+			if(1 >=product.getStock()){
+				session.setAttribute("quantityError", "insufficient storage");
+				return "viewCart";
+			}
 		}
 		cart.add(cProduct);
 
@@ -120,7 +162,7 @@ public class ManageCartController {
 	}
 	
 	@RequestMapping(value="/changeQuantity.htm", method=RequestMethod.POST)
-	protected String changeQuantity(HttpServletRequest request){
+	protected String changeQuantity(HttpServletRequest request, HttpServletResponse response, Model model){
 		HttpSession session=request.getSession();
 		Set<CartProduct> cart=(Set<CartProduct>) session.getAttribute("cart");
 		String quantityString=request.getParameter("quantity");
@@ -128,7 +170,13 @@ public class ManageCartController {
 		String idString=request.getParameter("id");
 		long id=Long.parseLong(idString);
 		float total=0;
+		
 		CartProduct cProduct=getCartProduct(id, cart);
+		if((quantity) >=cProduct.getProduct().getStock()){
+			model.addAttribute("quantityError", "insufficient storage");
+			return "viewCart";
+		}
+		
 		cart.remove(cProduct);
 		if(quantity>0){
 			cProduct.setQuantity(quantity);
@@ -144,6 +192,7 @@ public class ManageCartController {
 		return "viewCart";
 	}
 
+	//check if cart has this product
 	protected CartProduct getCartProduct(long id, Set<CartProduct> cart) {
 		for (CartProduct cp : cart) {
 			if (cp.getProduct().getProductID() == id) {

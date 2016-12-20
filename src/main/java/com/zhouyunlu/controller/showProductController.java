@@ -98,6 +98,8 @@ public class showProductController {
 	protected ModelAndView showProductInfo(HttpServletRequest request) throws Exception{
 		ModelAndView mv=new ModelAndView();
 		String action=request.getParameter("action").toString();
+		HttpSession session=request.getSession();
+		String quantityError;
 		List<Comment> commentList=null;
 		if(action.equals("showProductInfo")){
 			String i=request.getParameter("id").toString();
@@ -105,6 +107,10 @@ public class showProductController {
 			
 			Product product=productDao.getProductByID(id);
 			commentList=commentDao.getCommentByProduct(product);
+			
+			quantityError=(String) session.getAttribute("quantityError");
+			session.setAttribute("quantityError", "");
+			mv.addObject("quantityError", quantityError);
 			mv.addObject("product", product);
 			mv.addObject("commentList", commentList);
 			mv.setViewName("showProductInfo");

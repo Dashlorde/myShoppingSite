@@ -29,6 +29,8 @@
 
 </head>
 <body>
+
+
 <div class="container-fluid">
 	<c:choose>
 		<c:when test="${not empty user.name }">
@@ -52,6 +54,7 @@
 		<li>
 		<form action="addtocart.htm?id=${product.productID}" method="POST">
 		add quantity<input type="number" name="quantity" min="1">
+		<div style="color:red">${requestScope.quantityError} </div>
 		<input type="submit" value="Add to Cart">
 		</form>
 		</li>
