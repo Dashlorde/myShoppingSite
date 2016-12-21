@@ -8,7 +8,7 @@ In this shopping site, a user can be both seller and buyer.
 ####For Buyer:
 * Buyers can add product to cart and set the product quantity.
 * Buyers can manage cart for deleting or editing quantity of products.
-* Afters placing order, products' stock will be updated automatically.
+* After placing orders, products' stock will be updated automatically.
 * Buyers can see order history and add comments to ordered products. All the Comments will be displayed in product information page
 
 ####For Seller:
