@@ -32,5 +32,4 @@ MySQL
 
 ================
 ####note 
-sql file is in database folder
-
+sql file is myShoppingSite_query.sql
