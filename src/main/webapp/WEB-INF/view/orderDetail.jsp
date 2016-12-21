@@ -31,17 +31,19 @@
 			<th>Name</th>
 			<th>Description</th>
 			<th>Price</th>
+			<th>Quantity</th>
 			<th></th>
 		</tr>
 		<c:forEach var="product" items="${requestScope.productList}">
 			<tr>
-				<td class="pic"><img src="${product.imageName}" width="30%" /></td>
-				<td>${product.productName}</td>
-				<td>${product.description}</td>
-				<td>$${product.productPrice}</td>
+				<td class="pic"><img src="${product.key.imageName}" width="30%" /></td>
+				<td>${product.key.productName}</td>
+				<td>${product.key.description}</td>
+				<td>$${product.key.productPrice}</td>
+				<td>${product.value}</td>
 				<td><c:choose>
 					<c:when test="${sessionScope.user.id==requestScope.buyerId}">
-					<a href="buyerComment.htm?id=${product.productID}">comment</a>
+					<a href="buyerComment.htm?id=${product.key.productID}">comment</a>
 					</c:when>
 				</c:choose>
 			</tr>

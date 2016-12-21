@@ -170,4 +170,36 @@ public class OrderDao extends DAO{
 			throw new shoppingSiteException("could not get order by order id "+ e.getMessage());
 		}
 	}
+	
+	public void addQuantityOfOrderItem(int quantity, long orderId, long productId) throws shoppingSiteException{
+		try{
+			begin();
+			Query q=getSession().createQuery("update Item set quantity= :quantity where orderId= :orderId and productId= :productId");
+			q.setInteger("quantity", quantity);
+			q.setLong("orderId", orderId);
+			q.setLong("productId", productId);
+			q.executeUpdate();
+			commit();
+		} catch(HibernateException e){
+			rollback();
+			throw new shoppingSiteException("could not update quantity "+ e.getMessage());
+		}
+	}
+	
+	public int getItemQuantity(long orderId, long productId) throws shoppingSiteException{
+		int quantity;
+		try{
+			begin();
+			Query q=getSession().createQuery("select quantity from Item where orderId= :orderId and productId= :productId");
+			q.setLong("orderId", orderId);
+			q.setLong("productId", productId);
+			quantity=(int) q.uniqueResult();
+			commit();
+			return quantity;
+		} catch(HibernateException e){
+			rollback();
+			throw new shoppingSiteException("could not get quantity "+ e.getMessage());
+		}
+	}
+	
 }

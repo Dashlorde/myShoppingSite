@@ -46,3 +46,7 @@ li.menu a:hover{
 	background-color: black;
 	color:white;
 }
+
+body{
+	font-size: 16px;
+}

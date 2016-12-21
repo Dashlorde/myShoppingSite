@@ -29,6 +29,9 @@ public class Item implements Serializable {
 	@Id
 	private long productId;
 	
+	@Column(name="quantity")
+	private int quantity;
+	
 	public Item(){
 		
 	}
@@ -47,6 +50,18 @@ public class Item implements Serializable {
 
 	public void setProductId(long productId) {
 		this.productId = productId;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	
 	

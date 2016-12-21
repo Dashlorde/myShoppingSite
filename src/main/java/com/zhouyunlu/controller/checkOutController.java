@@ -1,5 +1,7 @@
 package com.zhouyunlu.controller;
 
+import java.util.Set;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -13,12 +15,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.zhouyunlu.DAO.AddressDao;
 import com.zhouyunlu.Exception.shoppingSiteException;
 import com.zhouyunlu.pojo.Address;
+import com.zhouyunlu.pojo.CartProduct;
 import com.zhouyunlu.pojo.Email;
 import com.zhouyunlu.pojo.User;
 
 @Controller
 @RequestMapping("/checkout.htm")
-public class checkOutController {
+public class CheckOutController {
 	
 	@Autowired
 	AddressDao addressDao=new AddressDao();
@@ -44,10 +47,24 @@ public class checkOutController {
 				session.setAttribute("address", address);
 				session.setAttribute("email", email);
 				mv.addObject("email", email);
+				
+				//check if cart is empty
+				if(session.getAttribute("cart")==null){
+					mv.setViewName("viewCart");
+					return mv;
+				}else{
+					Set<CartProduct> cart=(Set<CartProduct>) session.getAttribute("cart");
+					if(cart.isEmpty()){
+						mv.setViewName("viewCart");
+						return mv;
+					}
+				}
 				mv.setViewName("checkOutPage");
 			}
 			
 			else mv.setViewName("login");
+			
+			
 		}
 		
 		return mv;

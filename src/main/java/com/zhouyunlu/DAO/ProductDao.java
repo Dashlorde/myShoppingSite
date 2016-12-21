@@ -198,11 +198,12 @@ public class ProductDao extends DAO{
 		}
 	}
 	
-	public void changeStock(int quantity) throws shoppingSiteException{
+	public void updateStockAfterPlaceOrder(int stock, long id) throws shoppingSiteException{
 		try{
 			begin();
-			Query q=getSession().createQuery("update Product set quantity= :quantity");
-			q.setInteger("quantity", quantity);
+			Query q=getSession().createQuery("update Product set stock= :stock where productID= :id");
+			q.setInteger("stock", stock);
+			q.setLong("id", id);
 			q.executeUpdate();
 			commit();
 		}catch(HibernateException e){

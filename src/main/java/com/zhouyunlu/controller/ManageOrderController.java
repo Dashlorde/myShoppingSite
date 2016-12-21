@@ -1,8 +1,10 @@
 package com.zhouyunlu.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -119,15 +121,17 @@ public class ManageOrderController {
 		String idString=request.getParameter("id");
 		long id=Long.parseLong(idString);
 		List<Long> productIdList=orderDao.orderDetail(id);
-		List<Product> productList=new ArrayList<Product>();
+		Map<Product, Integer> productList=new HashMap<Product, Integer>();
 		Iterator<Long> it=productIdList.iterator();
 		Order order=orderDao.getOrderById(id);
 		long buyerId=order.getBuyerId();
+		
 		while(it.hasNext()){
-			Product product=new Product();
 			long productId=(long) it.next();
-			product=productDao.getProductByID(productId);
-			productList.add(product);
+			Product product=productDao.getProductByID(productId);
+			int quantity=orderDao.getItemQuantity(id, productId);
+			System.out.println("quantity: "+quantity);
+			productList.put(product, quantity);
 		}
 		model.addAttribute("productList", productList);
 		model.addAttribute("buyerId", buyerId);

@@ -20,11 +20,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.zhouyunlu.DAO.OrderDao;
+import com.zhouyunlu.DAO.ProductDao;
 import com.zhouyunlu.DAO.UserDAO;
 import com.zhouyunlu.Exception.shoppingSiteException;
 import com.zhouyunlu.pojo.Address;
 import com.zhouyunlu.pojo.CartProduct;
 import com.zhouyunlu.pojo.Email;
+import com.zhouyunlu.pojo.Order;
 import com.zhouyunlu.pojo.Product;
 import com.zhouyunlu.pojo.User;
 
@@ -37,6 +39,9 @@ public class PlaceOrderController {
 	
 	@Autowired
 	UserDAO userDao=new UserDAO();
+	
+	@Autowired
+	ProductDao productDao=new ProductDao();
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public String placeOrder(HttpServletRequest request) throws ParseException, shoppingSiteException{
@@ -95,13 +100,24 @@ public class PlaceOrderController {
 				CartProduct cProduct=itId.next();
 				long productId=cProduct.getProduct().getProductID();
 				idList.add(productId);
+				int quantity=cProduct.getQuantity();
+				int currentStock=cProduct.getProduct().getStock()-quantity;
+				productDao.updateStockAfterPlaceOrder(currentStock, productId);
 			}					
 					
 			for(CartProduct cp: list){
 				price+=cp.getProduct().getProductPrice()*cp.getQuantity();
 			}
 			
-			orderDao.create(buyerId, sellerId, firstName, lastName, buyerAddress, emailAddress, phone, date, idList, price);
+			Order order=orderDao.create(buyerId, sellerId, firstName, lastName, buyerAddress, emailAddress, phone, date, idList, price);
+			
+			long orderId=order.getOrderId();
+			
+			for(CartProduct cp: list){
+				long productId=cp.getProduct().getProductID();
+				int quantity=cp.getQuantity();
+				orderDao.addQuantityOfOrderItem(quantity, orderId, productId);
+			}
 		}
 		
 		//update cart with a empty set
