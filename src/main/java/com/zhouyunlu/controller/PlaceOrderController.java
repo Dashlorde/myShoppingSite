@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +30,8 @@ import com.zhouyunlu.pojo.Email;
 import com.zhouyunlu.pojo.Order;
 import com.zhouyunlu.pojo.Product;
 import com.zhouyunlu.pojo.User;
+import com.zhouyunlu.service.EmailUtil;
+import com.zhouyunlu.service.EmailUtilImpl;
 
 @Controller
 @RequestMapping("/placeOrder.htm")
@@ -118,6 +121,10 @@ public class PlaceOrderController {
 				int quantity=cp.getQuantity();
 				orderDao.addQuantityOfOrderItem(quantity, orderId, productId);
 			}
+			
+			String userEmail=user.getEmail().getEmailId();
+			EmailUtil emailUtil=new EmailUtilImpl();
+			emailUtil.sendEmail(userEmail, user.getName(), order, list);
 		}
 		
 		//update cart with a empty set
