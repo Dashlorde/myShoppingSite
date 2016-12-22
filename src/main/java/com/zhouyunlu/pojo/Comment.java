@@ -33,7 +33,7 @@ public class Comment {
 	private String comment;
 	
 	@Column(name="comment_time")
-	private Date commentTime;
+	private String commentTime;
 	
 	public Comment(){
 		
@@ -71,11 +71,11 @@ public class Comment {
 		this.comment = comment;
 	}
 
-	public Date getCommentTime() {
+	public String getCommentTime() {
 		return commentTime;
 	}
 
-	public void setCommentTime(Date commentTime) {
+	public void setCommentTime(String commentTime) {
 		this.commentTime = commentTime;
 	}
 	

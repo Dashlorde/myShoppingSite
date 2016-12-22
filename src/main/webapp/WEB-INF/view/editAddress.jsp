@@ -24,8 +24,16 @@
 </head>
 <body>
 <div class="container-fluid"><jsp:include page="menu2.jsp"/></div>
-<div class="container">
+
+
 	<form:form action="editAddress.htm" commandName="userAddress" method="post" class="changeAddress">
+	<div class="panel panel-default">
+<div class="panel-heading">
+<h3 class="panel-title">
+			Edit Address
+		</h3>
+</div>
+<div  class="panel-body">
 	<div class="form-group">
 		phone: <form:input path="phone" name="phone" class="form-control"/><font color="red"><form:errors path="phone"/></font><br/> 
 		</div>
@@ -35,7 +43,10 @@
 		<div class="col-sm-offset-2 col-sm-10">
 		 <input type="submit" value="Edit Address" class="btn btn-default">
 		 </div>
-	</form:form>
+		 </div>
 </div>
+	</form:form>
+
+
 </body>
 </html>

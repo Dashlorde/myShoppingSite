@@ -21,11 +21,20 @@
 <jsp:include page="menu2.jsp"/>
 
 <div class="comment">
+<div class="panel panel-default">
+<div class="panel-heading">
+		<h3 class="panel-title">
+			Add Comment
+		</h3>
+	</div>
+ <div  class="panel-body">
 <form action="buyerComment.htm" method="post">
- add a comment: <textarea name="comment" class="form-control" id="exampleTextarea" rows="3"></textarea><br/><br/>
+ <textarea name="comment" class="form-control" id="exampleTextarea" rows="3"></textarea><br/><br/>
  <input type="submit" value="add" class="btn btn-default">
 
 </form>
+</div>
+</div>
 </div>  
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.zhouyunlu.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,7 +45,9 @@ public class ManageCommentController {
 		User user=(User) session.getAttribute("user");
 		String comment=request.getParameter("comment");
 		Date commentTime=new Date();
-		commentDao.create(user, product, comment, commentTime);
+		SimpleDateFormat dateFormat=new SimpleDateFormat("MM/dd/yyyy");
+		
+		commentDao.create(user, product, comment, dateFormat.format(commentTime));
 		
 		return "redirect:/orderHistory.htm";
 	

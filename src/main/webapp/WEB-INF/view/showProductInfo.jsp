@@ -62,8 +62,11 @@
 
 </div>
 
-<div class="container">
-<h2> User Comments</h2>
+<div class="panel panel-default">
+<div class="panel-heading">
+		<h2 class="panel-title">User Comments</h2>
+</div>
+<div  class="panel-body">
 <table class="table table-sm table-striped table-inverse">
 
 <c:forEach var="comment" items="${requestScope.commentList}">
@@ -74,8 +77,9 @@
 	<tr>
 </c:forEach>
 </table>
+</div>
+</div>
+</div>
 
-</div>
-</div>
 </body>
 </html>

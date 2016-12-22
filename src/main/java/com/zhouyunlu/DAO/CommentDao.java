@@ -14,7 +14,7 @@ import com.zhouyunlu.pojo.User;
 
 public class CommentDao extends DAO{
 
-	public Comment create(User user, Product product, String comment, Date commentTime) throws shoppingSiteException{
+	public Comment create(User user, Product product, String comment, String commentTime) throws shoppingSiteException{
 		try{
 			begin();
 			Comment c=new Comment();
