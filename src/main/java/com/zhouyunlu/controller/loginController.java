@@ -56,7 +56,13 @@ public class loginController {
 				
 			}
 			
-			return "redirect:/showAllProducts.htm";
+			if(session.getAttribute("currentURL")!=null){
+				String currentURL=(String) session.getAttribute("currentURL");
+				return currentURL;
+			}else{
+				return "redirect:/showAllProducts.htm";
+				
+			}
 			
 		}
 		else{

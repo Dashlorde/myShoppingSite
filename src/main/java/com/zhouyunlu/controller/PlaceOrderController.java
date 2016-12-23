@@ -127,9 +127,7 @@ public class PlaceOrderController {
 			emailUtil.sendEmail(userEmail, user.getName(), order, list);
 		}
 		
-		//update cart with a empty set
-		Set<CartProduct> newCartSet=new HashSet<CartProduct>();
-		session.setAttribute("cart", newCartSet);
+		session.removeAttribute("cart");
 		return "checkoutSuccess";
 	}
 }

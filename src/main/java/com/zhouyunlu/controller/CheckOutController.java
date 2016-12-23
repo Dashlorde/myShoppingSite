@@ -63,7 +63,7 @@ public class CheckOutController {
 			}
 			
 			else mv.setViewName("login");
-			
+			session.setAttribute("currentURL", "viewCart");
 			
 		}
 		
