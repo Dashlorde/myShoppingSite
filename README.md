@@ -10,7 +10,7 @@ In this shopping site, a user can be both seller and buyer.
 * Buyers can manage cart for deleting or editing quantity of products.
 * After placing orders, products' stock will be updated automatically.
 * Buyers can see order history and add comments to ordered products. All the Comments will be displayed in product information page.
-* Buyers will receive a confirm email after order placed.
+* Buyers can pay through Paypal and will receive a confirmed email after order is paid.
 
 ####For Seller:
 * Sellers can add new products and edit information of products.
@@ -33,4 +33,5 @@ MySQL
 
 ================
 ####note 
-database file is myShoppingSite_query.sql
+Database file is myShoppingSite_query.sql 
+Paypal service is deployed and can test through Paypal sandbox. 
