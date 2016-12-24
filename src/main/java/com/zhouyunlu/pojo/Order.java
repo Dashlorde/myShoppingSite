@@ -46,6 +46,9 @@ public class Order {
 	@Column(name="date")
 	private Date date;
 	
+	@Column(name="status")
+	private String status;
+	
 	
 	@ElementCollection(fetch= FetchType.EAGER)
 	@CollectionTable(name="Order_item", joinColumns= @JoinColumn(name="Order_order_id"))
@@ -145,6 +148,14 @@ public class Order {
 
 	public void setPrice(float price) {
 		this.price = price;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	

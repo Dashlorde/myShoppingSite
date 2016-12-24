@@ -42,7 +42,6 @@ import com.zhouyunlu.service.EmailUtilImpl;
 import com.zhouyunlu.service.PaypalService;
 
 @Controller
-@RequestMapping("/placeOrder.htm")
 public class PlaceOrderController {
 
 	@Autowired
@@ -54,22 +53,24 @@ public class PlaceOrderController {
 	@Autowired
 	ProductDao productDao = new ProductDao();
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value= "/placeOrder.htm", method = RequestMethod.GET)
 	public String placeOrder(HttpServletRequest request) throws ParseException, shoppingSiteException {
 		HttpSession session = request.getSession();
 		Set<CartProduct> cartSet = (Set<CartProduct>) session.getAttribute("cart");
+		float amount=(float) session.getAttribute("total");
 		User user = (User) session.getAttribute("user");
 		String firstName = user.getFirstName();
 		String lastName = user.getLastName();
 		Email email = user.getEmail();
 		String emailAddress = email.getEmailId();
 
+		List<Order> orderList=new ArrayList<Order>();
 		Address address = (Address) session.getAttribute("address");
 		String buyerAddress = address.getAddress();
 		String phone = address.getPhone();
 
 		long buyerId = user.getId();
-		float price = 0;
+		
 
 		long sellerId = -1;
 
@@ -99,12 +100,13 @@ public class PlaceOrderController {
 
 		// place each list into one order record
 		Set<String> set = map.keySet();
-		Set<User> sellerSet=null;
+		
 		Iterator<String> iterator = set.iterator();
 		while (iterator.hasNext()) {
+			float price = 0;
 			String username = (String) iterator.next();
 			User seller = userDao.get(username);
-			sellerSet.add(seller);
+			//sellerSet.add(seller);
 			sellerId = seller.getId();
 			ArrayList<CartProduct> list = (ArrayList<CartProduct>) map.get(username);
 
@@ -125,40 +127,38 @@ public class PlaceOrderController {
 			}
 
 			Order order = orderDao.create(buyerId, sellerId, firstName, lastName, buyerAddress, emailAddress, phone,
-					date, idList, price);
+					date, idList, price, "not paid");
 
 			long orderId = order.getOrderId();
-
+			orderList.add(order);
 			for (CartProduct cp : list) {
 				long productId = cp.getProduct().getProductID();
 				int quantity = cp.getQuantity();
 				orderDao.addQuantityOfOrderItem(quantity, orderId, productId);
 			}
-
-			PaypalService pay = new PaypalService();
-			try {
-
-				String token = pay.paypalCheckOut(user, seller, order, list);
-				redirectURL = "redirect:https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&useraction=commit&token="
-						+ token;
-				return redirectURL;
-
-			} catch (SSLConfigurationException | InvalidCredentialException | HttpErrorException
-					| InvalidResponseDataException | ClientActionRequiredException | MissingCredentialException
-					| OAuthException | IOException | InterruptedException | ParserConfigurationException
-					| SAXException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			String userEmail = user.getEmail().getEmailId();
-			EmailUtil emailUtil = new EmailUtilImpl();
-
-			emailUtil.sendEmail(userEmail, user.getName(), order, list);
-
 		}
+		session.setAttribute("orderList", orderList);
+		PaypalService pay = new PaypalService();
+		
+		try {
+			redirectURL=pay.paypalCheckOut(user, amount, cartSet);
 
-		session.removeAttribute("cart");
-		return null;
+		} catch (SSLConfigurationException | InvalidCredentialException | HttpErrorException
+				| InvalidResponseDataException | ClientActionRequiredException | MissingCredentialException
+				| OAuthException | IOException | InterruptedException | ParserConfigurationException
+				| SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			/*String userEmail = user.getEmail().getEmailId();
+			EmailUtil emailUtil = new EmailUtilImpl();
+			
+			emailUtil.sendEmail(userEmail, user.getName(),  cartSet);
+			session.removeAttribute("cart");
+			*/
+		
+		
+		return redirectURL;
 
 	}
 }

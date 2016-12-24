@@ -115,7 +115,7 @@
 
 <tr>
     <td>Paypal signature:</td>
-    <td><form:input path="paypalSignature" size="30" /></td> 
+    <td><form:input path="signature" size="30" /></td> 
 </tr>
 </table>
 

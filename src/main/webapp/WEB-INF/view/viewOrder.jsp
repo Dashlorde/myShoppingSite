@@ -46,6 +46,7 @@ th{
 			<th>phone</th>
 			<th>date</th>
 			<th>price</th>
+			<th>status</th>
 			<th></th>
 		</tr>
 		<c:forEach var="order" items="${requestScope.orderList}">
@@ -57,6 +58,7 @@ th{
 				<td>${order.phone}</td>
 				<td>${order.date}</td>
 				<td>$${order.price}</td>
+				<th>${order.status}</th>
 				<td><a href="orderDetail.htm?id=${order.orderId}">order
 						detail</a></td>
 

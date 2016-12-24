@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.jboss.logging.Logger;
@@ -39,60 +41,66 @@ import urn.ebay.apis.eBLBaseComponents.SetExpressCheckoutRequestDetailsType;
 public class PaypalService {
 	private static Logger log = Logger.getLogger(PaypalService.class);
 
-	public void main(String arg[],User user, Set<User> sellers, Order order, List<CartProduct> cartProductList){
-		PaypalService pps=new PaypalService();
+	public void main(String arg[], User user, float amount, Set<CartProduct> cartProductList) {
+		PaypalService pps = new PaypalService();
+
 		try {
-			String token=pps.paypalCheckOut(user, sellers, order, cartProductList);
-			log.info("Url to redirect to: https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&useraction=commit&token=" + token);
+			String token = pps.paypalCheckOut(user, amount, cartProductList);
+			log.info(
+					"Url to redirect to: https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&useraction=commit&token="
+							+ token);
+
 		} catch (SSLConfigurationException | InvalidCredentialException | HttpErrorException
 				| InvalidResponseDataException | ClientActionRequiredException | MissingCredentialException
 				| OAuthException | IOException | InterruptedException | ParserConfigurationException | SAXException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
-	public String paypalCheckOut(User user, Set<User> sellers, Order order, List<CartProduct> cartProductList) throws SSLConfigurationException, InvalidCredentialException, HttpErrorException, InvalidResponseDataException, ClientActionRequiredException, MissingCredentialException, OAuthException, IOException, InterruptedException, ParserConfigurationException, SAXException{
+	public String paypalCheckOut(User user, float amount, Set<CartProduct> cartProductList)
+			throws SSLConfigurationException, InvalidCredentialException, HttpErrorException,
+			InvalidResponseDataException, ClientActionRequiredException, MissingCredentialException, OAuthException,
+			IOException, InterruptedException, ParserConfigurationException, SAXException {
 		PaymentDetailsType paymentDetails = new PaymentDetailsType();
-		
-		String orderPrice=Float.toString(order.getPrice());
-		//String returnURL="/checkoutSuccess.htm";
-		String returnURL="http://localhost:8080/myShoppingSite/checkoutSuccess.jsp?";
-		String cancelURL="http://localhost:8080/myShoppingSite/index.jsp?";
+		String orderPrice = Float.toString(amount);
+
+		String returnURL = "http://localhost:8080/myShoppingSite/checkoutIndex.jsp";
+		String cancelURL = "http://localhost:8080/myShoppingSite/index.jsp";
 		paymentDetails.setPaymentAction(PaymentActionCodeType.fromValue("Sale"));
 		CurrencyCodeType currencyCode = CurrencyCodeType.USD;
-		
-		List<PaymentDetailsItemType> items=new ArrayList<PaymentDetailsItemType>();
-		for(CartProduct cp: cartProductList){
-			PaymentDetailsItemType item=new PaymentDetailsItemType();
-			BasicAmountType amt=new BasicAmountType();
+
+		List<PaymentDetailsItemType> items = new ArrayList<PaymentDetailsItemType>();
+		for (CartProduct cp : cartProductList) {
+			PaymentDetailsItemType item = new PaymentDetailsItemType();
+			BasicAmountType amt = new BasicAmountType();
 			amt.setCurrencyID(currencyCode);
 			amt.setValue(Float.toString(cp.getProduct().getProductPrice()));
-			
+
 			item.setQuantity(cp.getQuantity());
 			item.setName(cp.getProduct().getProductName());
 			item.setAmount(amt);
 			items.add(item);
 		}
-		
-	
+
 		paymentDetails.setPaymentDetailsItem(items);
-		BasicAmountType orderTotal=new BasicAmountType();
+		BasicAmountType orderTotal = new BasicAmountType();
 		orderTotal.setCurrencyID(CurrencyCodeType.fromValue("USD"));
 		orderTotal.setValue(orderPrice);
 		paymentDetails.setOrderTotal(orderTotal);
 		List<PaymentDetailsType> paymentDetailsList = new ArrayList<PaymentDetailsType>();
 		paymentDetailsList.add(paymentDetails);
-		
+
 		SetExpressCheckoutRequestDetailsType setExpressCheckoutRequestDetails = new SetExpressCheckoutRequestDetailsType();
 		setExpressCheckoutRequestDetails.setReturnURL(returnURL);
 		setExpressCheckoutRequestDetails.setCancelURL(cancelURL);
 		setExpressCheckoutRequestDetails.setCustom(Long.toString(user.getId()));
-		
+
 		setExpressCheckoutRequestDetails.setPaymentDetails(paymentDetailsList);
 
-		SetExpressCheckoutRequestType setExpressCheckoutRequest = new SetExpressCheckoutRequestType(setExpressCheckoutRequestDetails);
+		SetExpressCheckoutRequestType setExpressCheckoutRequest = new SetExpressCheckoutRequestType(
+				setExpressCheckoutRequestDetails);
 		setExpressCheckoutRequest.setVersion("104.0");
 
 		SetExpressCheckoutReq setExpressCheckoutReq = new SetExpressCheckoutReq();
@@ -102,16 +110,15 @@ public class PaypalService {
 		sdkConfig.put("mode", "sandbox");
 		sdkConfig.put("acct1.UserName", "zhouyunlu0216-facilitator_api1.gmail.com");
 		sdkConfig.put("acct1.Password", "TDVLL7M2MVEQLNPZ");
-		sdkConfig.put("acct1.Signature","AFcWxV21C7fd0v3bYYYRCpSSRl31AWGtrq9X841jJfXEvxtz0WDLXyKX");
-		//sdkConfig.put("acct1.UserName", seller.getPaypalUsername());
-		//sdkConfig.put("acct1.Password", seller.getPaypalPassword());
-		//sdkConfig.put("acct1.Signature", seller.getSignature());
+		sdkConfig.put("acct1.Signature", "AFcWxV21C7fd0v3bYYYRCpSSRl31AWGtrq9X841jJfXEvxtz0WDLXyKX");
+		// sdkConfig.put("acct1.UserName", seller.getPaypalUsername());
+		// sdkConfig.put("acct1.Password", seller.getPaypalPassword());
+		// sdkConfig.put("acct1.Signature", seller.getSignature());
 		PayPalAPIInterfaceServiceService service = new PayPalAPIInterfaceServiceService(sdkConfig);
 		SetExpressCheckoutResponseType setExpressCheckoutResponse = service.setExpressCheckout(setExpressCheckoutReq);
-		return setExpressCheckoutResponse.getToken();
-		
-		
+
+		return "redirect:https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&useraction=commit&token="
+				+ setExpressCheckoutResponse.getToken();
 	}
-	
-	
+
 }

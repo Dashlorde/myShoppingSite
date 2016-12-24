@@ -15,7 +15,7 @@ import com.zhouyunlu.pojo.User;
 
 public class OrderDao extends DAO{
 
-	public Order create(long buyerId, long sellerId, String firstName, String lastName, String address, String email, String phone, Date date, List<Long> item, float price) 
+	public Order create(long buyerId, long sellerId, String firstName, String lastName, String address, String email, String phone, Date date, List<Long> item, float price, String status) 
 			throws shoppingSiteException{
 		try{
 			begin();
@@ -30,6 +30,7 @@ public class OrderDao extends DAO{
 			order.setDate(date);
 			order.setItem(item);
 			order.setPrice(price);
+			order.setStatus(status);
 			getSession().save(order);
 			commit();
 			return order;
@@ -185,6 +186,22 @@ public class OrderDao extends DAO{
 			throw new shoppingSiteException("could not update quantity "+ e.getMessage());
 		}
 	}
+	
+	public void changeOrderStatus(String status, long orderId) throws shoppingSiteException{
+		try{
+			begin();
+			Query q=getSession().createQuery("update Order set status= :status where orderId= :orderId");
+			q.setString("status", status);
+			q.setLong("orderId", orderId);
+			q.executeUpdate();
+			commit();
+		} catch(HibernateException e){
+			rollback();
+			throw new shoppingSiteException("could not update order status: "+ e.getMessage());
+		}
+	}
+	
+	
 	
 	public int getItemQuantity(long orderId, long productId) throws shoppingSiteException{
 		int quantity;

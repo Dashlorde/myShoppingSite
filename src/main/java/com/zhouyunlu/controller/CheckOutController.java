@@ -35,18 +35,19 @@ public class CheckOutController {
 		HttpSession session=request.getSession();
 		Address address=null;
 		if(action.equals("checkout")){
-			if(session.getAttribute("username")!=null){
+			if(session.getAttribute("user")!=null){
 				User u=(User) session.getAttribute("user");
 				
-				if(addressDao.getByUserId(u.getId())!=null){
+				long userId=u.getId();
+				if(addressDao.getByUserId(userId)!=null){
 					address=addressDao.getByUserId(u.getId());
+					System.out.println(address.getAddress()); 
 				}
-				 
+				
 				Email email=u.getEmail();
 				mv.addObject("address", address);
-				session.setAttribute("address", address);
-				session.setAttribute("email", email);
 				mv.addObject("email", email);
+				session.setAttribute("address", address);
 				
 				//check if cart is empty
 				if(session.getAttribute("cart")==null){

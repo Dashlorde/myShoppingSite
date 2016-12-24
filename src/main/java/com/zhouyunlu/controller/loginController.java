@@ -37,7 +37,8 @@ public class loginController {
 		HttpSession session=request.getSession();
 		if(userDao.login(user.getName(), user.getPassword())){
 			session.setAttribute("username", user.getName());
-			
+			User u=userDao.get(user.getName());
+			session.setAttribute("user", u);
 			if(session.getAttribute("total")!=null &&(session.getAttribute("cart")!=null)){
 				float total=0;
 				Set<CartProduct> cart=(Set<CartProduct>) session.getAttribute("cart");
