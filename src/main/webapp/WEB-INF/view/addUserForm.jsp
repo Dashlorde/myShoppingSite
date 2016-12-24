@@ -102,6 +102,21 @@
     <td><form:input type="email" placeholder="me@example.com" path="email.emailId" size="30" /></td> 
     <td><font color="red"><form:errors path="email.emailId" htmlEscape="true"/>${emailError}</font></td>
 </tr>
+
+<tr>
+    <td>Paypal username:</td>
+    <td><form:input path="paypalUsername" size="30" /></td> 
+</tr>
+
+<tr>
+    <td>Paypal password:</td>
+    <td><form:password path="paypalPassword" size="30" /></td> 
+</tr>
+
+<tr>
+    <td>Paypal signature:</td>
+    <td><form:input path="paypalSignature" size="30" /></td> 
+</tr>
 </table>
 
 

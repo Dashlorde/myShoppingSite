@@ -55,6 +55,15 @@ public class User{
    
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="user", cascade=CascadeType.ALL)
 	private Set<Comment> commentSet;
+	
+	@Column(name="paypal_username")
+	String paypalUsername;
+	
+	@Column(name="paypal_password")
+	String paypalPassword;
+	
+	@Column(name="signature")
+	String signature;
 
 	public User(String name, String password) {
         this.name = name;
@@ -127,6 +136,30 @@ public class User{
 
 	public void setCommentSet(Set<Comment> commentSet) {
 		this.commentSet = commentSet;
+	}
+
+	public String getPaypalUsername() {
+		return paypalUsername;
+	}
+
+	public void setPaypalUsername(String paypalUsername) {
+		this.paypalUsername = paypalUsername;
+	}
+
+	public String getPaypalPassword() {
+		return paypalPassword;
+	}
+
+	public void setPaypalPassword(String paypalPassword) {
+		this.paypalPassword = paypalPassword;
+	}
+
+	public String getSignature() {
+		return signature;
+	}
+
+	public void setSignature(String signature) {
+		this.signature = signature;
 	}
 
 	

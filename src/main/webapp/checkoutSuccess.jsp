@@ -8,5 +8,6 @@
 </head>
 <body>
 <h1> check out successfully</h1>
+<a href="index.jsp">return to home page</a>
 </body>
 </html>

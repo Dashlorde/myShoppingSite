@@ -7,6 +7,15 @@ ADD CONSTRAINT `orderToProduct`
   ON DELETE CASCADE
   ON UPDATE CASCADE;
 
+ALTER TABLE `myShoppingSite`.`usertable` 
+DROP FOREIGN KEY `FK_e9f6f748525744c8b1d5353f6a3`;
+ALTER TABLE `myShoppingSite`.`usertable` 
+ADD CONSTRAINT `FK_e9f6f748525744c8b1d5353f6a3`
+  FOREIGN KEY (`address_id`)
+  REFERENCES `myShoppingSite`.`addressTable` (`id`)
+  ON DELETE RESTRICT
+  ON UPDATE CASCADE;
+
   
 ALTER TABLE `myShoppingSite`.`comment_table` 
 DROP FOREIGN KEY `FK_73c96a9a2b1e497581b0a91f69e`;
