@@ -3,6 +3,8 @@ package com.zhouyunlu.service;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -19,6 +21,8 @@ import com.zhouyunlu.pojo.Product;
 
 @Component("emailUtil")
 public class EmailUtilImpl implements EmailUtil {
+	
+	 private Executor executor = Executors.newFixedThreadPool(10);  
 
 	public void sendEmail(String emailAddress, String username,Set<CartProduct> items) {
 		Properties prop = new Properties();
@@ -68,5 +72,20 @@ public class EmailUtilImpl implements EmailUtil {
 			}
 		}
 
+	}
+	
+	public void sendEmailAsync(final String emailAddress, final String username,final Set<CartProduct> items){
+		Runnable task=new Runnable(){
+
+			@Override
+			public void run() {
+				try{
+					sendEmail(emailAddress, username, items);
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+		};
+		executor.execute(task);
 	}
 }

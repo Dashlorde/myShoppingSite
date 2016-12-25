@@ -68,7 +68,8 @@ public class showProductController {
 						orderDao.changeOrderStatus("paid", order.getOrderId());
 					}
 
-					emailUtil.sendEmail(userEmail, user.getName(),  cartProductSet);
+					//emailUtil.sendEmail(userEmail, user.getName(),  cartProductSet);
+					emailUtil.sendEmailAsync(userEmail, user.getName(), cartProductSet);
 					session.removeAttribute("cart");
 				}
 			}
