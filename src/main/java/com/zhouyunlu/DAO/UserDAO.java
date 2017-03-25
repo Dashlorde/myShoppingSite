@@ -1,16 +1,12 @@
 package com.zhouyunlu.DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 
 import org.springframework.dao.DataAccessException;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.zhouyunlu.Exception.shoppingSiteException;
 import com.zhouyunlu.pojo.Email;

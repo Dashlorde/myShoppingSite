@@ -41,11 +41,20 @@
 }
 
 
-
-.floatBox{
-	display:inline-block;
-	width:45%;
+@media screen and (min-width: 692px){
+	.floatBox{
+		display:inline-block;
+		width:45%;
 	
+}
+}
+
+
+@media screen and (max-width: 692px){
+	.floatBox{
+		display:inline-block;
+		width: 80%;
+	}
 }
 
 

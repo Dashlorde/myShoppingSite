@@ -9,12 +9,11 @@ import org.hibernate.SessionFactory;
 
 import org.hibernate.cfg.Configuration;
 
-import java.util.logging.Logger;
-
 public class DAO {
 
 	private static final Logger log=Logger.getAnonymousLogger();
 	private static final ThreadLocal sessionThread=new ThreadLocal();
+	@SuppressWarnings("deprecation")
 	private static final SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();
 	
 	protected DAO(){
