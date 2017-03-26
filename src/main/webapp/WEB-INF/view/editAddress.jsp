@@ -16,22 +16,21 @@
 </script>
 <style>
 .changeAddress{
-	position: absolute;
-	top: 60px;
-	width: 60%;
+	margin-top:80px;
+	width:60%
 }
 </style>
 </head>
 <body>
-<div class="container-fluid"><jsp:include page="menu2.jsp"/></div>
 
+<jsp:include page="menu2.jsp"/>
 
-	<form:form action="editAddress.htm" commandName="userAddress" method="post" class="changeAddress">
+<main>
+<div class="container changeAddress">
+	<form:form action="editAddress.htm" commandName="userAddress" method="post">
 	<div class="panel panel-default">
 <div class="panel-heading">
-<h3 class="panel-title">
-			Edit Address
-		</h3>
+<h3 class="panel-title">Edit Address</h3>
 </div>
 <div  class="panel-body">
 	<div class="form-group">
@@ -46,7 +45,13 @@
 		 </div>
 </div>
 	</form:form>
-
-
+</div>
+</main>
+<footer class="text-center">
+		<a class="up-arrow" href="#" title="TO TOP"> <span
+			class="glyphicon glyphicon-chevron-up"></span>
+		</a><br> <br>
+		<p>&copy;Yunlu Zhou</p>
+	</footer>
 </body>
 </html>

@@ -5,9 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>welcome to my shopping website</title>
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<title>Order Detail</title>
+
 <link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.min.css" />
 <link type="text/css" rel="stylesheet"
@@ -43,7 +42,7 @@
 				<td>${product.value}</td>
 				<td><c:choose>
 					<c:when test="${sessionScope.user.id==requestScope.buyerId}">
-					<a href="buyerComment.htm?id=${product.key.productID}">comment</a>
+					<a class="btn btn-primary" href="buyerComment.htm?id=${product.key.productID}">comment</a>
 					</c:when>
 				</c:choose>
 			</tr>

@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>welcome to my shopping website</title>
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<title>Manage Product</title>
 <link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.css" />
 <script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -28,6 +26,7 @@
 			<jsp:include page="menu1.jsp" />
 		</c:otherwise>
 	</c:choose>
+<main>
 
 	<table>
 		<tr>
@@ -47,12 +46,18 @@
 				<td>$${product.productPrice}</td>
 				<td>${product.stock}</td>
 				<td><a
-					href="modify.htm?id=${product.productID }&action=goModifyPage">modify</a></td>
+					href="modify.htm?id=${product.productID }&action=goModifyPage"><button class="btn btn-primary">modify</button></a></td>
 				<td><a
-					href="deleteProduct.htm?id=${product.productID}&action=deleteProduct">delete</a></td>
+					href="deleteProduct.htm?id=${product.productID}&action=deleteProduct"><button
+									class="btn btn-danger">
+									<span class="glyphicon glyphicon-trash"></span>
+								</button></a></td>
 			</tr>
 		</c:forEach>
 	</table>
+
+	</main>
+	
 
 </body>
 </html>

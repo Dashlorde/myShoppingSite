@@ -2,13 +2,28 @@
     pageEncoding="UTF-8"%>
 
 
-<nav class="navbar-default navbar-fixed-top" role="navigation">
-	<ul class="nav navbar-nav" >
-	<li class="welcome">Welcome ${sessionScope.username}</li>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="container-fluid">
+<div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	</button>
+	<a href="#" class="navbar-brand">Welcome ${sessionScope.username}</a>
+ </div>
+ 
+ <div class="collapse navbar-collapse" id="myNavbar">
+	<ul class="nav navbar-nav navbar-right" >
 	
-	
-	<li data-role="dropdown" class="menu">
-	<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">seller account</a>
+	<li><form action="search.htm" class="navbar-form navbar-center">
+	<div class="form-group">
+	<input type="search" name="searchProduct" class="form-control" placeholder="search products"><button type="submit" id="search" class="btn btn-danger"><i class="glyphicon glyphicon-search"></i></button>
+	</div>
+	</form></li>
+	<li><a href="showAllProducts.htm">Home</a></li>
+	<li data-role="dropdown">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">seller account<span class="caret"></span></a>
 		<ul class="dropdown-menu" role="menu" aria-labelledby="navbarDropdownMenuLink">
 			<li><a href="viewMyProduct.htm?action=viewMyProduct">view my product</a></li>
 			<li><a href="addProduct.htm" >add product</a></li>
@@ -16,20 +31,20 @@
 		</ul>
 	</li>
 	
-	<li data-role="dropdown" class="menu">
-	<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">user account</a>
+	<li data-role="dropdown">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">user account<span class="caret"></span></a>
 		<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 		<li><a href="orderHistory.htm">order history</a>
 		</ul>
 	</li>
 	
-	<li class="menu"><a href="viewCart.htm?action=viewcart" >view cart</a> </li>
-	<li class="menu"><a href="logout.htm?action=logout" >log out</a> </li>
+	<li ><a href="viewCart.htm?action=viewcart" >view cart</a> </li>
+	<li><a href="logout.htm?action=logout" >log out</a> </li>
+	
+	
 	</ul>
-	<form action="search.htm" class="form-inline float-xs-right"><input type="search" name="searchProduct"><button type="submit" id="search"><i class="material-icons">search</i></button></form>
-	
-	
-
+</div>	
+</div>
 	
 </nav>
 

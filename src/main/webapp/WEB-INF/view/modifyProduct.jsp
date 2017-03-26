@@ -2,19 +2,78 @@
     pageEncoding="UTF-8"%>
  <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>modify product</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+
 <link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.css" />
-<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/modifyProduct.css" />
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/menu.css" />
 <script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="<%=request.getContextPath()%>/css/bootstrap/js/bootstrap.min.js" >
 </script>
+
+<style>
+div.info{
+	margin-top:50px;
+	width:50%
+}
+
+ul.info{
+	text-decoration:none;
+	width: 100%
+}
+
+li.info{
+	text-align:left;
+	font-family:Lucida Grande;
+	text-decoration:none;
+	list-style-type: none;
+	padding:10px 30px;
+	font-size:20px;
+}
+
+li.info a{
+	color: black;
+	display:block;
+	border-radius: 8px;
+	padding: 10px, 15px;
+	border: 2px solid black;
+	text-decoration: none;
+	margin-left:35%;
+	margin-right:35%;
+	font-size:15px;
+
+}
+
+li.info a:hover{
+	background-color: black;
+	color:white;
+}
+
+#submit{
+	diplay:block;
+	width: 30%;
+	font-size: 15px;
+	font-family:Lucida Grande;
+	padding:10px;
+	background-color :black;
+	color: white;
+	border-radius:8px;
+	list-style-type:none;
+	
+}
+
+#textarea{
+	width: 50%;
+	height: 50px;
+
+}
+
+
+</style>
 
 </head>
 <body>
@@ -27,7 +86,7 @@
 		</c:otherwise>
 	</c:choose>
 
-<div class="info">
+<div class="container well info">
 	<form:form action="modifyProduct.htm?id=${sessionScope.product.productID}&action=doModify" commandName="product" method="post" enctype="multipart/form-data" >
 	<ul class="info">
 		<li class="info"><img src="${sessionScope.product.imageName}" width="40%"/><input type="file" name="image" size="50" id="file"/>
@@ -35,7 +94,7 @@
 		<li class="info"><font color="#871262">product name:</font> ${sessionScope.product.productName}</li>
 		<li class="info" ><font color="#871262">product stock:</font> ${sessionScope.product.stock}
 		<form:input path="stock" name="stock" htmlEscape="true"/><font color="red"><form:errors path="stock"/></font></li>
-		<li class="info" id="textarea"><font color="#871262">product description:</font> ${sessionScope.product.description}</li>
+		<li class="info" id="textarea"><font color="#871262">product description:</font></li>
 		<li class="info"><form:textarea path="description" name="description" size="30" id="exampleTextarea" rows="3" htmlEscape="true"/><font color="red"><form:errors path="description"/></font></li>
 		<li class="info"><input type="submit" value="Modify Product" id="submit"></li>
 		

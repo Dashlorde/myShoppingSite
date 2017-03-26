@@ -14,7 +14,7 @@ th, td{
 	height:60px;
 	padding: 10px;
 	text-align:center;
-	border-bottom: 1px solid #cceeff;
+	border-bottom: 1px solid  #d7d9dd;
 	font-family:Lucida Grande;
 }
 
@@ -23,14 +23,8 @@ td.pic{
 	width:35%;
 }
 
-th{
-	background-color: #a3ced1;
-	
-}
+th{font-size:18px}
 
-tr:hover{
-	background-color: #cceeff;
-}
 
 td a{
 	color: black;

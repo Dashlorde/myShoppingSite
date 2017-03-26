@@ -1,27 +1,55 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
- <link type="text/css" rel="stylesheet"
+<title>Product Informatino</title>
+
+<link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.css" />
-<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/menu.css" />
-<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/showProductInfo.css" />
-<script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="<%=request.getContextPath()%>/css/bootstrap/js/bootstrap.min.js" >
+<link type="text/css" rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/menu.css" />
+<link type="text/css" rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/showProductInfo.css" />
+<script
+	src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script
+	src="<%=request.getContextPath()%>/css/bootstrap/js/bootstrap.min.js">
+	
 </script>
 <style>
-	.productInfo{
-	position:absolute;
-	top:55px;
+@CHARSET "UTF-8";
+
+.productInfo {
+	background-color: white;
+	box-shadow: 3px 3px 3px #d7d9dd;
+	margin-top: 80px;
 }
 
-#username{
-	font-size: 12px;
+body {
+	background-color: #edeff2
+}
+
+.left {
+	float: left
+}
+
+.div-divider {
+	padding:20px;
+	border-bottom: solid 1px #d7d9dd;
+}
+
+#info {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+#sidebar {
+	background-color: #f5f5f5;
+	margin-top: 80px;
+	width: 13%
 }
 
 
@@ -31,55 +59,88 @@
 <body>
 
 
-<div class="container-fluid">
+
 	<c:choose>
 		<c:when test="${not empty user.name }">
-			<jsp:include page="menu2.jsp"/>
+			<jsp:include page="menu2.jsp" />
 		</c:when>
 		<c:otherwise>
 			<jsp:include page="menu1.jsp" />
 		</c:otherwise>
 	</c:choose>
-</div>
 
-<div class="productInfo">
-<div class="container">
+	<main>
+
+	<div class="container row">
+
+		<div class="col-md-2 ">
+			<div class="sidebar-nav-fixed affix" id="sidebar">
+
+				<div class="sidebar-offcanvas">
+					<ul class="nav nav-pills nav-stacked">
+						<li><a href="showAllProducts.htm" target="content">All
+								Products</a>
+						<li><a href="showElectronics.htm" target="content">Electronics</a>
+						<li><a href="showComputers.htm" target="content">Computers</a>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+
+		<div
+			class="jumbotron col-sm-offset-2 col-md-10 col-md-offset-2 productInfo">
+			<div class="container" id="info">
+				<div class="col-md-5 left">
+					<img src="${requestScope.product.imageName}" width="100%" />
+				</div>
+				<div class="col-md-5 col-md-offset-1">
+					<div class="div-divider">
+						<strong><span style="color: #b24276; font-size: 20px">${requestScope.product.productName}</span></strong> sell by
+						${requestScope.product.username}<br/>
+						$${requestScope.product.productPrice}<br/><br/>
+						<form class="form-inline"
+							action="addtocart.htm?id=${product.productID}" method="POST">
+							<input type="number" name="quantity" min="1" class="form-control">
+							<div class="input-group" style="color: red">${requestScope.quantityError}</div>
+							<button type="submit" value="Add to Cart" class="btn btn-default"><span class="glyphicon glyphicon-shopping-cart"></span></button>
+						</form>
+					</div>
+					<div class="div-divider">
+					<h3><span class="glyphicon glyphicon-leaf"></span>About Product</h3>
+						<p>${requestScope.product.description}</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="panel panel-warning">
+				<div class="panel-heading">
+					<h2 class="panel-title">User Comments <span class="glyphicon glyphicon-comment"></span></h2>
+				</div>
+				<div class="panel-body">
+					<table class="table table-sm table-striped table-inverse">
+
+						<c:forEach var="comment" items="${requestScope.commentList}">
+							<tr>
+								<td>${comment.user.name}</td>
+								<td>${comment.comment}</td>
+								<td>${comment.commentTime}</td>
+							<tr>
+						</c:forEach>
+					</table>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	</main>
 	
-	<ul class="info">
-		<li ><img src="${requestScope.product.imageName}" width="40%"/></li>
-		<li>${requestScope.product.productName}</li>
-		<li id="username"> sell by ${requestScope.product.username}</li>
-		<li>$${requestScope.product.productPrice}</li>		
-		<li>${requestScope.product.description}</li>
-		<li>
-		<form action="addtocart.htm?id=${product.productID}" method="POST">
-		add quantity<input type="number" name="quantity" min="1">
-		<div style="color:red">${requestScope.quantityError} </div>
-		<input type="submit" value="Add to Cart">
-		</form>
-		</li>
-	</ul> 
-
-</div>
-
-<div class="panel panel-default">
-<div class="panel-heading">
-		<h2 class="panel-title">User Comments</h2>
-</div>
-<div  class="panel-body">
-<table class="table table-sm table-striped table-inverse">
-
-<c:forEach var="comment" items="${requestScope.commentList}">
-	<tr>
-		<td>${comment.user.name}</td>
-		<td>${comment.comment}</td>
-		<td>${comment.commentTime}</td>
-	<tr>
-</c:forEach>
-</table>
-</div>
-</div>
-</div>
-
+	<footer class="text-center">
+		<a class="up-arrow" href="#" title="TO TOP"> <span
+			class="glyphicon glyphicon-chevron-up"></span>
+		</a><br> <br>
+		<p>&copy;Yunlu Zhou</p>
+	</footer>
 </body>
 </html>

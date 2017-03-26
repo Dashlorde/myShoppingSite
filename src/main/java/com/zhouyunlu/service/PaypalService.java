@@ -66,7 +66,7 @@ public class PaypalService {
 		PaymentDetailsType paymentDetails = new PaymentDetailsType();
 		String orderPrice = Float.toString(amount);
 
-		String returnURL = "http://localhost:8080/myShoppingSite/checkoutIndex.jsp";
+		String returnURL = "http://localhost:8080/myShoppingSite/index.jsp";
 		String cancelURL = "http://localhost:8080/myShoppingSite/index.jsp";
 		paymentDetails.setPaymentAction(PaymentActionCodeType.fromValue("Sale"));
 		CurrencyCodeType currencyCode = CurrencyCodeType.USD;

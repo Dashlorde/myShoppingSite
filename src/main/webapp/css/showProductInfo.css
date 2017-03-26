@@ -1,58 +1,13 @@
 @CHARSET "UTF-8";
-body{
-	background-color: #a3ced1;
+.productInfo {
+	background-color: white;
+	box-shadow: 3px 3px 3px #d7d9dd;
 }
 
-
-.info{
-	width: 100%;
-	padding:auto;
+body {
+	background-color: #edeff2
 }
 
-ul.info{
-	text-decoration:none;
-	width: 100%
-}
-
-.info li{
-	text-align:center;
-	font-family:Lucida Grande;
-	text-decoration:none;
-	list-style-type: none;
-	padding:10px 30px;
-	font-size:20px;
-}
-
-.info li.brief{
-	diplay: inline
-}
-
-.info a{
-	color: black;
-	display:block;
-	border-radius: 8px;
-	padding: 10px, 15px;
-	border: 2px solid black;
-	text-decoration: none;
-	margin-left:35%;
-	margin-right:35%;
-	font-size:15px;
-
-}
-
-.info a:hover{
-	background-color: black;
-	color:white;
-}
-
-
-
-#username{
+#username {
 	font-size: 12px;
 }
-
-td{
-	text-align:center;
-	font-family:Lucida Grande;
-}
-

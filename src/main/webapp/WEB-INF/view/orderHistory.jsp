@@ -6,14 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 <link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.css" />
 <link type="text/css" rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/order.css" />
-<link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/menu.css" />
+<link type="text/css" rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/contents.css" />
 <script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="<%=request.getContextPath()%>/css/bootstrap/js/bootstrap.min.js" >
 </script>
@@ -54,7 +52,7 @@
 				<td>${order.date}</td>
 				<td>$${order.price}</td>
 				<td>${order.status}</td>
-				<td><a href="orderDetail.htm?id=${order.orderId}">order
+				<td><a class="btn btn-primary" href="orderDetail.htm?id=${order.orderId}">order
 						detail</a></td>
 
 			</tr>

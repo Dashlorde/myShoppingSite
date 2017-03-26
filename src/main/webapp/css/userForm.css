@@ -1,13 +1,12 @@
 @CHARSET "UTF-8";
-body{
-	background-color: #90d2ed;
-}
+
 
 
 h2{
 	text-align: center;
 }
 
+.form{margin-top:60px}
 
 
 
@@ -24,16 +23,7 @@ h2{
 }
 
 
-a.actionChange{
-	display:block;
-	padding:10px;
-	background-color:black;
-	text-decoration: none;
-	text-align: center;
-	color: white;
-	border: 1px solid black;
-	border-radius:8px;
-}
+
 
 #submit{
 	diplay:block;
@@ -48,10 +38,7 @@ a.actionChange{
 	
 }
 
-#actionChange{
-	color:white;
-	font-size:20px;
-}
+
 
 input{
 	width: 80%;

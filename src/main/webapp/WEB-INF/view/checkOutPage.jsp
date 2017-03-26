@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,16 +16,16 @@
 </script>
 <style>
 .address{
-	position: absolute;
-	top: 55px;
-	width:80%;
+	margin-top:80px;
+	width:60%
 }
 </style>
 </head>
 <body>
-<jsp:include page="menu2.jsp"/>
 
-<div class="address">
+<jsp:include page="menu2.jsp"/>
+<main>
+<div class="container address">
 <div class="panel panel-default">
 <div class="panel-heading">
 		<h3 class="panel-title">
@@ -48,5 +48,12 @@
  	
  </div>
  </div>
+ </main>
+ <footer class="text-center">
+		<a class="up-arrow" href="#" title="TO TOP"> <span
+			class="glyphicon glyphicon-chevron-up"></span>
+		</a><br> <br>
+		<p>&copy;Yunlu Zhou</p>
+	</footer>
 </body>
 </html>
