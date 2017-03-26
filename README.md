@@ -1,8 +1,6 @@
 # myShoppingSite
 
-## A simple dynamic shopping site demo
-
-Demo website http://www.zhouyunlu.com
+A simple dynamic shopping site demo. Website: http://www.zhouyunlu.com
 
 
 It is a maven project, using springMVC and hibernate( Hibernate validator for property validation).  
@@ -19,7 +17,7 @@ In this shopping site, a user can be both seller and buyer.
 * Sellers can see all the order details of their products.
 * Sellers cannot see their own products from the shopping pages or add their products to cart.
 
----
+
 # Version
 ## IDE 
 Eclipse(Spring Tool Suite)
@@ -33,7 +31,7 @@ Tomcat8.0
 ### Database
 MySQL
 
----
+
 ## note 
 Database file is myShoppingSite_query.sql 
 Paypal service is deployed and can test through Paypal sandbox. 
