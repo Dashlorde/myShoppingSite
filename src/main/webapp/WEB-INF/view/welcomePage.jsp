@@ -164,9 +164,7 @@ $(document).ready(function () {
 
 					<div class="thumbnail">
 
-						<a
-							href="showProductInfo.htm?id=${product.productID }&action=showProductInfo"><img 
-							src="${product.imageName}" /></a>
+						<a href="showProductInfo.htm?id=${product.productID }&action=showProductInfo"><img src="${product.imageName}" /></a>
 						<div class="caption">
 							<p>
 
@@ -190,11 +188,9 @@ $(document).ready(function () {
 	</main>
 
 	<footer class="text-center">
-		<a class="up-arrow" href="#" title="TO TOP"> <span
-			class="glyphicon glyphicon-chevron-up"></span>
-		</a><br> <br>
+		<a class="up-arrow" href="#" title="TO TOP"> <span class="glyphicon glyphicon-chevron-up"></span></a><br> <br>
 		<p>&copy;Yunlu Zhou</p>
-	</footer>
+</footer>
 
 	<script
 		src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>

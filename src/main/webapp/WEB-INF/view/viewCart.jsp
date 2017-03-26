@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>view cart</title>
 <link rel="stylesheet"
@@ -16,19 +18,23 @@
 	src="<%=request.getContextPath()%>/css/bootstrap/js/bootstrap.min.js">
 	
 </script>
-<link type="text/css" rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/contents.css" />
+<!-- link type="text/css" rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/contents.css" /-->
 <link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/menu.css" />
 	
-	<style type="text/css">
-	table{
+<style type="text/css">
+body {
+	background-color: #edeff2
+}
+.container{
+	background-color:white;
+	margin-top:80px;
+}
+table{
 	border-collapse: collapse;
     width: 100%;
-   	position: absolute;
-   	top:55px;
    	z-index: -1;
-   
 }
 
 th, td{
@@ -44,6 +50,41 @@ td.pic{
 	width:40%;
 }
 
+h2.cartHead{
+	position:absolute;
+	top:55px;
+	font-family:Lucida Grande;
+}
+
+div.checkout{
+	position:fixed;
+	bottom:20px;
+	
+}
+
+a.checkout{
+	font-family:Lucida Grande;
+	text-decoration:none;
+	display:block;
+	font-size:16px;
+	padding: 10px 20px;
+	border: 1px solid #4CAF50;
+	border-radius: 8px;
+	
+	
+}
+
+div.total{
+	position:fixed;
+	bottom:80px;
+}
+
+#total{
+	font-size: 20px;
+	font-family:Lucida Grande;
+	
+}
+
 	
 	</style>
 </head>
@@ -57,7 +98,7 @@ td.pic{
 		</c:otherwise>
 	</c:choose>
 	<main> 
-	
+	<div class="container">
 	<c:choose>
 		<c:when test="${!empty sessionScope.cart}">
 
@@ -68,8 +109,8 @@ td.pic{
 				%>
 				<c:forEach var="cproduct" items="${sessionScope.cart}">
 					<tr>
-						<td class="pic"><img src="${cproduct.product.imageName}"
-							width="30%" /></td>
+						<td class="pic"><a href="showProductInfo.htm?id=${cproduct.product.productID }&action=showProductInfo"><img src="${cproduct.product.imageName}"
+							width="30%" /></a></td>
 						<td>${cproduct.product.productName}</td>
 						<td>${cproduct.quantity}
 							<form 
@@ -108,9 +149,8 @@ td.pic{
 	<div class="checkout">
 		<a href="checkout.htm?action=checkout" class="checkout"> Checkout</a>
 	</div>
+</div>
+</main>
 
-	</main>
-
-	
 </body>
 </html>

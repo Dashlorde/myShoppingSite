@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add Product Form</title>
 
@@ -19,6 +21,10 @@ h2 { text-align: center; }
 
 #form { margin-top: 80px;}
 
+body{background-color: white}
+
+.container{background-color:#f9f9e0}
+
 </style>
 </head>
 <body>
@@ -26,7 +32,7 @@ h2 { text-align: center; }
 
 <main>
 	
-	<div class="container well" id="form">
+	<div class="container" id="form">
 	<div class="row">
 	<h2>Add a Product Here</h2>
 	<form:form action="addProduct.htm" class="form-horizontal" commandName="product" method="post" enctype="multipart/form-data" >
@@ -84,5 +90,9 @@ h2 { text-align: center; }
 	</div>
 	</div>
 </main>
+<footer class="text-center">
+		<a class="up-arrow" href="#" title="TO TOP"> <span class="glyphicon glyphicon-chevron-up"></span></a><br> <br>
+		<p>&copy;Yunlu Zhou</p>
+</footer>	
 </body>
 </html>

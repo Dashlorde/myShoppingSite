@@ -1,11 +1,13 @@
 @CHARSET "UTF-8";
 
+body {
+	background-color: #edeff2
+}
 
 table{
 	border-collapse: collapse;
-    width: 100%;
-   	position: absolute;
-   	top:55px;
+    width: 50%;
+   	margin-top:50px;
    	z-index: -1;
    
 }
@@ -25,13 +27,6 @@ td.pic{
 
 th{font-size:18px}
 
-
-td a{
-	color: black;
-	text-align:center;
-	text-decoration: none;
-	display: block;
-}
 
 h2.cartHead{
 	position:absolute;

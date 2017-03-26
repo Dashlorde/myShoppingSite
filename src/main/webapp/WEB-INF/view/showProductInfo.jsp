@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Product Informatino</title>
 
@@ -21,6 +23,8 @@
 </script>
 <style>
 @CHARSET "UTF-8";
+.container-fluid{margin-right:20px}
+
 
 .productInfo {
 	background-color: white;
@@ -71,7 +75,7 @@ body {
 
 	<main>
 
-	<div class="container row">
+	<div class="container-fluid row">
 
 		<div class="col-md-2 ">
 			<div class="sidebar-nav-fixed affix" id="sidebar">
@@ -89,7 +93,7 @@ body {
 		</div>
 
 		<div
-			class="jumbotron col-sm-offset-2 col-md-10 col-md-offset-2 productInfo">
+			class="jumbotron col-sm-offset-2 col-md-10 col-md-offset-2  productInfo">
 			<div class="container" id="info">
 				<div class="col-md-5 left">
 					<img src="${requestScope.product.imageName}" width="100%" />

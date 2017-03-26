@@ -26,20 +26,23 @@ public class ManageCommentController {
 	@Autowired
 	ProductDao productDao=new ProductDao();
 	
-	@RequestMapping(value="/buyerComment.htm", method=RequestMethod.GET)
-	protected String getCommentPage(HttpServletRequest request) throws shoppingSiteException{
+	/*@RequestMapping(value="/buyerComment.htm", method=RequestMethod.GET)
+	protected void getCommentPage(HttpServletRequest request) throws shoppingSiteException{
 		HttpSession session=request.getSession();
 		String idString=request.getParameter("id").toString();
 		long id=Long.parseLong(idString);
 		session.setAttribute("id", id);
 		
-		return "addCommentForm";
+		//return "addCommentForm";
 	}
+	*/
 	
 	@RequestMapping(value="/buyerComment.htm", method=RequestMethod.POST)
 	protected String addComment(HttpServletRequest request) throws shoppingSiteException{
 		HttpSession session=request.getSession();
-		long id=(long) session.getAttribute("id");
+		
+		String idString=request.getParameter("id").toString();
+		long id=Long.parseLong(idString);
 		Product product=productDao.getProductByID(id);
 		
 		User user=(User) session.getAttribute("user");

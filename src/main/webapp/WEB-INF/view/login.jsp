@@ -6,6 +6,8 @@
 
 <html>
 <head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>userLogin</title>
 
@@ -17,7 +19,9 @@
 </script>
 
 <style>
-h2 { text-align: center }
+h2 { text-align: center; color:#d9d9d9 }
+
+body{background-color:black}
 
 .form { margin-top:60px }
 </style>

@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>modify product</title>
 
@@ -16,10 +18,8 @@
 </script>
 
 <style>
-div.info{
-	margin-top:50px;
-	width:50%
-}
+
+.container{margin-top:80px; background-color:#f9f9e0}
 
 ul.info{
 	text-decoration:none;
@@ -86,7 +86,8 @@ li.info a:hover{
 		</c:otherwise>
 	</c:choose>
 
-<div class="container well info">
+<main>
+<div class="container info">
 	<form:form action="modifyProduct.htm?id=${sessionScope.product.productID}&action=doModify" commandName="product" method="post" enctype="multipart/form-data" >
 	<ul class="info">
 		<li class="info"><img src="${sessionScope.product.imageName}" width="40%"/><input type="file" name="image" size="50" id="file"/>
@@ -102,6 +103,13 @@ li.info a:hover{
 	
 	</form:form>	
 </div>
+</main>
 
+<footer class="text-center">
+		<a class="up-arrow" href="#" title="TO TOP"> <span class="glyphicon glyphicon-chevron-up"></span></a><br> <br>
+		<p>&copy;Yunlu Zhou</p>
+</footer>	
 </body>
+
+
 </html>

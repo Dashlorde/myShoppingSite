@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add User Form</title>
  
@@ -15,7 +17,8 @@
 </script>
 
 <style type="text/css">
-h2 { text-align: center; }
+body{background-color:black}
+h2 { text-align: center; color:#d9d9d9 }
 
 .form {margin-top:60px}
 
