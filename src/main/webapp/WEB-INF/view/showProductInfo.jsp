@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Product Informatino</title>
+<title>Product Information</title>
 
 <link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.css" />
@@ -22,10 +22,10 @@
 	
 </script>
 <style>
-@CHARSET "UTF-8";
-.container-fluid{margin-right:20px}
 
+.container-fluid{margin-right:20px;}
 
+.info{margin-bottom: 20px}
 .productInfo {
 	background-color: white;
 	box-shadow: 3px 3px 3px #d7d9dd;
@@ -34,6 +34,11 @@
 
 body {
 	background-color: #edeff2
+}
+
+.panel-heading, h3{font-family:Papyrus}
+.panel-body{
+	font-family:Lucida Grande;
 }
 
 .left {
@@ -45,18 +50,13 @@ body {
 	border-bottom: solid 1px #d7d9dd;
 }
 
-#info {
-	margin-top: 50px;
-	margin-bottom: 50px;
+
+
+@media only screen and (max-width: 988px) {
+  .sidebar-offcanvas {
+   display:none;
 }
-
-#sidebar {
-	background-color: #f5f5f5;
-	margin-top: 80px;
-	width: 13%
 }
-
-
 </style>
 
 </head>
@@ -93,15 +93,15 @@ body {
 		</div>
 
 		<div
-			class="jumbotron col-sm-offset-2 col-md-10 col-md-offset-2  productInfo">
-			<div class="container" id="info">
-				<div class="col-md-5 left">
-					<img src="${requestScope.product.imageName}" width="100%" />
+			class="jumbotron col-xs-offset-1 col-md-10 col-md-offset-0  productInfo">
+			<div class="container-fluid info">
+				<div class="col-md-6  left">
+					<img src="${requestScope.product.imageName}" width="90%" />
 				</div>
-				<div class="col-md-5 col-md-offset-1">
+				<div class="col-md-6 ">
 					<div class="div-divider">
-						<strong><span style="color: #b24276; font-size: 20px">${requestScope.product.productName}</span></strong> sell by
-						${requestScope.product.username}<br/>
+						<strong><span style="color: #b24276; font-size: 20px">${requestScope.product.productName}</span></strong> <span style="font-family:Papyrus">sell by
+						${requestScope.product.username}</span><br/>
 						$${requestScope.product.productPrice}<br/><br/>
 						<form class="form-inline"
 							action="addtocart.htm?id=${product.productID}" method="POST">

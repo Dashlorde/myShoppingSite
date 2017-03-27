@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
+import org.hibernate.type.TextType;
 import org.springframework.stereotype.Repository;
 
 import com.zhouyunlu.Exception.shoppingSiteException;
@@ -31,6 +32,7 @@ public class ProductDao extends DAO{
 			getSession().save(product);
 			
 			commit();
+			
 			return product;
 		} catch (HibernateException e) {
             rollback();
@@ -45,6 +47,7 @@ public class ProductDao extends DAO{
 			begin();
 			getSession().delete(product);
 			commit();
+			
 		} catch(HibernateException e){
 			rollback();
 			throw new shoppingSiteException("could not delete product: "+e.getMessage());
@@ -59,6 +62,7 @@ public class ProductDao extends DAO{
 			q.setLong("productID", product.getProductID());
 			q.executeUpdate();
 			commit();
+			
 		}catch(HibernateException e){
 			rollback();
 			throw new shoppingSiteException("could not update product description"+ e.getMessage());
@@ -74,6 +78,7 @@ public class ProductDao extends DAO{
 			q.setLong("productID", product.getProductID());
 			q.executeUpdate();
 			commit();
+			
 		}catch(HibernateException e){
 			rollback();
 			throw new shoppingSiteException("could not update product stock"+ e.getMessage());
@@ -88,6 +93,7 @@ public class ProductDao extends DAO{
 			q.setLong("productID", product.getProductID());
 			q.executeUpdate();
 			commit();
+			
 		}catch(HibernateException e){
 			rollback();
 			throw new shoppingSiteException("could not update product description"+ e.getMessage());

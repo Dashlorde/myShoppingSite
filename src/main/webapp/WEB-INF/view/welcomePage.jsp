@@ -10,36 +10,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>welcome to my shopping website</title>
 
-<link type="text/css" rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.css" />
-<link type="text/css" rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/menu.css" />
-<script
-	src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-<script
-	src="<%=request.getContextPath()%>/css/bootstrap/js/bootstrap.min.js">
-	
-</script>
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.css" />
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/menu.css" />
+<script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="<%=request.getContextPath()%>/css/masonry.pkgd.min.js" ></script>
+<script src="<%=request.getContextPath()%>/css/bootstrap/js/bootstrap.min.js"></script>
 
 
 <style type="text/css">
-body {
-	background-color: #edeff2
-}
-
-body,html,.row-offcanvas {
-  height:100%;
-}
-#myNavbar li a{
-	font-size:16px;
-}
+body { background-color: #edeff2;}
 
 .product {
 	color: black;
 	text-decoration: none;
 }
-
-
 
 .div_divider {
 	border-bottom: solid 1px #404040;
@@ -47,14 +31,18 @@ body,html,.row-offcanvas {
 
 .demo {
 	margin-top: 20px;
-	
+	font-family:Papyrus;
+}
+
+.thumbnail:hover .image {
+  opacity: 0.8;
 }
 
 .thumbnail {
 	padding: 10px;
 	border: none;
 	border-radius: 10px;
-	margin: 20px;
+	
 	box-shadow: 3px 3px 3px #d7d9dd;
 }
 
@@ -82,7 +70,6 @@ body,html,.row-offcanvas {
 	display:block;
 	color: #000;
 	padding: 8px 16px;
-	text-decoration:none;
 	font-family:Lucida Grande;
 }
 
@@ -91,39 +78,21 @@ body,html,.row-offcanvas {
     color: white;
 }
 
-@media screen and (max-width: 768px) {
-  .row-offcanvas {
-    position: relative;
-    -webkit-transition: all 0.25s ease-out;
-    -moz-transition: all 0.25s ease-out;
-    transition: all 0.25s ease-out;
-    width:calc(100% + 220px);
-  }
-    
-  .row-offcanvas-left
-  {
-    left: -220px;
-  }
+.customer{font-family:Papyrus;}
 
-  .row-offcanvas-left.active {
-    left: 0;
-  }
-
+@media only screen and (max-width: 988px) {
   .sidebar-offcanvas {
-    position: absolute;
-    top: 0;
-  }
+   display:none;
+}
 }
 </style>
-<script>
-$(document).ready(function () {
-	  $('[data-toggle="offcanvas"]').click(function () {
-	    $('.row-offcanvas').toggleClass('active')
-	  });
-	});
-</script>
+
 </head>
 <body>
+
+<script>
+
+</script>
 
 	<c:choose>
 		<c:when test="${not empty user.name }">
@@ -160,11 +129,11 @@ $(document).ready(function () {
 
 			<c:forEach var="product" items="${requestScope.productList}">
 				<div
-					class="col-xs-offset-0 col-xs-12 col-sm-offset-0 col-sm-6 col-md-6 item">
+					class="col-xs-offset-0 col-xs-12 col-sm-offset-0 col-sm-6 col-md-6 col-lg-4 col-lg-offset-0 col-xlg-3 item">
 
 					<div class="thumbnail">
 
-						<a href="showProductInfo.htm?id=${product.productID }&action=showProductInfo"><img src="${product.imageName}" /></a>
+						<a href="showProductInfo.htm?id=${product.productID }&action=showProductInfo"><img src="${product.imageName}" class="image"/></a>
 						<div class="caption">
 							<p>
 
@@ -192,17 +161,26 @@ $(document).ready(function () {
 		<p>&copy;Yunlu Zhou</p>
 </footer>
 
-	<script
-		src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 	<script type="text/javascript">
-		$(function() {
-			$('.grid').isotope({
+	
+	$(function(){
+		$('.thumbnail img').load(function(){   
+	        $('.grid').masonry({   
+	            itemSelector: '.item',  
+	            layoutMode : 'fitRows'             
+	        });       
+	    });  
+	});
+	$(function() {
+			$('.grid').masonry({
 				// options
 				itemSelector : '.item',
 				layoutMode : 'fitRows'
+				 
 			});
 
 		});
+	
 	</script>
 </body>
 </html>

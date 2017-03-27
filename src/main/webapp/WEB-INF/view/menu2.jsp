@@ -10,7 +10,7 @@
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 	</button>
-	<a href="#" class="navbar-brand">Welcome ${sessionScope.username}</a>
+	<a href="#" class="navbar-brand customer">Welcome ${sessionScope.username}</a>
  </div>
  
  <div class="collapse navbar-collapse" id="myNavbar">

@@ -5,18 +5,19 @@
 }
 
 .navbar-brand{
-	font-family:Lucida Grande;
+	font-family:Papyrus;
 	text-transform: uppercase;
 }
 
 #myNavbar li a{
 	font-size:16px;
+	font-family:Lucida Grande;
 }
 
 #sidebar {
   background-color:#f5f5f5;
-  margin-top:80px;
-  width: 20%
+  margin-top:90px;
+  width: 13%
 }
 
 #sidebar li a{
@@ -54,4 +55,7 @@
     position: absolute;
     top: 0;
   }
-}
+  
+ 
+
+

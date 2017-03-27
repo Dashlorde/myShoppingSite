@@ -28,19 +28,6 @@ body {
 	background-color:white;
 	padding:20px;
 }
-table{
-	border-collapse: collapse;
-   	z-index: -1;
-   	width:100%
-}
-
-th, td{
-	height:60px;
-	padding: 10px;
-	text-align:center;
-	border-bottom: 1px solid  #d7d9dd;
-	font-family:Lucida Grande;
-}
 
 td.pic{
 	text-align:center;
@@ -49,12 +36,18 @@ td.pic{
 
 th{font-size:18px}
 
+@media only screen and (max-width:768px){
+.colhidden{display:none}
+
+}
+
+
 </style>
 </head>
 <body>
 	<jsp:include page="menu2.jsp" />
 	<main>
-	<div class="container order">
+	<div class="container order table-responsive">
 	
 	<div class="sort">
 		<form action="buyerSortOrder.htm" method="get">
@@ -67,13 +60,10 @@ th{font-size:18px}
 			</select> <input type="submit" value="sort" class="btn btn-primary btn-sm">
 		</form>
 	</div>
-	<table>
+	<table class="table table-striped">
 		<tr>
 			<th>order id</th>
-			<th>address</th>
-			<th>email</th>
-			<th>name</th>
-			<th>phone</th>
+			<th class="colhidden">email</th>
 			<th>date</th>
 			<th>price</th>
 			<th>status</th>
@@ -82,10 +72,7 @@ th{font-size:18px}
 		<c:forEach var="order" items="${requestScope.orderList}">
 			<tr>
 				<td>${order.orderId}</td>
-				<td>${order.address}</td>
-				<td>${order.email}</td>
-				<td>${order.firstName}${order.lastName}</td>
-				<td>${order.phone}</td>
+				<td class="colhidden">${order.email}</td>
 				<td>${order.date}</td>
 				<td>$${order.price}</td>
 				<td>${order.status}</td>

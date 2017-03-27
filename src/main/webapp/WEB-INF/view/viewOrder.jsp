@@ -48,7 +48,7 @@ th{font-size:18px}
 	<jsp:include page="menu2.jsp" />
 	
 	<main>
-	<div class="container order">
+	<div class="container order table-responsive">
 	<div class="sort">
 		<form action="sellerSortOrder.htm" method="get">
 		Sorted Order BY:
@@ -61,7 +61,7 @@ th{font-size:18px}
 	</div>
 	
 	
-	<table>
+	<table class="table">
 		<tr>
 			<th>order id</th>
 			<th>address</th>

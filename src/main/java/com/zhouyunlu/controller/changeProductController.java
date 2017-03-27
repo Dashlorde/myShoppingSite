@@ -17,6 +17,16 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.amazonaws.AmazonClientException;
+import com.amazonaws.AmazonServiceException;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.auth.profile.ProfileCredentialsProvider;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.PutObjectRequest;
+
 import com.zhouyunlu.DAO.ProductDao;
 import com.zhouyunlu.DAO.UserDAO;
 import com.zhouyunlu.Exception.shoppingSiteException;
@@ -91,6 +101,14 @@ public class changeProductController {
 		String description = request.getParameter("description").toString();
 		String stockString = request.getParameter("stock").toString();
 		int stock = 0;
+		
+		//insert your own aws id and key 
+		AWSCredentials credentials = new BasicAWSCredentials("id", "key");
+				
+		AmazonS3 s3client = new AmazonS3Client(credentials);
+		//this is your own S3 bucket
+		String bucketName = "elasticbeanstalk-us-west-2-481664616485";
+		String awsPath="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-481664616485/img";
 
 		try {
 			String imagePath = null;
@@ -109,15 +127,20 @@ public class changeProductController {
 				fileName = System.currentTimeMillis() + image.getOriginalFilename();
 				File file = new File(imagePath + fileName);
 
-				if (!file.exists()) {
+				/*if (!file.exists()) {
 					file.mkdir();
 				}
+				*/
 				context = request.getServletContext().getContextPath();
+				image.transferTo(file);
+				s3client.putObject(new PutObjectRequest(bucketName, "img/"+fileName, file).withCannedAcl(CannedAccessControlList.PublicRead));
 
 				System.out.println("context is: " + context + "     file name is: " + fileName);
-				image.transferTo(file);
-				System.out.println(file.getAbsolutePath());
-				productDao.modifyImage(context + "/" + fileName, product);
+				
+				//System.out.println(file.getAbsolutePath());
+				
+				//productDao.modifyImage(context + "/" + fileName, product);
+				productDao.modifyImage(awsPath + "/" + fileName, product);
 			}
 			
 			//check stock string has input number
@@ -132,7 +155,24 @@ public class changeProductController {
 			System.out.println(e.getMessage());
 		} catch (HibernateException e) {
 			System.out.println(e.getMessage());
-		}
+		} catch (AmazonServiceException ase) {
+            System.out.println("Caught an AmazonServiceException, which " +
+                    "means your request made it " +
+                    "to Amazon S3, but was rejected with an error response" +
+                    " for some reason.");
+            System.out.println("Error Message:    " + ase.getMessage());
+            System.out.println("HTTP Status Code: " + ase.getStatusCode());
+            System.out.println("AWS Error Code:   " + ase.getErrorCode());
+            System.out.println("Error Type:       " + ase.getErrorType());
+            System.out.println("Request ID:       " + ase.getRequestId());
+        } catch (AmazonClientException ace) {
+            System.out.println("Caught an AmazonClientException, which " +
+                    "means the client encountered " +
+                    "an internal error while trying to " +
+                    "communicate with S3, " +
+                    "such as not being able to access the network.");
+            System.out.println("Error Message: " + ace.getMessage());
+        }
 
 		return "redirect:/modify.htm?id=" + product.getProductID();
 	}

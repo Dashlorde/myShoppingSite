@@ -66,10 +66,10 @@ public class PaypalService {
 		PaymentDetailsType paymentDetails = new PaymentDetailsType();
 		String orderPrice = Float.toString(amount);
 
-		//String returnURL = "http://www.zhouyunlu.com/checkOutSuccess.jsp";
-		//String cancelURL = "http://www.zhouyunlu.com/index.jsp";
-		String returnURL = "http://localhost:8080/myShoppingSite/checkOutSuccess.jsp";
-		String cancelURL = "http://localhost:8080/myShoppingSite/index.jsp";
+		String returnURL = "http://www.zhouyunlu.com/checkOutSuccess.jsp";
+		String cancelURL = "http://www.zhouyunlu.com/index.jsp";
+		//String returnURL = "http://localhost:8080/myShoppingSite/checkOutSuccess.jsp";
+		//String cancelURL = "http://localhost:8080/myShoppingSite/index.jsp";
 		
 		paymentDetails.setPaymentAction(PaymentActionCodeType.fromValue("Sale"));
 		CurrencyCodeType currencyCode = CurrencyCodeType.USD;

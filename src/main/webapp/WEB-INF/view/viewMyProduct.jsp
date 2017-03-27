@@ -40,6 +40,11 @@ th, td{
 	font-family:Lucida Grande;
 }
 
+@media only screen and (max-width:768px){
+.colhidden{display:none}
+
+}
+
 
 th{font-size:18px}
 </style>
@@ -55,12 +60,12 @@ th{font-size:18px}
 		</c:otherwise>
 	</c:choose>
 <main>
-<div class="container">
-	<table>
+<div class="container table-responsive">
+	<table class="table">
 		<tr>
-			<th>Picture</th>
+			<th class="colhidden">Picture</th>
 			<th>Name</th>
-			<th>Description</th>
+			<th class="colhidden">Description</th>
 			<th>Price</th>
 			<th>Stock</th>
 			<th></th>
@@ -68,9 +73,9 @@ th{font-size:18px}
 		</tr>
 		<c:forEach var="product" items="${requestScope.productList}">
 			<tr>
-				<td class="pic"><img src="${product.imageName}" width="30%" /></td>
+				<td class="pic colhidden"><img src="${product.imageName}" width="200px" /></td>
 				<td>${product.productName}</td>
-				<td>${product.description}</td>
+				<td class="colhidden">${product.description}</td>
 				<td>$${product.productPrice}</td>
 				<td>${product.stock}</td>
 				<td><a
