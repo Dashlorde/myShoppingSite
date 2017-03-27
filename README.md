@@ -3,7 +3,7 @@
 A simple dynamic shopping site demo. Deployed with AWS services. DEMO website: http://www.zhouyunlu.com
 
 
-It is a maven project, using springMVC and hibernate( Hibernate validator for property validation). Masonry plugin for layout optimize.
+It is a maven project, using springMVC and hibernate( Hibernate validator for property validation). Masonry plugin for layout optimizing.
 In this shopping site, a user can be both seller and buyer. 
 ## For Buyer:
 * Buyers can add product to cart and set the product quantity.
