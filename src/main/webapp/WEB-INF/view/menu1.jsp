@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<nav class="navbar navbar-inverse navbar-fixed-top" data-spy="affix"
-	data-offset-top="30">
+
+<nav id="nav" class="navbar navbar-inverse navbar-static" data-spy="affix" data-offset-top="800">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -25,7 +25,7 @@
 						</div>
 					</form></li>
 				<li><a href="showAllProducts.htm">Home</a></li>
-				<li><a href="viewCart.htm?action=viewcart">view cart</a></li>
+				<li><a href="viewCart.htm?action=viewcart">Cart</a></li>
 				<li class=" dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span>Login<span
 						class="caret"></span></a>
@@ -45,7 +45,7 @@
 							</div>
 						</form:form>
 					</div></li>
-				<li><a href="adduser.htm">Register User</a></li>
+				<li><a href="adduser.htm">Register</a></li>
 			</ul>
 		</div>
 	</div>

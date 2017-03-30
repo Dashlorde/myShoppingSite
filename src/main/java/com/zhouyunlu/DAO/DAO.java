@@ -37,6 +37,7 @@ public class DAO {
 	
 	protected void commit(){
 		getSession().getTransaction().commit();
+		
 	}
 	
 	protected void rollback(){

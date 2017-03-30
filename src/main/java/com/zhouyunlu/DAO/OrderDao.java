@@ -138,7 +138,23 @@ public class OrderDao extends DAO{
 			return orderList;
 		} catch(HibernateException e){
 			rollback();
-			throw new shoppingSiteException("could not list all the order in 1 year"+ e.getMessage());
+			throw new shoppingSiteException("could not list all the order in 1 year: "+ e.getMessage());
+		}
+	}
+	
+	public List<Order> getSomeOrders(Long id) throws shoppingSiteException{
+		List<Order> orderList=null;
+		try{
+			begin();
+			Query q=getSession().createQuery("from Order where buyerId= :userId  order by date DESC");
+			q.setLong("userId", id);
+			q.setMaxResults(3);
+			orderList=q.list();
+			commit();
+			return orderList;
+		} catch(HibernateException e){
+			rollback();
+			throw new shoppingSiteException("could not list some orders: "+ e.getMessage());
 		}
 	}
 	

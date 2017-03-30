@@ -69,7 +69,7 @@ th{font-size:18px}
 			<th>Price</th>
 			<th>Stock</th>
 			<th></th>
-			<th></th>
+			<th><a href="addProduct.htm" class="btn btn-danger"><span class="glyphicon glyphicon-plus"></span> new</a></th>
 		</tr>
 		<c:forEach var="product" items="${requestScope.productList}">
 			<tr>

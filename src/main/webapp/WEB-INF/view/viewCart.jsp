@@ -84,7 +84,10 @@ div.total{
 	font-family:Lucida Grande;
 	
 }
+@media only screen and (max-width:768px){
+.colhidden{display:none}
 
+}
 	
 	</style>
 </head>
@@ -98,7 +101,7 @@ div.total{
 		</c:otherwise>
 	</c:choose>
 	<main> 
-	<div class="container">
+	<div class="container table-responsive">
 	<c:choose>
 		<c:when test="${!empty sessionScope.cart}">
 
@@ -109,22 +112,19 @@ div.total{
 				%>
 				<c:forEach var="cproduct" items="${sessionScope.cart}">
 					<tr>
-						<td class="pic"><a href="showProductInfo.htm?id=${cproduct.product.productID }&action=showProductInfo"><img src="${cproduct.product.imageName}"
+						<td class="pic colhidden"><a href="showProductInfo.htm?id=${cproduct.product.productID }&action=showProductInfo"><img src="${cproduct.product.imageName}"
 							width="30%" /></a></td>
 						<td>${cproduct.product.productName}</td>
 						<td>${cproduct.quantity}
-							<form 
-								action="changeQuantity.htm?id=${cproduct.product.productID}"
-								method="post">
-								<input type="number" name="quantity" min="1"> <input
-									type="submit" value="change" class="btn btn-default">
+							<form action="changeQuantity.htm?id=${cproduct.product.productID}" method="post">
+								<input type="number" name="quantity" min="1"> 
+								<input type="submit" value="change" class="btn btn-default">
 								<div style="color: red">${requestScope.quantityError}</div>
 							</form>
 						</td>
 						<td>$${cproduct.product.productPrice}</td>
 						<td><a
-							href="deleteCart.htm?id=${cproduct.product.productID}&action=deleteCart"><button
-									class="btn btn-danger">
+							href="deleteCart.htm?id=${cproduct.product.productID}&action=deleteCart"><button class="btn btn-danger">
 									<span class="glyphicon glyphicon-trash"></span>
 								</button></a></td>
 

@@ -25,6 +25,40 @@ public class AddressDao extends DAO{
 		}	
 	}
 	
+	public Address createPhone(long userId, String phone) throws shoppingSiteException{
+		try{
+			begin();
+			Address uAddress=new Address();
+			uAddress.setId(userId);
+			uAddress.setPhone(phone);
+			getSession().save(uAddress);
+			commit();
+			
+			return uAddress;
+		}catch (HibernateException e) {
+            rollback();
+            throw new shoppingSiteException("Exception while creating address phone: "+e.getMessage());
+		}	
+	}
+	
+	public Address createInfo(long userId, String address) throws shoppingSiteException{
+		try{
+			begin();
+			Address uAddress=new Address();
+			uAddress.setAddress(address);
+			uAddress.setId(userId);
+			getSession().save(uAddress);
+			commit();
+			
+			return uAddress;
+		}catch (HibernateException e) {
+            rollback();
+            throw new shoppingSiteException("Exception while creating address Info: "+e.getMessage());
+		}	
+	}
+	
+	
+	
 	public void editAddress(String address, String phone, Address uAddress) throws shoppingSiteException{
 		try{
 			begin();
@@ -37,6 +71,34 @@ public class AddressDao extends DAO{
 		} catch(HibernateException e){
 			rollback();
 			throw new shoppingSiteException("could not update user address"+ e.getMessage());
+		}
+	}
+	
+	public void editPhone(String phone, Address uAddress) throws shoppingSiteException{
+		try{
+			begin();
+			Query q=getSession().createQuery("update Address set phone= :phone where id= :userId");
+			q.setString("phone", phone);
+			q.setLong("userId", uAddress.getId());
+			q.executeUpdate();
+			commit();
+		} catch(HibernateException e){
+			rollback();
+			throw new shoppingSiteException("could not update user phone"+ e.getMessage());
+		}
+	}
+	
+	public void editAddressInfo(String address, Address uAddress) throws shoppingSiteException{
+		try{
+			begin();
+			Query q=getSession().createQuery("update Address set address= :address where id= :userId");
+			q.setString("address", address);			
+			q.setLong("userId", uAddress.getId());
+			q.executeUpdate();
+			commit();
+		} catch(HibernateException e){
+			rollback();
+			throw new shoppingSiteException("could not update user address information"+ e.getMessage());
 		}
 	}
 	

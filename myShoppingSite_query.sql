@@ -47,6 +47,7 @@ CREATE DEFINER = CURRENT_USER TRIGGER `myShoppingSite`.`productTable_AFTER_DELET
 BEGIN
 SET SQL_SAFE_UPDATES = 0;
 delete from Order_item where item not in (select productID from productTable);
+delete from wishlist where product_id not in (select productID from productTable);
 END$$
 DELIMITER ;
 

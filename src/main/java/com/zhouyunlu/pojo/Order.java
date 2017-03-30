@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+
 @Entity
 @Table(name="orderTable")
 public class Order {
@@ -44,6 +46,7 @@ public class Order {
 	private String email;
 	
 	@Column(name="date")
+	@Type(type="date")
 	private Date date;
 	
 	@Column(name="status")

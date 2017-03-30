@@ -19,9 +19,9 @@
 </script>
 
 <style>
-h2 { text-align: center; color:#d9d9d9 }
+h2 { text-align: center;}
 
-body{background-color:black}
+body{background-image:url('img/star.jpg'); color:#d9d9d9}
 
 .form { margin-top:60px }
 </style>
@@ -35,7 +35,7 @@ body{background-color:black}
 <h2>User Log In</h2>
 </div>
 
-<div class="container well">
+<div class="container">
 <div class="row">
 <form:form class="form-horizontal" action="login.htm" commandName="user" method="post" id="form">
  <div class="form-group">
@@ -74,10 +74,5 @@ body{background-color:black}
 </div>
 
 </main>
-
-<footer class="text-center">
-	<a class="up-arrow" href="#" title="TO TOP"> <span class="glyphicon glyphicon-chevron-up"></span></a><br> <br>
-	<p>&copy;Yunlu Zhou</p>
-</footer>
 </body>
 </html>

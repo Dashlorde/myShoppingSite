@@ -2,6 +2,7 @@ package com.zhouyunlu.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -48,7 +49,7 @@ public class searchProductController {
 		
 		try{
 			for(Product p: allProducts){
-				if(p.getProductName().contains(key)){
+				if(Pattern.compile(Pattern.quote(key), Pattern.CASE_INSENSITIVE).matcher(p.getProductName()).find()){
 					
 					System.out.println("key is "+key+" -------------- product name is "+p.getProductName());
 					productList.add(p);

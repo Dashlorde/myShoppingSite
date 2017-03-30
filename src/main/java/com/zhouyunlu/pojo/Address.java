@@ -21,12 +21,13 @@ public class Address {
 	private long id;
 	
 	//check phone string is number and has 10 digits
+	@NotNull(message="please type a phone number")
 	@Pattern(regexp="[\\d]{10}", message="invalid phone number")
 	@Column(name="phone")
 	private String phone;
 	
-	@NotNull(message="address should not be null")
 	@Size(min=1, message="please insert at least 1 character")
+	@NotNull(message="address should not be null")
 	@Column(name="address")
 	private String address;
 	

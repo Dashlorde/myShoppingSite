@@ -65,8 +65,7 @@
                                             <form action="buyerComment.htm?id=${product.key.productID}" method="post" >
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                    <h4 class="modal-title" id="myModalLabel">add Comment
-                                                    </h4>
+                                                    <h4 class="modal-title" id="myModalLabel">add Comment</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                 	<textarea name="comment" class="form-control" id="exampleTextarea" rows="3"></textarea>

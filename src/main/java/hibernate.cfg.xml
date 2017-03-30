@@ -5,14 +5,14 @@
 	<session-factory>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		
-		<!-- insert your AWS RDS connection below -->
+		<!-- insert your AWS RDS connection below>
 		<property name="hibernate.connection.url">jdbc:mysql://aah5qkgt997vlg.ccxaerxt39bn.us-west-2.rds.amazonaws.com:3306/myShoppingSite</property>
-		<property name="hibernate.connection.username">username</property>
-		<property name="hibernate.connection.password">password</property>
-		
-		<!-->property name="hibernate.connection.url">jdbc:mysql://localhost:3306/myShoppingSite</property>
-		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.username">dashlorde</property>
 		<property name="hibernate.connection.password"></property-->
+		
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/myShoppingSite</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password"></property>
 
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
@@ -25,6 +25,7 @@
 		<mapping class="com.zhouyunlu.pojo.Order"/>
 		<mapping class="com.zhouyunlu.pojo.Item"/>
 		<mapping class="com.zhouyunlu.pojo.Comment"/>
+		<mapping class="com.zhouyunlu.pojo.WishList"/>
 
 	</session-factory>
 </hibernate-configuration>

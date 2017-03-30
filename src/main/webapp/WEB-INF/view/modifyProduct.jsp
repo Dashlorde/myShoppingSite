@@ -19,38 +19,11 @@
 
 <style>
 
-.container{margin-top:80px; background-color:#f9f9e0}
+.container{margin-top:80px; background-color:beige}
 
-ul.info{
-	text-decoration:none;
-	width: 100%
-}
-
-li.info{
-	text-align:left;
-	font-family:Lucida Grande;
-	text-decoration:none;
-	list-style-type: none;
-	padding:10px 30px;
-	font-size:20px;
-}
-
-li.info a{
-	color: black;
-	display:block;
-	border-radius: 8px;
-	padding: 10px, 15px;
-	border: 2px solid black;
-	text-decoration: none;
-	margin-left:35%;
-	margin-right:35%;
-	font-size:15px;
-
-}
-
-li.info a:hover{
-	background-color: black;
-	color:white;
+.info{
+	padding: 40px;
+	font-size: 16px;
 }
 
 #submit{
@@ -66,10 +39,9 @@ li.info a:hover{
 	
 }
 
-#textarea{
-	width: 50%;
-	height: 50px;
-
+label {
+        float: left;
+        width: 175px;
 }
 
 
@@ -87,21 +59,26 @@ li.info a:hover{
 	</c:choose>
 
 <main>
-<div class="container info">
+<div class="container">
+<div class="row">
+<div class="info col-lg-8 col-lg-offset-3">
 	<form:form action="modifyProduct.htm?id=${sessionScope.product.productID}&action=doModify" commandName="product" method="post" enctype="multipart/form-data" >
-	<ul class="info">
-		<li class="info"><img src="${sessionScope.product.imageName}" width="40%"/><input type="file" name="image" size="50" id="file"/>
-		
-		<li class="info"><font color="#871262">product name:</font> ${sessionScope.product.productName}</li>
-		<li class="info" ><font color="#871262">product stock:</font> ${sessionScope.product.stock}
-		<form:input path="stock" name="stock" htmlEscape="true"/><font color="red"><form:errors path="stock"/></font></li>
-		<li class="info" id="textarea"><font color="#871262">product description:</font></li>
-		<li class="info"><form:textarea path="description" name="description" size="30" id="exampleTextarea" rows="3" htmlEscape="true"/><font color="red"><form:errors path="description"/></font></li>
-		<li class="info"><input type="submit" value="Modify Product" id="submit"></li>
-		
-	</ul>
 	
-	</form:form>	
+		<p><img src="${sessionScope.product.imageName}" width="40%"/><input type="file" name="image" size="50" id="file"/></p><br>
+		
+		<p><label>product name:</label> ${sessionScope.product.productName}</p><br>
+		<p><label>product stock:</label> ${sessionScope.product.stock}
+		<form:input path="stock" name="stock" htmlEscape="true"/><font color="red"><form:errors path="stock"/></font></p><br>
+		<p><label for="description">product description:</label>
+		<form:textarea path="description" name="description" rows="10" cols="50" htmlEscape="true"/></p>
+		<font color="red"><form:errors path="description"/></font><br>
+		<p><input type="submit" value="Modify Product" id="submit" class="col-md-offset-2"></p>
+		
+	
+	
+	</form:form>
+	</div>
+	</div>	
 </div>
 </main>
 

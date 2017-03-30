@@ -1,6 +1,7 @@
 package com.zhouyunlu.controller;
 
 import java.io.IOException;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,8 +39,7 @@ import com.zhouyunlu.pojo.CartProduct;
 import com.zhouyunlu.pojo.Email;
 import com.zhouyunlu.pojo.Order;
 import com.zhouyunlu.pojo.User;
-import com.zhouyunlu.service.EmailUtil;
-import com.zhouyunlu.service.EmailUtilImpl;
+
 import com.zhouyunlu.service.PaypalService;
 
 @Controller
@@ -74,7 +75,7 @@ public class PlaceOrderController {
 
 		long sellerId = -1;
 
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		Date currentDate = dateFormat.parse(dateFormat.format(date));
 
@@ -127,7 +128,7 @@ public class PlaceOrderController {
 			}
 
 			Order order = orderDao.create(buyerId, sellerId, firstName, lastName, buyerAddress, emailAddress, phone,
-					date, idList, price, "not paid");
+					currentDate, idList, price, "not paid");
 
 			long orderId = order.getOrderId();
 			orderList.add(order);

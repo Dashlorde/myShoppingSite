@@ -48,7 +48,14 @@ public class EditAddressController {
 			addressDao.create(userId, phone, address);
 		}
 		
-		return "redirect:/checkout.htm?action=checkout";
+		if(session.getAttribute("currentURL")!=null){
+			String currentURL=(String) session.getAttribute("currentURL");
+			return currentURL;
+		}else{
+			return "redirect:/checkout.htm?action=checkout";
+			
+		}
+		
 	}
 	
 	@RequestMapping(value="/editAddress.htm", method=RequestMethod.GET)

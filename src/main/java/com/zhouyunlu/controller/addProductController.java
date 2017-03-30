@@ -56,12 +56,12 @@ public class addProductController {
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request; 
 		MultipartFile image=multipartRequest.getFile("image");
 		
-		//insert your own aws id and key 
-		AWSCredentials credentials = new BasicAWSCredentials("id", "key");
+		//aws account key
+		AWSCredentials credentials = new BasicAWSCredentials("aws-id", "aws-key");
 		
 		AmazonS3 s3client = new AmazonS3Client(credentials);
 		
-		//this is your own S3 bucket
+		//aws s3 bucket name
 		String bucketName = "elasticbeanstalk-us-west-2-481664616485";
 		
 		if(result.hasErrors()){

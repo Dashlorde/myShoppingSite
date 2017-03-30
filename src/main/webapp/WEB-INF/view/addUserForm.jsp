@@ -17,8 +17,11 @@
 </script>
 
 <style type="text/css">
-body{background-color:black}
-h2 { text-align: center; color:#d9d9d9 }
+body{
+	background-image:url('img/star.jpg');
+	color:#d9d9d9
+}
+h2 { text-align: center;}
 
 .form {margin-top:60px}
 
@@ -89,7 +92,7 @@ h2 { text-align: center; color:#d9d9d9 }
 <h2>Register a New User</h2>
 </div>
 
-<div class="container well">
+<div class="container">
 <div class="row">
 
 <form:form action="adduser.htm?action=adduser" commandName="user" method="post" class="form-horizontal">
@@ -169,11 +172,5 @@ h2 { text-align: center; color:#d9d9d9 }
 
 </main>
 
-<footer class="text-center">
-		<a class="up-arrow" href="#" title="TO TOP"> <span
-			class="glyphicon glyphicon-chevron-up"></span>
-		</a><br> <br>
-		<p>&copy;Yunlu Zhou</p>
-	</footer>
 </body>
 </html>
