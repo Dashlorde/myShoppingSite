@@ -44,7 +44,7 @@ public class ViewPersonalPageController {
 	AddressDao addressDao = new AddressDao();
 
 	@RequestMapping(value = "/personalPage.htm", method = RequestMethod.GET)
-	String viewPersonalPage(HttpServletRequest request, Model model) throws shoppingSiteException {
+	String viewPersonalPage(HttpServletRequest request, HttpServletResponse response, Model model) throws shoppingSiteException {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		long id = user.getId();

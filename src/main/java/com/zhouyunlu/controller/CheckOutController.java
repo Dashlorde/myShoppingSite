@@ -3,6 +3,7 @@ package com.zhouyunlu.controller;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class CheckOutController {
 	AddressDao addressDao=new AddressDao();
 
 	@RequestMapping(method=RequestMethod.GET)
-	public ModelAndView checkOut(HttpServletRequest request, @ModelAttribute("user")User user) throws shoppingSiteException{
+	public ModelAndView checkOut(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("user")User user) throws shoppingSiteException{
 		
 		ModelAndView mv=new ModelAndView();
 		

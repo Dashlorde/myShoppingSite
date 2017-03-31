@@ -33,7 +33,7 @@ public class ProductDao extends DAO{
 			getSession().save(product);
 			
 			commit();
-			close();
+			
 			return product;
 		} catch (HibernateException e) {
             rollback();
@@ -48,7 +48,7 @@ public class ProductDao extends DAO{
 			begin();
 			getSession().delete(product);
 			commit();
-			close();
+			
 		} catch(HibernateException e){
 			rollback();
 			throw new shoppingSiteException("could not delete product: "+e.getMessage());
@@ -63,7 +63,7 @@ public class ProductDao extends DAO{
 			q.setLong("productID", product.getProductID());
 			q.executeUpdate();
 			commit();
-			close();
+			
 		}catch(HibernateException e){
 			rollback();
 			throw new shoppingSiteException("could not update product description"+ e.getMessage());
@@ -79,7 +79,7 @@ public class ProductDao extends DAO{
 			q.setLong("productID", product.getProductID());
 			q.executeUpdate();
 			commit();
-			close();
+			
 		}catch(HibernateException e){
 			rollback();
 			throw new shoppingSiteException("could not update product stock"+ e.getMessage());
@@ -94,7 +94,7 @@ public class ProductDao extends DAO{
 			q.setLong("productID", product.getProductID());
 			q.executeUpdate();
 			commit();
-			close();
+			
 		}catch(HibernateException e){
 			rollback();
 			throw new shoppingSiteException("could not update product description"+ e.getMessage());
@@ -109,7 +109,7 @@ public class ProductDao extends DAO{
 			q.setString("username", user.getName());
 			productList=q.list();
 			commit();
-			close();
+			
 			return productList;
 		} catch(HibernateException e){
 			rollback();
@@ -125,7 +125,7 @@ public class ProductDao extends DAO{
 			
 			productList=q.list();
 			commit();
-			close();
+			
 			return productList;
 		} catch(HibernateException e){
 			rollback();
@@ -141,7 +141,7 @@ public class ProductDao extends DAO{
 			q.setString("username", user.getName());
 			List<Product> list=q.list();
 			commit();
-			close();
+			
 			return list;
 		} catch(HibernateException e){
 			rollback();
@@ -157,7 +157,7 @@ public class ProductDao extends DAO{
 			
 			List<Product> list=q.list();
 			commit();
-			close();
+			
 			return list;
 		} catch(HibernateException e){
 			rollback();
@@ -172,7 +172,7 @@ public class ProductDao extends DAO{
 			q.setString("username", username);
 			List<Product> list=q.list();
 			commit();
-			close();
+			
 			return list;
 		} catch(HibernateException e){
 			rollback();
@@ -188,7 +188,7 @@ public class ProductDao extends DAO{
 			
 			Product product=(Product)q.uniqueResult();
 			commit();
-			close();
+			
 			return product;
 		} catch(HibernateException e){
 			rollback();
@@ -204,7 +204,7 @@ public class ProductDao extends DAO{
 			
 			List<Product> list=q.list();
 			commit();
-			close();
+			
 			return list;
 		} catch(HibernateException e){
 			rollback();
@@ -220,7 +220,7 @@ public class ProductDao extends DAO{
 			q.setLong("id", id);
 			q.executeUpdate();
 			commit();
-			close();
+			
 		}catch(HibernateException e){
 			rollback();
 			throw new shoppingSiteException("could not update product stock "+ e.getMessage());

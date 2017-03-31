@@ -187,7 +187,7 @@ body {
 						<c:forEach var="comment" items="${requestScope.commentList}">
 							<tr>
 								<td>${comment.user.name}</td>
-								<td>${comment.comment}</td>
+								<td class="col-lg-6">${comment.comment}</td>
 								<td>${comment.commentTime}</td>
 							<tr>
 						</c:forEach>

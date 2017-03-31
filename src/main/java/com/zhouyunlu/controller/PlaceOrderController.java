@@ -13,6 +13,7 @@ import java.util.Set;
 import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -55,7 +56,7 @@ public class PlaceOrderController {
 	ProductDao productDao = new ProductDao();
 
 	@RequestMapping(value= "/placeOrder.htm", method = RequestMethod.GET)
-	public String placeOrder(HttpServletRequest request) throws ParseException, shoppingSiteException {
+	public String placeOrder(HttpServletRequest request, HttpServletResponse response) throws ParseException, shoppingSiteException {
 		HttpSession session = request.getSession();
 		Set<CartProduct> cartSet = (Set<CartProduct>) session.getAttribute("cart");
 		float amount=(float) session.getAttribute("total");

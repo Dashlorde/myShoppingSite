@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class ManageWishlistController {
 	ProductDao productDao=new ProductDao();
 
 	@RequestMapping(value = "/addToWish.htm", method = RequestMethod.GET)
-	public String addToWishlist(HttpServletRequest request) throws shoppingSiteException {
+	public String addToWishlist(HttpServletRequest request, HttpServletResponse response) throws shoppingSiteException {
 
 		HttpSession session = request.getSession();
 		User u = (User) session.getAttribute("user");
@@ -46,7 +47,7 @@ public class ManageWishlistController {
 	}
 
 	@RequestMapping(value = "removeFromWish.htm", method = RequestMethod.GET)
-	public String removeFromWishlist(HttpServletRequest request) throws shoppingSiteException {
+	public String removeFromWishlist(HttpServletRequest request, HttpServletResponse response) throws shoppingSiteException {
 		HttpSession session = request.getSession();
 		User u = (User) session.getAttribute("user");
 		long userId = u.getId();
@@ -60,7 +61,7 @@ public class ManageWishlistController {
 	}
 
 	@RequestMapping(value = "/productAddToWish.htm", method = RequestMethod.GET)
-	public String productAddToWishlist(HttpServletRequest request) throws shoppingSiteException {
+	public String productAddToWishlist(HttpServletRequest request, HttpServletResponse response) throws shoppingSiteException {
 
 		HttpSession session = request.getSession();
 		String returnPage=null;
@@ -81,7 +82,7 @@ public class ManageWishlistController {
 	}
 	
 	@RequestMapping(value="/wishlist.htm", method=RequestMethod.GET)
-	public String viewWishlist(HttpServletRequest request, Model model) throws shoppingSiteException{
+	public String viewWishlist(HttpServletRequest request, HttpServletResponse response, Model model) throws shoppingSiteException{
 		HttpSession session=request.getSession();
 		User user=(User) session.getAttribute("user");
 		long userId=user.getId();

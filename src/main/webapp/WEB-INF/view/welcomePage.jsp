@@ -167,7 +167,7 @@ body { background-color: #edeff2;}
 			<jsp:include page="menu2.jsp" />
 		</c:when>
 		<c:otherwise>
-			<jsp:include page="menu1.jsp" />
+			<jsp:include page="menu.jsp" />
 		</c:otherwise>
 	</c:choose>
 	

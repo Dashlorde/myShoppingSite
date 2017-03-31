@@ -3,6 +3,7 @@ package com.zhouyunlu.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,7 @@ import com.zhouyunlu.pojo.User;
 public class viewMyProductController {
 
 	@RequestMapping(value="/viewMyProduct.htm", method=RequestMethod.GET)
-	protected ModelAndView viewMyProduct(HttpServletRequest request) throws Exception{
+	protected ModelAndView viewMyProduct(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ModelAndView mv=new ModelAndView();
 		ProductDao productDao=new ProductDao();
 		

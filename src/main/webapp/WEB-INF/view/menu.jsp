@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
-<nav id="nav" class="navbar navbar-inverse navbar-fixed-top">
+<nav id="nav" class="navbar navbar-inverse navbar-static" data-spy="affix" data-offset-top="400">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse"

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class searchProductController {
 	
 	
 	@RequestMapping(value="/search.htm", method=RequestMethod.GET)
-	protected ModelAndView searchProduct(HttpServletRequest request) throws Exception{
+	protected ModelAndView searchProduct(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ArrayList<Product> productList=new ArrayList<Product>();
 		HttpSession session=request.getSession();
 		List<Product> allProducts=null;

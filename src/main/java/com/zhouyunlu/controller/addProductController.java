@@ -5,6 +5,7 @@ import java.io.File;
 
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -51,13 +52,13 @@ public class addProductController {
 	
 	
 	@RequestMapping(value="/addProduct.htm", method=RequestMethod.POST)
-	protected String doSubmitProduct(@ModelAttribute("product")@Valid Product product, BindingResult result, HttpServletRequest request ) throws Exception{
+	protected String doSubmitProduct(@ModelAttribute("product")@Valid Product product, BindingResult result, HttpServletRequest request, HttpServletResponse response ) throws Exception{
 		HttpSession session=request.getSession();
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request; 
 		MultipartFile image=multipartRequest.getFile("image");
 		
 		//aws account key
-		AWSCredentials credentials = new BasicAWSCredentials("aws-id", "aws-key");
+		AWSCredentials credentials = new BasicAWSCredentials("AWS-ID", "AWS-KEY");
 		
 		AmazonS3 s3client = new AmazonS3Client(credentials);
 		

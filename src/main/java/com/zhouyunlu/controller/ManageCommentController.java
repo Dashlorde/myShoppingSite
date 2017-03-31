@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class ManageCommentController {
 	*/
 	
 	@RequestMapping(value="/buyerComment.htm", method=RequestMethod.POST)
-	protected String addComment(HttpServletRequest request) throws shoppingSiteException{
+	protected String addComment(HttpServletRequest request, HttpServletResponse response) throws shoppingSiteException{
 		HttpSession session=request.getSession();
 		
 		String idString=request.getParameter("id").toString();

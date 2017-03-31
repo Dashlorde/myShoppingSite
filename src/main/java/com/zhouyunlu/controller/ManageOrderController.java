@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class ManageOrderController {
 	ProductDao productDao=new ProductDao();
 	
 	@RequestMapping(value="/viewOrder.htm", method=RequestMethod.GET)
-	protected String sellerViewOrder(HttpServletRequest request, Model model){
+	protected String sellerViewOrder(HttpServletRequest request, HttpServletResponse response, Model model){
 		HttpSession session=request.getSession();
 		User user=(User) session.getAttribute("user");
 		List<Order> orderList=new ArrayList<Order>();

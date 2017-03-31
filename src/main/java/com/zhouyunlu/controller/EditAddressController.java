@@ -59,7 +59,7 @@ public class EditAddressController {
 	}
 	
 	@RequestMapping(value="/editAddress.htm", method=RequestMethod.GET)
-	protected String getEditAddressPage(HttpServletRequest request,@ModelAttribute("userAddress")Address address, BindingResult result){
+	protected String getEditAddressPage(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("userAddress")Address address, BindingResult result){
 		return "editAddress";
 	}
 }

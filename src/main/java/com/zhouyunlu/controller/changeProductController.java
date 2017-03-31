@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.hibernate.HibernateException;
@@ -41,7 +42,7 @@ public class changeProductController {
 	ProductDao productDao = new ProductDao();
 
 	@RequestMapping(value = "/deleteProduct.htm", method = RequestMethod.GET)
-	protected ModelAndView deleteMyProduct(HttpServletRequest request)
+	protected ModelAndView deleteMyProduct(HttpServletRequest request, HttpServletResponse response)
 			throws HibernateException, shoppingSiteException {
 		ModelAndView mv = new ModelAndView();
 
@@ -79,7 +80,7 @@ public class changeProductController {
 	}
 
 	@RequestMapping(value = "/modify.htm", method = RequestMethod.GET)
-	protected ModelAndView goModifyPage(HttpServletRequest request) throws shoppingSiteException {
+	protected ModelAndView goModifyPage(HttpServletRequest request, HttpServletResponse response) throws shoppingSiteException {
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		long productId = Long.parseLong(request.getParameter("id"));
@@ -94,7 +95,7 @@ public class changeProductController {
 	}
 
 	@RequestMapping(value = "/modifyProduct.htm", method = RequestMethod.POST)
-	protected String modifyMyProduct(HttpServletRequest request) throws Exception {
+	protected String modifyMyProduct(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		Product product = (Product) session.getAttribute("product");
@@ -103,7 +104,7 @@ public class changeProductController {
 		int stock = 0;
 		
 		//aws account key
-		AWSCredentials credentials = new BasicAWSCredentials("aws-id", "aws-key");
+		AWSCredentials credentials = new BasicAWSCredentials("AWS-ID", "AWS-KEY");
 		AmazonS3 s3client = new AmazonS3Client(credentials);
 		
 		//aws s3 bucket name

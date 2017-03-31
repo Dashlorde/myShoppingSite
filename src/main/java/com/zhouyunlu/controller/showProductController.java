@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,7 @@ public class showProductController {
 	
 	
 	@RequestMapping(value="/showAllProducts.htm", method=RequestMethod.GET)
-	protected ModelAndView showAllProduct(HttpServletRequest request) throws Exception{
+	protected ModelAndView showAllProduct(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		List<Product> productList=null;
 		ModelAndView mv=new ModelAndView();
 		User user=null;
@@ -106,7 +107,7 @@ public class showProductController {
 	}
 	
 	@RequestMapping(value="/showElectronics.htm", method=RequestMethod.GET)
-	protected ModelAndView showElectronics(HttpServletRequest request) throws Exception{
+	protected ModelAndView showElectronics(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		List<Product> productList=null;
 		ModelAndView mv=new ModelAndView();
 		User user=null;
@@ -137,7 +138,7 @@ public class showProductController {
 	}
 	
 	@RequestMapping(value="/showComputers.htm", method=RequestMethod.GET)
-	protected ModelAndView showComputers(HttpServletRequest request) throws Exception{
+	protected ModelAndView showComputers(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		List<Product> productList=null;
 		ModelAndView mv=new ModelAndView();
 		User user=null;
@@ -169,7 +170,7 @@ public class showProductController {
 	}
 	
 	@RequestMapping(value="/showProductInfo.htm", method=RequestMethod.GET)
-	protected ModelAndView showProductInfo(HttpServletRequest request) throws Exception{
+	protected ModelAndView showProductInfo(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ModelAndView mv=new ModelAndView();
 		String action=request.getParameter("action").toString();
 		HttpSession session=request.getSession();
