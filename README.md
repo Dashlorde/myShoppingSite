@@ -13,9 +13,9 @@ This application is depolyed on AWS.
 
 ## For Buyer:
 * Buyers can add product to cart and set the product quantity.
-* Buyers can manage cart for deleting or editing quantity of products.
+* Buyers can manage cart and wishlist.
 * After placing orders, products' stock will be updated automatically.
-* Buyers can see order history and add comments to ordered products. All the Comments will be displayed in product information page.
+* Buyers can see order history and add comments to ordered products.
 * Buyers can pay through Paypal and will receive a confirmed email after order is paid.
 
 ## For Seller:
