@@ -49,18 +49,15 @@ public class addUserFormController {
 
 		String action = request.getParameter("action");
 		if (action.equals("ajaxCheck")) {
-
 			PrintWriter out = response.getWriter();
 			if (userDao.get(request.getParameter("username")) != null) {
-				out.println("username already exists");
-			} else if (request.getParameter("username").equals("")) {
-				out.println("username needed!");
+				out.println("username already exists");		
+			} else if(request.getParameter("username")==""){
+				out.println("username cannot be empty");
 			} else {
-				out.println("username is available");
+				out.println("username is available");	
 			}
-
 			return null;
-
 		}
 
 		else if (action.equals("adduser")) {

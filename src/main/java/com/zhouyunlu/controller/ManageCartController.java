@@ -39,9 +39,10 @@ public class ManageCartController {
 		Product product = productDao.getProductByID(productID);
 
 		int quantity = 0;
-
+		changeProductController cpc=new changeProductController();
 		// add product into cart in product information page and get quantity from information page
-		if (request.getParameter("quantity") != null && !request.getParameter("quantity").equals("")) {
+		//if (request.getParameter("quantity") != null && !request.getParameter("quantity").equals("")) {
+		if(!request.getParameter("quantity").isEmpty() && cpc.isInteger(request.getParameter("quantity"))){
 			int num = 0;
 			String quantityString = request.getParameter("quantity");
 			
@@ -165,6 +166,7 @@ public class ManageCartController {
 	protected String changeQuantity(HttpServletRequest request, HttpServletResponse response, Model model){
 		HttpSession session=request.getSession();
 		Set<CartProduct> cart=(Set<CartProduct>) session.getAttribute("cart");
+	if(request.getParameter("quantity")!=""){
 		String quantityString=request.getParameter("quantity");
 		int quantity=Integer.parseInt(quantityString);
 		String idString=request.getParameter("id");
@@ -172,23 +174,26 @@ public class ManageCartController {
 		float total=0;
 		
 		CartProduct cProduct=getCartProduct(id, cart);
-		if((quantity) >=cProduct.getProduct().getStock()){
-			model.addAttribute("quantityError", "insufficient storage");
-			return "viewCart";
-		}
 		
-		cart.remove(cProduct);
-		if(quantity>0){
-			cProduct.setQuantity(quantity);
-			cart.add(cProduct);
-		}
+			if((quantity) >=cProduct.getProduct().getStock()){
+				model.addAttribute("quantityError", "insufficient storage");
+				return "viewCart";
+			}
+			
+			cart.remove(cProduct);
+			if(quantity>0){
+				cProduct.setQuantity(quantity);
+				cart.add(cProduct);
+			}
+		
+		
 		
 		for (CartProduct cp : cart) {
 			total += cp.getProduct().getProductPrice() * cp.getQuantity();
 		}
 		session.setAttribute("total", total);
 		session.setAttribute("cart", cart);
-		
+	}
 		return "viewCart";
 	}
 

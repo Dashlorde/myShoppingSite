@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
  <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,8 @@
 <link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.css" />
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/menu.css" />
-<script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.js"></script>
 <script src="<%=request.getContextPath()%>/css/bootstrap/js/bootstrap.min.js" >
 </script>
 
@@ -43,7 +45,14 @@ label {
         float: left;
         width: 175px;
 }
+.form-error {
+       font-family: Monaco;
+}
 
+.error{ 
+	color: #e05a21;
+	 font-family: Monaco;
+}
 
 </style>
 
@@ -68,7 +77,9 @@ label {
 		
 		<p><label>product name:</label> ${sessionScope.product.productName}</p><br>
 		<p><label>product stock:</label> ${sessionScope.product.stock}
-		<form:input path="stock" name="stock" htmlEscape="true"/><font color="red"><form:errors path="stock"/></font></p><br>
+		<form:input path="stock" type="number" min="1" name="stock" htmlEscape="true" 
+		data-validation-error-msg="stock should be at least 1"/>
+		<div class="error"><form:errors path="stock"/></div></p><br>
 		<p><label for="description">product description:</label>
 		<form:textarea path="description" name="description" rows="10" cols="50" htmlEscape="true"/></p>
 		<font color="red"><form:errors path="description"/></font><br>
@@ -85,7 +96,15 @@ label {
 <footer class="text-center">
 		<a class="up-arrow" href="#" title="TO TOP"> <span class="glyphicon glyphicon-chevron-up"></span></a><br> <br>
 		<p>&copy;Yunlu Zhou</p>
-</footer>	
+</footer>
+
+ <script type="text/javascript">
+	 $.validate({
+          	modules: 'html5', 
+      	});
+	  $("input").rules("remove", "required");
+	  
+</script>	
 </body>
 
 

@@ -13,6 +13,14 @@
 		<!--property name="hibernate.connection.url">jdbc:mysql://localhost:3306/myShoppingSite</property>
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password"></property-->
+		
+		<!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Disable the second-level cache  -->
+        <property name="cache.provider_class">
+            org.hibernate.cache.NoCacheProvider
+        </property>
 
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>

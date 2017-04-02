@@ -11,6 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -29,7 +32,8 @@ public class Product {
 	
 	@NotNull(message="price should not be none")
 	@Range(min=0, message="price should at least be 0")
-	@Column(name="productPrice")
+	@DecimalMin("0.0") 
+	@Column(name="productPrice")	
 	private float productPrice;
 	
 	@NotNull(message="product name should not be none")
@@ -57,6 +61,7 @@ public class Product {
 	@NotNull(message="stock should not be none")
 	@Range(min=1, message="stock should at least be 1")
 	@Column(name="stock")
+	@DecimalMin("1") 
 	private int stock;
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="product",cascade=CascadeType.ALL)

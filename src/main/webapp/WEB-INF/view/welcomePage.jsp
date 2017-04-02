@@ -141,6 +141,14 @@ body { background-color: #edeff2;}
 	
 
 }
+
+@media only screen and (max-width: 768px) {
+  #background{
+  	display:none;
+  }
+  
+
+}
 </style>
 
 </head>
@@ -259,8 +267,6 @@ body { background-color: #edeff2;}
 			});
 
 		});
-	
-	
 	
 	</script>
 </body>

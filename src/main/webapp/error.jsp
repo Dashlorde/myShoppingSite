@@ -8,6 +8,6 @@
 <title>Error</title>
 </head>
 <body>
-<h1>There is some errors with the server.</h1>
+<h1>There are some errors with the server.</h1>
 </body>
 </html>
