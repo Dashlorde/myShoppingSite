@@ -60,8 +60,8 @@ body{background-color: white}
 		<div class="form-group">
 		<label class="control-label col-sm-3">Product Price:</label>
 		<div class="col-sm-6">
-		<form:input type="number" path="productPrice" min="0.0" htmlEscape="true" 
-		data-validation-error-msg="please input a valid price"/>
+		<form:input path="productPrice" min="0.0" htmlEscape="true" 
+		data-validation="number" data-validation-allowing="positive, float" data-validation-error-msg="please input a valid price"/>
 		<div class="error"><form:errors path="productPrice"/></div>
 		</div>
 		</div>
@@ -69,7 +69,7 @@ body{background-color: white}
 		<div class="form-group">
 		<label class="control-label col-sm-3">Product Stock:</label>
 		<div class="col-sm-6">
-		<form:input type="number" path="stock" size="30" min="1" htmlEscape="true" 
+		<form:input path="stock" size="30" min="1" htmlEscape="true" 
 		data-validation="number" data-validation-allowing="positive" data-validation-error-msg="product stock at least 1"/>
 		<div class="error"><form:errors path="stock"/></div> 
 		</div>
@@ -90,6 +90,7 @@ body{background-color: white}
 		<label class="control-label col-sm-3">Product Image: </label>
 		<div class="col-sm-6">
 		<input type="file" name="image" id="file" />
+		<div class="error"><form:errors path="imageName"/></div>
 		</div>
 		</div>
 		
@@ -119,9 +120,10 @@ body{background-color: white}
 </footer>
 
  <script type="text/javascript">
-       $.validate({
+      $.validate({
     	   modules : 'html5',
        });
+      
 </script>	
 </body>
 </html>

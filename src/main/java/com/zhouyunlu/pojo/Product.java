@@ -32,7 +32,7 @@ public class Product {
 	
 	@NotNull(message="price should not be none")
 	@Range(min=0, message="price should at least be 0")
-	@DecimalMin("0.0") 
+	@Valid
 	@Column(name="productPrice")	
 	private float productPrice;
 	
@@ -51,6 +51,7 @@ public class Product {
 	@Column(name="category")
 	private String category;
 	
+	@NotNull(message="please uplaad a product picture")
 	@Column(name="imageName")
 	private String imageName;
 	
@@ -61,7 +62,7 @@ public class Product {
 	@NotNull(message="stock should not be none")
 	@Range(min=1, message="stock should at least be 1")
 	@Column(name="stock")
-	@DecimalMin("1") 
+	@Valid
 	private int stock;
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="product",cascade=CascadeType.ALL)

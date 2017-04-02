@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import org.hibernate.type.TextType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,7 +53,7 @@ public class addProductController {
 	
 	
 	@RequestMapping(value="/addProduct.htm", method=RequestMethod.POST)
-	protected String doSubmitProduct(@ModelAttribute("product")@Valid Product product, BindingResult result, HttpServletRequest request, HttpServletResponse response ) throws Exception{
+	protected String doSubmitProduct(@ModelAttribute("product")@Valid Product product, BindingResult result, HttpServletRequest request, HttpServletResponse response,  Model model ) throws Exception{
 		HttpSession session=request.getSession();
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request; 
 		MultipartFile image=multipartRequest.getFile("image");
@@ -66,6 +67,7 @@ public class addProductController {
 		String bucketName = "elasticbeanstalk-us-west-2-481664616485";
 		
 		if(result.hasErrors()){
+			
 			return "addProductForm";
 		}
 		
