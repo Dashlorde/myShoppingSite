@@ -2,21 +2,20 @@
 
 A simple dynamic shopping site demo. Deployed with AWS services. DEMO website: http://www.zhouyunlu.com
 
+It is a maven project, using springMVC and hibernate. Apply Jquery validate plugin and hibernate validator for validation. Ajax to check duplicate username. Masonry plugin for layout optimizing.
 
-It is a maven project, using springMVC and hibernate( Hibernate validator for property validation). Masonry plugin for layout optimizing.
-In this shopping site, a user can be both seller and buyer. 
 
 ## Deploy
 This application is depolyed on AWS. 
 * All pictures are saved in S3, if you want to save picture to remote server or localhost, modify addProductController.java and changeProductController.java. 
 * To manage database connection, modify hibernate.cfg.xml, and change connection to remote database or localhost.
 
+In this shopping site, a user can be both seller and buyer. 
 ## For Buyer:
-* Buyers can add product to cart and set the product quantity.
+* Buyers can add product to cart and set the product quantity. After placing orders, products' stock will be updated automatically.
 * Buyers can manage cart and wishlist.
-* After placing orders, products' stock will be updated automatically.
 * Buyers can see order history and add comments to ordered products.
-* Buyers can pay through Paypal and will receive a confirmed email after order is paid.
+* Buyers can pay through Paypal and will receive a confirmed email after orders paid.
 
 ## For Seller:
 * Sellers can add new products and edit information of products.
