@@ -64,6 +64,13 @@
 			</properties>
 		</profile>
 	</profiles>
+	
+	<repositories>
+		<repository>
+			<id>JBoss repository</id>
+			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
+		</repository>
+	</repositories>
 
 	<dependencies>
 
@@ -126,14 +133,11 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
-		
-		<!-- dependency>
-			<groupId>javax.persistence</groupId>
-			<artifactId>persistence-api</artifactId>
-			<version>1.0.2</version>
-		</dependency-->
-		
-		
+
+		<!-- dependency> <groupId>javax.persistence</groupId> <artifactId>persistence-api</artifactId> 
+			<version>1.0.2</version> </dependency -->
+
+
 
 		<dependency>
 			<groupId>org.hibernate.common</groupId>
@@ -298,20 +302,29 @@
 			<artifactId>adaptiveaccountssdk</artifactId>
 			<version>LATEST</version>
 		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
-<dependency>
-    <groupId>com.amazonaws</groupId>
-    <artifactId>aws-java-sdk</artifactId>
-    <version>1.11.105</version>
-</dependency>
 
-<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
-<dependency>
-    <groupId>org.springframework.security</groupId>
-    <artifactId>spring-security-taglibs</artifactId>
-    <version>4.2.2.RELEASE</version>
-</dependency>
+		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk</artifactId>
+			<version>1.11.105</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>4.2.2.RELEASE</version>
+		</dependency>
+
+	
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-c3p0 -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>5.2.9.Final</version>
+		</dependency>
+
 
 
 

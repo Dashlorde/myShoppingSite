@@ -23,7 +23,7 @@
 	</form></li>
 	<li><a href="showAllProducts.htm">Home</a></li>
 	<li data-role="dropdown">
-	<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Seller Account<span class="caret"></span></a>
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Seller <span class="caret"></span></a>
 		<ul class="dropdown-menu" role="menu" aria-labelledby="navbarDropdownMenuLink">
 			<li><a href="viewMyProduct.htm?action=viewMyProduct">My Product</a></li>
 			<li><a href="addProduct.htm" >Add Product</a></li>
@@ -32,7 +32,7 @@
 	</li>
 	
 	<li data-role="dropdown">
-	<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User Account<span class="caret"></span></a>
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
 		<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 		<li><a href="personalPage.htm">Account</a></li>
 		<li role="separator" class="divider"></li>
@@ -41,8 +41,8 @@
 		</ul>
 	</li>
 	
-	<li ><a href="viewCart.htm?action=viewcart" >Cart</a> </li>
-	<li><a href="logout.htm?action=logout" >Log out</a> </li>
+	<li ><a href="viewCart.htm?action=viewcart" ><span class="glyphicon glyphicon-shopping-cart"></span></a> </li>
+	<li><a href="logout.htm?action=logout" >Log out <span class="glyphicon glyphicon-log-out"></span></a> </li>
 	
 	
 	</ul>

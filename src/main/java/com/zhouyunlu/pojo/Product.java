@@ -51,7 +51,6 @@ public class Product {
 	@Column(name="category")
 	private String category;
 	
-	@NotNull(message="please uplaad a product picture")
 	@Column(name="imageName")
 	private String imageName;
 	

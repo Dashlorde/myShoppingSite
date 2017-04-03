@@ -29,7 +29,9 @@
 	box-shadow: 3px 3px 3px #d7d9dd;
 	margin-top: 80px;
 }
-
+#user{ 
+	font-size: 16px;
+}
 body {
 	background-color: #edeff2
 }
@@ -66,6 +68,10 @@ body {
 
 .wish{
 	color: #b24276;
+}
+
+.center{
+	text-align:center;
 }
 
 @media only screen and (max-width: 988px) {
@@ -177,7 +183,7 @@ body {
 			<div class="panel panel-warning">
 				<div class="panel-heading">
 					<h2 class="panel-title">
-					<a data-toggle="collapse" href="#comment">User Comments <span class="glyphicon glyphicon-comment"></span></a>
+					<a data-toggle="collapse" href="#comment">User Comments  <span class="glyphicon glyphicon-comment"></span></a>
 					</h2>
 				</div>
 				<div id="comment" class="panel-collapse collapse">
@@ -186,9 +192,9 @@ body {
 
 						<c:forEach var="comment" items="${requestScope.commentList}">
 							<tr>
-								<td>${comment.user.name}</td>
-								<td class="col-lg-6">${comment.comment}</td>
-								<td>${comment.commentTime}</td>
+								<td id="user" class="center"><span class="glyphicon glyphicon-user"></span> ${comment.user.name}</td>
+								<td class="col-md-8">${comment.comment}</td>
+								<td class="center">${comment.commentTime}</td>
 							<tr>
 						</c:forEach>
 					</table>

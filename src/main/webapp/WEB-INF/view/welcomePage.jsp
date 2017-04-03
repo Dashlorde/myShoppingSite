@@ -153,7 +153,13 @@ body { background-color: #edeff2;}
 
 </head>
 <body>
+<script>
 
+function cartAlert() {
+    alert("successfully add to cart");
+}
+
+</script>
 <header>
 <c:choose>
 		<c:when test="${empty user.name }">
@@ -229,7 +235,7 @@ body { background-color: #edeff2;}
 								<a class="product" href="showProductInfo.htm?id=${product.productID }&action=showProductInfo"><strong>${product.productName}</strong></a>
 
 							</p>
-							$${product.productPrice } <a class="product" href="addOneToCart.htm?id=${product.productID}&action=addtocart">
+							$${product.productPrice } <a class="product" href="addOneToCart.htm?id=${product.productID}&action=addtocart" onclick="cartAlert()">
 							<i class="glyphicon glyphicon-shopping-cart"></i></a>
 						</div>
 					</div>

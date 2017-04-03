@@ -25,9 +25,9 @@
 						</div>
 					</form></li>
 				<li><a href="showAllProducts.htm">Home</a></li>
-				<li><a href="viewCart.htm?action=viewcart">Cart</a></li>
+				<li><a href="viewCart.htm?action=viewcart"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
 				<li class=" dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span>Login<span
+					data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Login<span
 						class="caret"></span></a>
 					<div class="dropdown-menu">
 						<form:form action="login.htm" commandName="user" method="post"
