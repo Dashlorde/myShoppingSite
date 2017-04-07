@@ -158,9 +158,9 @@ public class ManageCartController {
 		session.setAttribute("total", total);
 		session.setAttribute("cart", cart);
 
-		//return "viewCart";
-		String referer = request.getHeader("Referer");
-		return "redirect:" + referer;
+		return "viewCart";
+		//String referer = request.getHeader("Referer");
+		//return "redirect:" + referer;
 
 	}
 	

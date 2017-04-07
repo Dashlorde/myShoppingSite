@@ -64,7 +64,7 @@
 			</properties>
 		</profile>
 	</profiles>
-	
+
 	<repositories>
 		<repository>
 			<id>JBoss repository</id>
@@ -134,22 +134,40 @@
 			<version>${hibernate.version}</version>
 		</dependency>
 
-		<!-- dependency> <groupId>javax.persistence</groupId> <artifactId>persistence-api</artifactId> 
-			<version>1.0.2</version> </dependency -->
-
-
-
+		<!-- https://mvnrepository.com/artifact/org.hibernate.common/hibernate-commons-annotations -->
 		<dependency>
 			<groupId>org.hibernate.common</groupId>
 			<artifactId>hibernate-commons-annotations</artifactId>
-			<version>5.0.1.Final</version>
+			<version>4.0.1.Final</version>
 		</dependency>
+
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>5.3.4.Final</version>
 		</dependency>
+
+
+
+
+		<!-- https://mvnrepository.com/artifact/com.mchange/c3p0 -->
+		<dependency>
+			<groupId>com.mchange</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.5.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-c3p0 -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>4.1.0.Final</version>
+		</dependency>
+
+
+
+
 
 		<dependency>
 			<groupId>org.jboss.logging</groupId>
@@ -315,14 +333,6 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>4.2.2.RELEASE</version>
-		</dependency>
-
-	
-		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-c3p0 -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-c3p0</artifactId>
-			<version>5.2.9.Final</version>
 		</dependency>
 
 
