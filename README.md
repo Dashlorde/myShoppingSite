@@ -1,8 +1,8 @@
 # myShoppingSite
 
-A simple dynamic shopping site demo. Deployed with AWS services. DEMO website: http://www.zhouyunlu.com
+A simple dynamic shopping site demo. Deployed with AWS. DEMO website: http://www.zhouyunlu.com
 
-It is a maven project, using springMVC and hibernate. Apply Jquery validate plugin and hibernate validator for validation. Ajax to check duplicate username. Masonry plugin for layout optimizing.
+It is a maven project, using springMVC and hibernate with c3p0 to manage connection pool. Apply Jquery validate plugin and hibernate validator for validation. Ajax to check duplicate username. Masonry plugin for layout optimizing.
 
 
 ## Deploy
