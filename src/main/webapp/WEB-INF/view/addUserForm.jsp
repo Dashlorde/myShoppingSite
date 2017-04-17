@@ -14,7 +14,7 @@
 <title>Add User Form</title>
  
  <link type="text/css" rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.css" />
+	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.min.css" />
 <link href="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/theme-default.min.css"
     rel="stylesheet" type="text/css" />
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/menu.css" />

@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Order History</title>
 <link type="text/css" rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.css" />
+	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.min.css" />
 <link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/menu.css" />
 <!--  link type="text/css" rel="stylesheet"

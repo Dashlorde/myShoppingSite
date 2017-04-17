@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>My Account</title>
-<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.css" />
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.min.css" />
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/menu.css" />
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Barrio">
 <script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>

@@ -10,7 +10,7 @@
 <title>View Buyers' Orders</title>
 
 <link type="text/css" rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.css" />
+	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.min.css" />
 <link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/menu.css" />
 <!-- link type="text/css" rel="stylesheet"
