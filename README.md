@@ -34,7 +34,11 @@ Eclipse(Spring Tool Suite)
 ### Server
 Tomcat8.0
 ### Database
-MySQL
+MySQL 
+ 
+### Plugin  
+* masonry  
+* list country state master
 
 
 ## note 
