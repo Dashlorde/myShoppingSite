@@ -11,11 +11,11 @@
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
 <link type="text/css" rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.min.css" />
+	href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css" />
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/menu.css" />
 <script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="<%=request.getContextPath()%>/css/bootstrap/js/bootstrap.min.js" >
-</script>
+<script src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="script/countries.js"></script>
 <style>
 .changeAddress{
 	margin-top:80px;
@@ -41,7 +41,21 @@
 		<div class="form-group">
 		address: <form:input path="address" name="address" class="form-control"/><font color="red"><form:errors path="address"/></font><br/>
 		</div>
+		<div class="form-group">
+		city: <form:input path="city" name="city" class="form-control"/><font color="red"><form:errors path="address"/></font><br/>
+		</div>
+		<div class="form-group">
+		country: <form:select path="country" name="country" class="form-control" id="country"/><font color="red"><form:errors path="address"/></font><br/>
+		</div>
+		<div class="form-group">
+		state: <form:select path="state" name="state" class="form-control" id="state"/><font color="red"><form:errors path="address"/></font><br/>
+		</div>
+		<div class="form-group">
+		postal code: <form:input path="pcode" name="pcode" class="form-control"/><font color="red"><form:errors path="address"/></font><br/>
+		</div>
+		
 		<div class="col-sm-offset-2 col-sm-10">
+		
 		 <input type="submit" value="Edit Address" class="btn btn-default">
 		 </div>
 		 </div>
@@ -56,4 +70,7 @@
 		<p>&copy;Yunlu Zhou</p>
 	</footer>
 </body>
+<script>
+populateCountries("country", "state");
+</script>
 </html>

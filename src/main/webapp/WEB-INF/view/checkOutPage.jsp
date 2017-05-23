@@ -11,10 +11,10 @@
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
 <link type="text/css" rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.min.css" />
+	href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css" />
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/menu.css" />
 <script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="<%=request.getContextPath()%>/css/bootstrap/js/bootstrap.min.js" >
+<script src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.min.js" >
 </script>
 <style>
 .address{

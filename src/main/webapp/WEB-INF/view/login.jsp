@@ -13,11 +13,11 @@
 <title>userLogin</title>
 
 <link type="text/css" rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.min.css" />
+	href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css" />
 	<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/menu.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.js"></script>
-<script src="<%=request.getContextPath()%>/css/bootstrap/js/bootstrap.min.js" >
+<script src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.min.js" >
 </script>
 
 <style>

@@ -8,13 +8,18 @@ import com.zhouyunlu.pojo.Address;
 
 public class AddressDao extends DAO{
 
-	public Address create(long userId, String phone, String address) throws shoppingSiteException{
+	public Address create(long userId, String phone, String address, String city, String state, String country, String pcode) throws shoppingSiteException{
 		try{
 			begin();
 			Address uAddress=new Address();
 			uAddress.setAddress(address);
 			uAddress.setId(userId);
+			
 			uAddress.setPhone(phone);
+			uAddress.setCity(city);
+			uAddress.setCountry(country);
+			uAddress.setPcode(pcode);
+			uAddress.setState(state);
 			getSession().save(uAddress);
 			commit();
 			
@@ -59,12 +64,17 @@ public class AddressDao extends DAO{
 	
 	
 	
-	public void editAddress(String address, String phone, Address uAddress) throws shoppingSiteException{
+	public void editAddress(String address, String phone, Address uAddress, String city, String state, String country, String pcode) throws shoppingSiteException{
 		try{
 			begin();
-			Query q=getSession().createQuery("update Address set address= :address, phone= :phone where id= :userId");
+			Query q=getSession().createQuery("update Address set address= :address, phone= :phone, city= :city, state= :state, country= :country, pcode= :pcode where id= :userId");
 			q.setString("address", address);
 			q.setString("phone", phone);
+			q.setString("city", city);
+			q.setString("state", state);
+			q.setString("country", country);
+			q.setString("pcode", pcode);
+			System.out.println("test1");
 			q.setLong("userId", uAddress.getId());
 			q.executeUpdate();
 			commit();

@@ -33,19 +33,24 @@ public class EditAddressController {
 		
 		String address=addr.getAddress();
 		String phone=addr.getPhone();
+		String pcode=addr.getPcode();
+		String country=addr.getCountry();
+		String state=addr.getState();
+		String city=addr.getCity();
 		
 		if(result.hasErrors()){
-			return "editAddress";
+			System.out.println("error here");
+			return "editAddress";		
 		}
 		
 		if(addressDao.getByUserId(user.getId())!=null){
 			Address uAddress=addressDao.getByUserId(user.getId());
-			addressDao.editAddress(address, phone, uAddress);
+			addressDao.editAddress(address, phone, uAddress, city, state, country, pcode);
 		}
 		
 		else{
 			long userId=user.getId();
-			addressDao.create(userId, phone, address);
+			addressDao.create(userId, phone, address, city, state, country, pcode);
 		}
 		
 		if(session.getAttribute("currentURL")!=null){

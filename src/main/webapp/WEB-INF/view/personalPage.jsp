@@ -9,11 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>My Account</title>
-<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap/css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css" />
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/menu.css" />
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Barrio">
 <script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="<%=request.getContextPath()%>/css/bootstrap/js/bootstrap.min.js"></script>
+<script src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
 
 <style>
 body { background-color: #edeff2;}
@@ -187,7 +187,7 @@ body { background-color: #edeff2;}
  		<li class="list-group-item">Name: ${sessionScope.user.firstName} ${sessionScope.user.lastName}</li>
  		<li class="list-group-item">Email: ${requestScope.email.emailId}</li>
  		<li class="list-group-item">Phone: ${requestScope.address.phone}</li>
- 		<li class="list-group-item">Address: ${requestScope.address.address}</li>
+ 		<li class="list-group-item">Address: ${requestScope.address.address}, ${requestScope.address.city} ${requestScope.address.state} ${requestScope.address.country} ${requestScope.address.pcode}</li>
  		<li class="list-group-item"><a href="editAddress.htm">edit address</a></li>
  	</ul>
 		 

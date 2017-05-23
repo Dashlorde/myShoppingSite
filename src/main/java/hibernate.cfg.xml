@@ -8,8 +8,8 @@
 
 		<!-- AWS RDS connection -->
 		<property name="hibernate.connection.url">jdbc:mysql://aa9t2zlqk24nsc.ccxaerxt39bn.us-west-2.rds.amazonaws.com:3306/myShoppingSite?autoReconnect=true</property>
-		<property name="hibernate.connection.username"></property>
-		<property name="hibernate.connection.password"></property>
+		<property name="hibernate.connection.username">dashlorde</property>
+		<property name="hibernate.connection.password">12345678</property>
 
 		<!-- localhost connection -->
 		<!--property name="hibernate.connection.url">jdbc:mysql://localhost:3306/myShoppingSite</property> 

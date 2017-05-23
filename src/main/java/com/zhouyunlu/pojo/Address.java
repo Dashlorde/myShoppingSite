@@ -26,6 +26,21 @@ public class Address {
 	@Column(name="phone")
 	private String phone;
 	
+	@NotNull(message="please type a postal code")
+	@Pattern(regexp="[\\d]{5}", message="invalid postal code")
+	@Column(name="postal_code")
+	private String pcode;
+	
+	@Column(name="country")
+	private String country;
+	
+	@Column(name="state")
+	private String state;
+	
+	@NotNull(message="please type a city")
+	@Column(name="city")
+	private String city;
+	
 	@Size(min=1, message="please insert at least 1 character")
 	@NotNull(message="address should not be null")
 	@Column(name="address")
@@ -36,6 +51,15 @@ public class Address {
 	private User user;
 	
 	
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public Address(){
 		
 	}
@@ -69,13 +93,41 @@ public class Address {
 		this.address = address;
 	}
 
-	public User getUser() {
-		return user;
+
+
+	public String getPcode() {
+		return pcode;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setPcode(String pcode) {
+		this.pcode = pcode;
 	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+	
+	
 	
 	
 }	
