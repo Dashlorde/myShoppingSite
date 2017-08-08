@@ -21,7 +21,8 @@ public class CommentDao extends DAO{
 			c.setComment(comment);
 			c.setCommentTime(commentTime);
 			c.setProduct(product);
-			c.setUser(user);
+			c.setUserId(user.getId());
+			c.setUserName(user.getName());
 			getSession().save(c);
 			commit();
 			return c;

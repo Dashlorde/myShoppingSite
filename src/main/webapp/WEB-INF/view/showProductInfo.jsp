@@ -186,23 +186,21 @@ body {
 				
 			
 		<div class="col-lg-12">
+		<div style="display: none;" class="productId" id="${requestScope.product.productID}"></div>
 			<div class="panel panel-warning">
 				<div class="panel-heading">
 					<h2 class="panel-title">
-					<a data-toggle="collapse" href="#comment">User Comments  <span class="glyphicon glyphicon-comment"></span></a>
+					<a data-toggle="collapse" href="#comment" id="click">User Comments  <span class="glyphicon glyphicon-comment"></span></a>
 					</h2>
 				</div>
 				<div id="comment" class="panel-collapse collapse">
 				<div class="panel-body table-responsive">
-					<table id="userComments" class="table table-sm table-striped table-inverse" >
-
-						<c:forEach var="comment" items="${requestScope.commentList}">
-							<tr id="userComment" >
-								<td id="user" class="center"><span class="glyphicon glyphicon-user"></span> ${comment.user.name}</td>
-								<td class="col-md-8">${comment.comment}</td>
-								<td class="center">${comment.commentTime}</td>
-							<tr>
-						</c:forEach>
+					<table id="userComments" class="table table-sm table-inverse" >
+					<tr style="display:none;">
+					<th></th>
+					<th></th>
+					<th></th>
+					</tr>
 					</table>
 				</div>
 				</div>
@@ -221,7 +219,27 @@ body {
 		<p>&copy;Yunlu Zhou</p>
 	</footer>
 </body>
+
 <script type="text/javascript">
+
+$(document).ready(function(){
+	
+		var object;
+		$.getJSON("getComment.htm?id="+$(".productId").attr('id')+"", function(data){
+			object=data;
+			$.each(data, function(i, comment){
+				var tr=$("<tr id='userComment'/>");
+				$(tr).append("<td class='center'> <span class='glyphicon glyphicon-user'></span>"+comment.userName+"</td>");
+				$(tr).append("<td class='col-md-8'>"+comment.comment+"</td>");
+				$(tr).append("<td class='center'>"+comment.commentTime+"</td>");
+				
+				$('#userComments').append(tr);
+				
+			});
+			
+		});
+	
+});
 
 
 

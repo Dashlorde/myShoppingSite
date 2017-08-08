@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -196,7 +198,6 @@ public class showProductController {
 			long id=Long.parseLong(i);
 			
 			Product product=productDao.getProductByID(id);
-			commentList=commentDao.getCommentByProduct(product);
 			
 			User seller=userDao.get(product.getUsername());
 		
@@ -207,8 +208,6 @@ public class showProductController {
 			mv.addObject("quantityError", quantityError);
 			mv.addObject("product", product);
 			mv.addObject("sellerEmail", sellerEmail);
-			mv.addObject("commentList", commentList);
-			
 			mv.setViewName("showProductInfo");
 		}
 		

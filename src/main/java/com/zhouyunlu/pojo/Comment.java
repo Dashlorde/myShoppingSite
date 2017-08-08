@@ -10,22 +10,32 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 @Table(name="comment_table")
-public class Comment {
 
+public class Comment implements java.io.Serializable{
+	private static final long serialVersionUID = 6666646538881797793L;
+	
 	@Id
 	@GeneratedValue
 	@Column(name="comment_id")
 	private long commentId;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="id")
-	private User user;
+	
+	
+	@Column(name="user_id")
+	private long userId;
+	
+	@Column(name="user_name")
+	private String userName;
+	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="productID")
 	private Product product;
+	
 	
 	@Column(name="comment")
 	private String comment;
@@ -45,18 +55,30 @@ public class Comment {
 		this.commentId = commentId;
 	}
 
-	public User getUser() {
-		return user;
+	
+	
+	public long getUserId() {
+		return userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	@JsonIgnore
 	public Product getProduct() {
 		return product;
 	}
 
+	
 	public void setProduct(Product product) {
 		this.product = product;
 	}

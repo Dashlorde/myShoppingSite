@@ -17,13 +17,22 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.type.TextType;
 import org.hibernate.validator.constraints.Range;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+//import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
 @Table(name="productTable")
-public class Product {
+public class Product implements java.io.Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue()
@@ -63,6 +72,7 @@ public class Product {
 	@Column(name="stock")
 	@Valid
 	private int stock;
+	
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="product",cascade=CascadeType.ALL)
 	private Set<Comment> comment;
@@ -135,6 +145,7 @@ public class Product {
 		this.stock = stock;
 	}
 
+	@JsonIgnore
 	public Set<Comment> getComment() {
 		return comment;
 	}

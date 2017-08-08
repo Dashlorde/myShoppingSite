@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -15,13 +16,22 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+import org.codehaus.jackson.annotate.JsonIgnore;
+
+
 
 
 @Entity
 @Table(name="usertable")
 
-public class User{
+public class User implements java.io.Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	@Column(name="id")
@@ -52,9 +62,7 @@ public class User{
 	
 	@OneToOne(fetch=FetchType.LAZY, mappedBy="user", cascade=CascadeType.ALL)
 	private Address address;
-   
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="user", cascade=CascadeType.ALL)
-	private Set<Comment> commentSet;
+  
 	
 	@Column(name="paypal_username")
 	String paypalUsername;
@@ -128,14 +136,6 @@ public class User{
 
 	public void setAddress(Address address) {
 		this.address = address;
-	}
-
-	public Set<Comment> getCommentSet() {
-		return commentSet;
-	}
-
-	public void setCommentSet(Set<Comment> commentSet) {
-		this.commentSet = commentSet;
 	}
 
 	public String getPaypalUsername() {
