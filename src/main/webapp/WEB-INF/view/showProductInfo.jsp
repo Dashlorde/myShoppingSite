@@ -16,8 +16,10 @@
 <link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/showProductInfo.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="<%=request.getContextPath()%>/script/jquery.dataTables.min.js"></script>
 <style>
 
 .container-fluid{margin-right:20px;}
@@ -71,6 +73,11 @@ body {
 
 .center{
 	text-align:center;
+}
+
+.pagination tr {
+  display:inline-block;
+  padding:5px;
 }
 
 @media only screen and (max-width: 988px) {
@@ -187,10 +194,10 @@ body {
 				</div>
 				<div id="comment" class="panel-collapse collapse">
 				<div class="panel-body table-responsive">
-					<table class="table table-sm table-striped table-inverse">
+					<table id="userComments" class="table table-sm table-striped table-inverse" >
 
 						<c:forEach var="comment" items="${requestScope.commentList}">
-							<tr>
+							<tr id="userComment" >
 								<td id="user" class="center"><span class="glyphicon glyphicon-user"></span> ${comment.user.name}</td>
 								<td class="col-md-8">${comment.comment}</td>
 								<td class="center">${comment.commentTime}</td>
@@ -214,4 +221,9 @@ body {
 		<p>&copy;Yunlu Zhou</p>
 	</footer>
 </body>
+<script type="text/javascript">
+
+
+
+</script>
 </html>

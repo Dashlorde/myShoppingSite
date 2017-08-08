@@ -13,8 +13,9 @@
 
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css" />
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/menu.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 <script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
 
@@ -95,17 +96,27 @@ body { background-color: #edeff2;}
 	z-index:10;
 }
 
+
+
 #sidebar{
- position:fixed;
- top:80px
+	width: 100%;
 }
- 
+
+#sidebar.affix-top {
+    position: static;
+}
+
+#sidebar.affix {
+    position: fixed;
+    top: 80px;
+}
 
 #sidebar li a{
 	display:block;
 	color: #000;
 	padding: 8px 16px;
 	font-family:Lucida Grande;
+	
 }
 
 #sidebar li a:hover {
@@ -157,7 +168,7 @@ body { background-color: #edeff2;}
 <c:choose>
 		<c:when test="${empty user.name }">
 		<div id="background">
-		<img src="img/star.jpg" class="img-responsive"/>
+		<img src="img/star.jpg" class="img-responsive" id="backgroundImg"/>
 			<div class="center"><p><b>
 			Welcome to my shopping site demo<br>
 			If you want to try it without registering a new user, you can try my user account<br>
@@ -181,23 +192,19 @@ body { background-color: #edeff2;}
 	<div class="container-fluid demo">
 	
 	<div class="row">
-	<div class="col-md-2 col-md-offset-0">
-	<div class="sidebar-nav-fixed affix"  id="sidebar">
+	<div class="col-md-2 col-lg-2 col-sm-3" >
+		<div class="sidebar-offcanvas" > 
 	
-	<div class="sidebar-offcanvas" > 
-	
-        <ul class="nav nav-pills nav-stacked" > 
+        <ul class="nav nav-stacked" id="sidebar"> 
           	<li><a href="showAllProducts.htm" target="content">All Products</a></li>
           	
 			<li><a href="showElectronics.htm" target="content">Electronics</a></li>
 			<li><a href="showComputers.htm" target="content">Computers</a></li>
         </ul> 
       </div> 
-	
 	</div>
-</div>
 
-<div class="jumbotron col-md-10 ">
+<div class="jumbotron col-md-10 col-lg-10">
 		<div class="grid text-center ">
 
 			<c:forEach var="product" items="${requestScope.productList}">
@@ -249,7 +256,7 @@ body { background-color: #edeff2;}
 
 	<script type="text/javascript">
 	
-	$(function(){
+	(function(){
 		$('.thumbnail img').load(function(){   
 	        $('.grid').masonry({   
 	            itemSelector: '.item',  
@@ -266,6 +273,23 @@ body { background-color: #edeff2;}
 			});
 
 		});
+		
+		$("#nav").affix({
+			offset: {
+				
+				top: $('header').height()
+			}
+		
+		});
+		
+		$("#sidebar").affix({
+			offset: {
+				top: $('header').height()
+			}
+		
+		});
+	
+	
 	
 	</script>
 </body>

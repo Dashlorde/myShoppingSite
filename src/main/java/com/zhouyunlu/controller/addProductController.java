@@ -59,7 +59,7 @@ public class addProductController {
 		MultipartFile image=multipartRequest.getFile("image");
 		
 		//aws account key
-		AWSCredentials credentials = new BasicAWSCredentials("id", "key");
+		AWSCredentials credentials = new BasicAWSCredentials("", "");
 		
 		AmazonS3 s3client = new AmazonS3Client(credentials);
 		

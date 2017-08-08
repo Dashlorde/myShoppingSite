@@ -104,7 +104,7 @@ public class changeProductController {
 		int stock = 0;
 		
 		//aws account key
-		AWSCredentials credentials = new BasicAWSCredentials("id", "key");
+		AWSCredentials credentials = new BasicAWSCredentials("", "");
 		AmazonS3 s3client = new AmazonS3Client(credentials);
 		
 		//aws s3 bucket name
