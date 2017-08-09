@@ -15,11 +15,11 @@
 	href="<%=request.getContextPath()%>/css/menu.css" />
 <link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/showProductInfo.css" />
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<script src="<%=request.getContextPath()%>/script/jquery.dataTables.min.js"></script>
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
 <style>
 
 .container-fluid{margin-right:20px;}
@@ -196,11 +196,17 @@ body {
 				<div id="comment" class="panel-collapse collapse">
 				<div class="panel-body table-responsive">
 					<table id="userComments" class="table table-sm table-inverse" >
+					<thead>
 					<tr style="display:none;">
 					<th></th>
 					<th></th>
 					<th></th>
 					</tr>
+					</thead>
+					<tbody>
+					<tr>
+					</tr>
+					</tbody>
 					</table>
 				</div>
 				</div>
@@ -222,23 +228,35 @@ body {
 
 <script type="text/javascript">
 
-$(document).ready(function(){
+
+
+$(document).ready(function () {
 	
-		var object;
-		$.getJSON("getComment.htm?id="+$(".productId").attr('id')+"", function(data){
-			object=data;
-			$.each(data, function(i, comment){
-				var tr=$("<tr id='userComment'/>");
-				$(tr).append("<td class='center'> <span class='glyphicon glyphicon-user'></span>"+comment.userName+"</td>");
-				$(tr).append("<td class='col-md-8'>"+comment.comment+"</td>");
-				$(tr).append("<td class='center'>"+comment.commentTime+"</td>");
-				
-				$('#userComments').append(tr);
-				
-			});
-			
-		});
-	
+    $('#userComments').DataTable({
+    	"searching": false,
+    	"aLengthMenu": [1, 5, 10, 20],
+    	 "aaSorting" : [[0, "asc"]],
+    	 "autoWidth": false, 
+    	"ajax": {
+    		url: "getComment.htm?id="+$(".productId").attr('id'),
+    		dataSrc: "",
+    		type:"get",  
+            data: ""
+    	},
+ 
+    	columns: [
+    	          { "data": "userName", 
+    	        	  className:"center",
+    	        	  render: function(data, type, row){
+    	        		  return "<span class='glyphicon glyphicon-user'></span>"+data
+    	        	  }
+    	          
+    	        	  }, 
+    	          { "data": "comment", className:"col-md-8"  }, 
+    	          { "data": "commentTime" , className:"center"},
+    	          
+    	]
+    });
 });
 
 
