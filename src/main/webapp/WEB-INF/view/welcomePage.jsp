@@ -16,6 +16,7 @@
 
 <script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
 
@@ -256,23 +257,18 @@ body { background-color: #edeff2;}
 
 	<script type="text/javascript">
 	
-	(function(){
-		$('.thumbnail img').load(function(){   
-	        $('.grid').masonry({   
-	            itemSelector: '.item',  
-	            layoutMode : 'fitRows'             
-	        });       
-	    });  
-	});
+	
 	$(function() {
-			$('.grid').masonry({
-				// options
-				itemSelector : '.item',
+		var $container=$('.grid');
+		$container.imagesLoaded(function() {
+			$container.masonry({
+				itemSelector: '.item',
 				layoutMode : 'fitRows'
-				 
 			});
-
+			
 		});
+
+	});
 		
 		$("#nav").affix({
 			offset: {
